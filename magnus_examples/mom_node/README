@@ -1,6 +1,7 @@
 #!/bin/bash 
-# this is the README file the mom node example on magnus.
-# It is to demonstrate the differences between the mom nodes
+# this is the README file is an executable script to demonstrate 
+# the mom node example on magnus.
+# It is to show the differences between the mom nodes
 # and the compute nodes on magnus.  We use the hostname command
 # for this purpose.
 
