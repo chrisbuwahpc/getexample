@@ -1,0 +1,4 @@
+*.out
+README~
+*.slurm~
+*.slm~
