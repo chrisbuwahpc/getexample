@@ -26,8 +26,8 @@ squeue -u $USER
 echo ¨Your jobID is returned with the sbatch command.¨
 echo ¨Your job is deleted from the scratch.¨
 echo ¨It is now moved to your group.¨
-echo ¨Your results are now located in /${MYGROUP}/hostname_results/¨
+echo ¨Your results are now located in /${MYGROUP}/hello_results/¨
 echo ¨To change to your jobID directory, type:¨
-echo ¨cd /${MYGROUP}/hostname_results/jobID/¨
+echo ¨cd /${MYGROUP}/hello_results/jobID/¨
 echo ¨To view the results, use the cat command and type:¨
-echo ¨cat hostname.log¨
+echo ¨cat hello.log¨
