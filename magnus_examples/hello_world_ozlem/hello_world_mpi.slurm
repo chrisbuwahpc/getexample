@@ -1,6 +1,5 @@
 #!/bin/bash -l
 #SBATCH --job-name=hostname
-#SBATCH --account=interns2016
 #SBATCH --partition=debugq
 ##SBATCH --reservation=courseq
 #SBATCH --nodes=2
