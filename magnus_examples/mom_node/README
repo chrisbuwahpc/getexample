@@ -8,7 +8,10 @@
 # To run this example just submit a job to magnus using the 
 # hostname.slurm script 
 
+#export SBATCH_ACCOUNT=`echo $MYGROUP | awk 'BEGIN{FS="/"}{print $3}'`
+
 sbatch hostname.slurm
+
 echo "your jobid is returned with the sbatch command"
 echo "the results from this job are moved to /${MYGROUP}/hostname_results/"
 
