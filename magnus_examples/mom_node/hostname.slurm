@@ -8,9 +8,12 @@
 # leave in, it list the environment loaded by the modules
 module list
 
+# Define variables local to this script
 #  Note: SLURM_JOBID is a unique number for every job.
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hostname_results/$SLURM_JOBID
+JOBID=$SLURM_JOBID
+# Define directory paths
+SCRATCH=$MYSCRATCH/run_hostname/${JOBID}
+RESULTS=$MYGROUP/hostname_results/${JOBID}
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -47,7 +50,6 @@ aprun -n 16 -N 8 /bin/hostname
 
 echo "aprun -n -N 8 /bin/hostname"   >> ${OUTPUT}
 aprun -n 16 -N 8 /bin/hostname  >> ${OUTPUT}
-
 
 
 #############################################
