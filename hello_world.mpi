@@ -1,0 +1,23 @@
+#!/bin/bash --login
+
+# SLURM directives
+#
+# Here we specify to SLURM we want two nodes (--nodes=2)with
+# a wall-clock time limit of one minute (--time=00:01:00)
+#
+# Replace hello_world.mpi with the appropriate project name
+# following --account (e.g., --account=project123)
+
+#SBATCH --nodes=2
+#SBATCH --time=00:01:00
+#SBATCH --account=hello_world.mpi
+#SBATCH --export=NONE
+
+# To launch the job, we specify to aprun 48 MPI tasks (-48)
+# with 6 MPI tasks per node (-N 6)
+#
+# Note we avoid any inadvertent OpenMP threading by setting
+# OMP_NUM_THREADS=1
+
+export OMP_NUM_THREADS=1
+aprun -n 48 -N 6 ./hello_world.mpi
