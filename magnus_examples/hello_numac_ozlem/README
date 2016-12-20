@@ -1,0 +1,39 @@
+#!/bin/bash
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBjECTIVE: to demostrate omp_hello.c example on Magnus
+# where threads are restricted to a single NUMA region of 12 cores.
+# omp_hello.c is taken from 
+# https://computing.llnl.gov/tutorials/openMP/exercise.html
+# To run this code, specify the number of tasks
+# and the number of threads.
+# This information is located under hello_omp_c.slurm
+# You can edit the SLURM as: emacs hello_omp_c.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# Set the total number of threads to 12
+# export OMP_NUM_THREADS=12
+# To launch a job, we specify to aprun 1 task (-n 1)
+# with 12 threads (-d 12)
+# placed expilicitly on cores 0-11 (-cc 0-11)
+# Therefore the aprun command: aprun -n 1 -d 12 -cc 0-11
+
+# To compile the omp_hello.c code
+cc -O2 -h omp omp_hello.c -o hello_numac
+
+# To submit the job to Magnus
+sbatch hello_numac.slurm
+
+echo ¨The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo ¨Your job is deleted from the scratch."
+echo ¨It is now moved to your group.¨
+echo ¨Your results are now located in ${MYGROUP}/hello_numac_results/¨
+echo ¨To change to your jobID directory, type:¨
+echo ¨cd ${MYGROUP}/hello_numac_results/jobID/¨
+echo ¨To view the results, use the cat command and type:¨
+echo ¨cat hello_numac.log¨
