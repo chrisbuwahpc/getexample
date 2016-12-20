@@ -1,8 +1,8 @@
-#!/bin/bash -l
+#!/bin/bash --login
 #SBATCH --job-name=hostname
 #SBATCH --partition=debugq
 ##SBATCH --reservation=courseq
-#SBATCH --nodes=2
+#SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
@@ -37,11 +37,12 @@ OUTPUT=hello_omp_c.log
 #   Copy input files to $SCRATCH
 #   then change directory to $SCRATCH
 
-cp $HOME/$EXECUTABLE $SCRATCH
+cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-aprun -n 48 -N 24 ./$EXECUTABLE >> ${OUTPUT}
+export OMP_NUM_THREADS=24
+aprun -n 1 -d 24 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
