@@ -37,7 +37,7 @@ OUTPUT=hello.log
 #   Copy input files to $SCRATCH
 #   then change directory to $SCRATCH
 
-cp $HOME/$EXECUTABLE $SCRATCH
+cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
