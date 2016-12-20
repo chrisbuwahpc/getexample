@@ -1,9 +1,11 @@
 #!/bin/bash 
-# this is the README file is an executable script to demonstrate 
-# the mom node example on magnus.
-# It is to show the differences between the mom nodes
-# and the compute nodes on magnus.  We use the hostname command
-# for this purpose.
+# this is the README file is an executable script
+# to run type: ./README 
+#
+# Example OBJECTIVE:  to demonstrate the difference between 
+# the mom nodes and compute nodes on magnus.
+# We use the hostname command to show what nodes on the system the 
+# hostname commands is actually executed on.
 
 # To run this example just submit a job to magnus using the 
 # hostname.slurm script 
@@ -12,9 +14,16 @@
 
 sbatch hostname.slurm
 
-echo "your jobid is returned with the sbatch command"
-echo "the results from this job are moved to /${MYGROUP}/hostname_results/"
-
-echo "To view the results change to the /${MYGROUP}/hostname_results"
-echo "cd into the $JOBID directory" and use cat command to inspect the 
+echo "The sbatch command returns what your jobid is for this job"
+echo "To check the status of your job us the slurm command:"
+echo " squeue -u $USER "
+echo " " 
+echo "The results from this job are moved to ${MYGROUP}/hostname_results/"
+echo " "
+echo "To view the results change to the ${MYGROUP}/hostname_results directory"
+echo "cd ${MYGROUP}/hostname_results"
+echo " "
+echo "the change into the jobid directory and use cat command to inspect the "
 echo "hostname.log file!" 
+echo "cd 44444444"
+echo "cat hostname.log"
