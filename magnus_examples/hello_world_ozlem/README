@@ -1,15 +1,16 @@
 #!/bin/bash
-# This is the README file that is an executable script to demonstrate
-# hello_mpi.f90 example on Magnus.
-# To run this cod, specify the total number of processes per node
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate hello_mpi.f90 example on Magnus.
+# To run this code, specify the total number of processes per node
 # and the number of processes per node.
 # This information is located under hello_world_mpi.slurm
-# You can edit the SLURM as: emacs hello_world_mpi.slurm
+# You can edit the SLURM as: emacs hello_world_mpi.slurm &
 
 # SLURM directives
 # 
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
-# Replace the account name with your account name (--account=interns2016)
 # To launch a job, we specify to aprun 48 MPI tasks (-n 48)
 # with 24 tasks per node (-N 24)
 # Therefore the aprun command: aprun -n 48 -N 24
@@ -20,14 +21,13 @@ ftn -O2 hello_mpi.f90 -o hello_mpi
 # To submit the job to Magnus
 sbatch hello_world_mpi.slurm
 
-# To view when the job starts
-squeue -u $USER
-
-echo ¨Your jobID is returned with the sbatch command.¨
-echo ¨Your job is deleted from the scratch.¨
-echo ¨It is now moved to your group.¨
-echo ¨Your results are now located in /${MYGROUP}/hello_results/¨
-echo ¨To change to your jobID directory, type:¨
-echo ¨cd /${MYGROUP}/hello_results/jobID/¨
-echo ¨To view the results, use the cat command and type:¨
-echo ¨cat hello.log¨
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/hello_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/hello_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat hello.log"
