@@ -18,6 +18,7 @@ echo "your jobid is returned with the sbatch command"
 echo "the results from this job are moved to ${MYGROUP}/hello_world_results/"
 
 echo "To view the results change to the ${MYGROUP}/hello_world_results"
-echo "cd into the $JOBID directory" and use cat command to inspect the 
+echo "cd into the $JOBID directory" 
+echo "use cat command to inspect the contents of the file" 
 echo "hello_world.log file!"
 
