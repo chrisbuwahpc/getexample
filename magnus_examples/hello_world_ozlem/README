@@ -3,7 +3,7 @@
 # To run type: ./README
 #
 # Example OBJECTIVE: to demonstrate hello_mpi.f90 example on Magnus.
-# To run this code, specify the total number of processes per node
+# To run this code, specify the total number of processes
 # and the number of processes per node.
 # This information is located under hello_world_mpi.slurm
 # You can edit the SLURM as: emacs hello_world_mpi.slurm &
