@@ -2,22 +2,24 @@
 
 # SLURM directives
 #
-# Here we specify to SLURM we want one node (--nodes=1)
-# a wall-clock time limit of one minute (--time=00:01:00)
+# Here we specify to SLURM we want 2 nodes (--nodes=2)
+# a wall-clock time limit of 10 minutes (--time=00:10:00)
 #
-# Replace hello_numa.slurm with appropriate project name
+# Replace hello_mpi.f90 with appropriate project name
 # following --account (e.g., --account=project123)
 
-#SBATCH --job-name=hello_numa.slurm
+#SBATCH --account=hello_mpi.f90
 #SBATCH --partition=workq
-#SBATCH --nodes=1
-#SBATCH --time=00:01:00
+#SBATCH --nodes=2
+#SBATCH --time=00:10:00
 #SBATCH --export=NONE
 
-# We specify to aprun that there is one task (-n 1) and we have
-# 12 threads (-d 12) placed explicitly on cores 0-11 (-cc 0-11).
+# To launch the job, we specify to aprun 24 MPI tasks (-n 24)
+# with 12 MPI tasks per node (-N 12), and also specify 6 MPI
+# tasks per socket (-S 6)
 #
-# We must also set OMP_NUM_THREADS=12
+# Note we avoid any inadvertent OpenMP threading by setting
+# OMP_NUM_THREADS=1
  
 # leave in, it list the environment loaded by the modules
 module list
@@ -80,5 +82,5 @@ rm -r $SCRATCH
 
 echo hostname job finished at  `date`
 
-export OMP_NUM_THREADS=12
-aprun -n 1 -d 12 -cc 0-11 ./hello_numa.slurm
+export OMP_NUM_THREADS=1
+aprun -n 24 -N 12 -S 6 ./hello_mpi.f90
