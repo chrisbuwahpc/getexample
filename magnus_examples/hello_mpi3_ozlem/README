@@ -1,0 +1,39 @@
+#!/bin/bash
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate hello_mpi.f90 example
+# on Magnus with task placement.
+# This code runs with hyper-threading which helps specifying
+# how tasks bind to logical cores.
+# To run this code, specify the total number of processes,
+# the number of processes per node
+# and the number of hyper threads per core.
+# This information is located under hello_mpi3.slurm
+# You can edit the SLURM as: emacs hello_mpi3.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# To launch a job, we specify to aprun 48 MPI tasks (-n 48)
+# with 48 tasks required per node (-N 48)
+# These tasks are accomodated using hyper-threading with
+# two (hyper-) threads per core (-j 2).
+# Therefore the aprun command: aprun -n 48 -N 48 -j 2
+
+# To compile the hello_mpi.f90 code
+ftn -O2 hello_mpi.f90 -o hello_mpi3
+
+# To submit the job to Magnus
+sbatch hello_mpi3.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/hello_mpi3_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/hello_mpi3_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat hello_mpi3.log"
