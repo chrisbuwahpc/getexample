@@ -11,7 +11,7 @@
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --account=hello_mpi.f90
-#SBATCH --export= NONE
+#SBATCH --export=NONE
 
 # To launch the job, we specify to aprun 48 MPI tasks (-n 48)
 # required (-n 48) with 48 MPI tasks on the node (-N 48)
