@@ -12,7 +12,7 @@
 
 #export SBATCH_ACCOUNT=`echo $MYGROUP | awk 'BEGIN{FS="/"}{print $3}'`
 
-sbatch hello_mpi.f90~
+sbatch hello_world.slurm
 
 echo "The sbatch command returns what your jobid is for this job"
 echo "To check the status of your job us the slurm command:"
