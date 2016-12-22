@@ -21,4 +21,4 @@
 # There is no OpenMP: OMP_NUM_THREADS=1
 
 export OMP_NUM_THREADS=1
-aprun -n 48 -N 48 ./hello_mpi.f90
+aprun -n 48 -N 48 -j 2 ./hello_mpi.f90
