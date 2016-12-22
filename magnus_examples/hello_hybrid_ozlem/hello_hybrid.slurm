@@ -3,7 +3,7 @@
 #SBATCH --partition=debugq
 ##SBATCH --reservation=courseq
 #SBATCH --nodes=2
-#SBATCH --time=00:20:00
+#SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
 # leave in, it list the environment loaded by the modules
@@ -42,6 +42,7 @@ cp $EXECUTABLE $SCRATCH
 cd $SCRATCH
 
 export OMP_NUM_THREADS=6
+echo ¨Number of threads is $OMP_NUM_THREADS¨
 aprun -n 8 -N 4 -S 2 -d 6 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
