@@ -2,3 +2,5 @@
 README~
 *.slurm~
 *.slm~
+*.f90~
+*.*~
