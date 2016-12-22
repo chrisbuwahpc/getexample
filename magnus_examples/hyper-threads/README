@@ -2,7 +2,7 @@
 # this is the README file is an executable script
 # to run type: ./README
 # to compile with the PrgEnv -cray use
-ftn -O2 hello_mpi.f90
+ftn -O2 hello_mpi.f90 -o hello_mpi
 #
 # Example OBJECTIVE:  to demonstrate the difference between 
 # the mom nodes and compute nodes on magnus.
@@ -14,7 +14,7 @@ ftn -O2 hello_mpi.f90
 
 #export SBATCH_ACCOUNT=`echo $MYGROUP | awk 'BEGIN{FS="/"}{print $3}'`
 
-sbatch hello_world.slurm
+sbatch test.slurm
 
 echo "The sbatch command returns what your jobid is for this job"
 echo "To check the status of your job us the slurm command:"
