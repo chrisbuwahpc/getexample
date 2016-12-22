@@ -1,38 +1,33 @@
 
 PROGRAM HYBRID_HELLO
+  
+  USE omp_lib
   IMPLICIT NONE
   INCLUDE 'mpif.h'
   
   ! OpenMPI variables:
-  INTEGER :: rank
-  INTEGER :: size
-  INTEGER :: ierror, tag, status(MPI_STATUS_SIZE)
-
-  ! OpenMP variables:
-  INTEGER :: NTHREADS, TID, OMP_GET_NUM_THREADS
+  INTEGER :: rank, numprocs
+  INTEGER :: ierror 
+  INTEGER, dimension(MPI_STATUS_SIZE) :: status
   
-  ! Local variables:
-  INTEGER :: i
-
+  ! OpenMP variables:
+  INTEGER :: TID=0 
+  INTEGER :: NTHREADS=1
+  
   CALL MPI_INIT(ierror)
-  CALL MPI_COMM_SIZE(MPI_COMM_WORLD, size, ierror)
+  CALL MPI_COMM_SIZE(MPI_COMM_WORLD, numprocs, ierror)
   CALL MPI_COMM_RANK(MPI_COMM_WORLD, rank, ierror)
+  
+  
+  !$OMP PARALLEL PRIVATE(TID,NTHREADS)
+  ! Obtain thread number
+  TID = OMP_GET_THREAD_NUM()
 
-  DO i=0, size-1
-     IF (rank == i) THEN
-        !PRINT *, 'node', rank, ': Hello world'
+  ! Obtain total number of threads
+  NTHREADS = OMP_GET_NUM_THREADS()
 
-        ! Obtain thread number
-        TID = OMP_GET_THREAD_NUM()
-        PRINT *, 'Hello World from thread=', TID
-
-        ! Only master thread does this
-        IF (TID .EQ. 0) THEN
-           NTHREADS = OMP_GET_NUM_THREADS()
-           PRINT *, 'Number of threads = ', NTHREADS
-        END IF
-     END IF
-  END DO
+  PRINT *, 'Hello World from thread=', TID, 'out of', NTHREADS, 'from processes', rank
+  !$OMP END PARALLEL
   
   CALL MPI_FINALIZE(ierror)
 
