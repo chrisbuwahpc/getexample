@@ -2,7 +2,7 @@
 # this is the README file is an executable script
 # to run type: ./README
 # to compile with the PrgEnv -cray use
-ftn -O2 hello_world.mpi 
+ftn -O2 hello_mpi.f90
 #
 # Example OBJECTIVE:  to demonstrate the difference between 
 # the mom nodes and compute nodes on magnus.
