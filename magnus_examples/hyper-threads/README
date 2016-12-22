@@ -1,6 +1,8 @@
 #!/bin/bash 
 # this is the README file is an executable script
-# to run type: ./README 
+# to run type: ./README
+# to compile with the PrgEnv -cray use
+ftn -O2 hello_world.mpi 
 #
 # Example OBJECTIVE:  to demonstrate the difference between 
 # the mom nodes and compute nodes on magnus.
