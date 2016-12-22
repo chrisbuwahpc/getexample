@@ -1,0 +1,42 @@
+#!/bin/bash
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBjECTIVE: to demostrate hybrid_hello.f90 example
+# with thread placement on Magnus. 
+# This is a hybrid MPI/OpenMP job where we run 24 MPI tasks
+# with 2 OpenMP threads per MPI task.
+# To run this code, specify the number of MPI tasks,
+# the number of tasks per node,
+# the number of threads per each task which are also 
+# the hyper-threads per core.
+# This information is located under hello_hybrid2.slurm
+# You can edit the SLURM as: emacs hello_hybrid2.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--node=1)
+# Set the total number of threads to 2
+# export OMP_NUM_THREADS=2
+# To launch a job, we specify to aprun 24 MPI tasks (-n 24)
+# with 24 MPI tasks on each node (-N 24).
+# with 2 threads for each task (-d 2)
+# and these are hyper-threads per core (-j 2).
+# Therefore the aprun command: aprun -n 24 -N 24 -d 2 -j 2
+
+# To compile the hybrid_hello.f90 code
+ftn -O2 -h omp hybrid_hello.f90 -o hello_hybrid2
+
+# To submit the job to Magnus
+sbatch hello_hybrid.slurm
+
+echo ¨The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo ¨Your job is deleted from the scratch."
+echo ¨It is now moved to your group.¨
+echo ¨Your results are now located in ${MYGROUP}/hello_hybrid2_results/¨
+echo ¨To change to your jobID directory, type:¨
+echo ¨cd ${MYGROUP}/hello_hybrid2_results/jobID/¨
+echo ¨To view the results, use the cat command and type:¨
+echo ¨cat hello_hybrid2.log¨
