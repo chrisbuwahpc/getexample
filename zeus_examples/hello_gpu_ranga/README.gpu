@@ -15,15 +15,15 @@
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # Change the partition to the GPU partition (--partition==workq)
-# This CUDA requires a single GPU node: #SBATCH --gres=gpu:1
+# Add #SBATCH --gres=gpu:1
 # Load the necessary modules before module listing.
 # module load cuda
 
 # To compile the hello_cuda.cu code
-nvcc hello_cuda.cu -o hello_gpu
+nvcc helloworld_cuda.cu -o helloworld_gpu
 
 # To submit the job to Magnus
-sbatch hello_gpu.slurm
+sbatch helloworld_gpu.slurm
 
 echo ¨The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
@@ -32,6 +32,6 @@ echo ¨Your job is deleted from the scratch."
 echo ¨It is now moved to your group.¨
 echo ¨Your results are now located in ${MYGROUP}/hello_gpu_results/¨
 echo ¨To change to your jobID directory, type:¨
-echo ¨cd ${MYGROUP}/hello_gpu_results/jobID/¨
+echo ¨cd ${MYGROUP}/helloworld_gpu_results/jobID/¨
 echo ¨To view the results, use the cat command and type:¨
-echo ¨cat hello_gpu.log¨
+echo ¨cat helloworld_gpu.log¨
