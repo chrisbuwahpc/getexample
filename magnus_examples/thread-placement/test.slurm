@@ -5,7 +5,7 @@
 # Here we specify to SLURM we want one node (--nodes=1)
 # a wall-clock time limit of 1 hours (--time=01:00:00)
 #
-# Replace omp_hello.f with the appropriate job name
+# Replace omp_hello.f90 with the appropriate job name
 # following --account (e.g., --account=project123)
 
 #SBATCH --job-name=getexample_omp
