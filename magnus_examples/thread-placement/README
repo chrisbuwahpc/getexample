@@ -2,7 +2,7 @@
 # this is the README file is an executable script
 # to run type: ./README
 # to compile with the PrgEnv -cray use
-ftn -O2 omp_hello.f -o omp_hello
+ftn -O2 omp_hello.f90 -o omp_hello
 #
 # Example OBJECTIVE:  to demonstrate the difference between 
 # the mom nodes and compute nodes on magnus.
