@@ -15,7 +15,7 @@
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # Change the partition to the GPU partition (--partition==workq)
-# Add #SBATCH --gres=gpu:1
+# This CUDA requires a single GPU node: #SBATCH --gres=gpu:1
 # Load the necessary modules before module listing.
 # module load cuda
 
