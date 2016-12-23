@@ -5,7 +5,7 @@
 # Here we specify to SLURM we want one node (--nodes=1)
 # a wall-clock time limit of 1 hours (--time=01:00:00)
 #
-# Replace omp_hello.c with the appropriate job name
+# Replace omp_hello.f with the appropriate job name
 # following --account (e.g., --account=project123)
 
 #SBATCH --job-name=getexample_omp
@@ -56,6 +56,7 @@ cd $SCRATCH
  
 echo "OMP_NUM_THREADS=2"
 OMP_NUM_THREADS=2
+
 echo "aprun -n 24 -N 24 -d 2 -j 2 ./omp_hello"   >> ${OUTPUT}
 aprun -n 24 -N 24 -d 2 -j 2 ./omp_hello  >> ${OUTPUT}
 
