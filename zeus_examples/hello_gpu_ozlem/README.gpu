@@ -4,6 +4,8 @@
 #
 # Example OBjECTIVE: to demostrate hello_cuda.cu example
 # on Zeus. 
+# This example is taken from:
+# https://www.pdc.kth.se/resources/computers/historical-computers/zorn/how-to/how-to-compile-and-run-a-simple-cuda-hello-world
 # To run this code, edit the partition and 
 # load the necessary modules.
 # This information is located under hello_gpu.slurm
