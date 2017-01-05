@@ -25,13 +25,13 @@ program main
   end if
 
   write( *, '(a)' ) ' '
-  write( *, '(a,i8,a)' ) ' Process ', id, ' says ¨Hello, world!¨ '
+  write( *, '(a,i8,a)' ) ' Process ', id, ' says "Hello, world!" '
  
   if (id == 0) then
      
      write( *, '(a)' ) ' '
      write( *, '(a)' ) 'HELLO_MPI - Master process: '
-     write( *, '(a)' ) ' Normal end of execution: ¨Goodbye, world!¨. '
+     write( *, '(a)' ) ' Normal end of execution: "Goodbye, world!". '
      
      wtime = MPI_Wtime( ) - wtime
      write( *, '(a)' ) ' '
