@@ -1,0 +1,41 @@
+#!/bin/bash
+# This is the README file is an executable script.
+# To run type: ./README.omp
+#
+# Example OBjECTIVE: to demostrate omp_hello.c example
+# on Zeus. 
+# To run this code, edit the partition, load the necessary modules
+# and specify the total number of MPI tasks.
+# This information is located under hello_world_mpi.slurm
+# You can edit the SLURM as: emacs hello_world_mpi.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--node=1)
+# Modify the partition to --partition==workq
+# Unload the gcc compiler to compile with intel: 
+# module unload gcc
+# Load the necessary modules before module listing.
+# module load intel
+# module load mpt
+# Set the number of threads to 16: export OMP_NUM_THREADS=16
+# To run the code:
+# srun -n 1 -c $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
+ 
+
+# To compile the omp_hello.c code
+icc -O2 -qopenmp omp_hello.c -o hello_omp_zeus
+
+# To submit the job to Magnus
+sbatch hello_omp.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/hello_results_omp/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/hello_results_omp/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat hello_omp_zeus.log"
