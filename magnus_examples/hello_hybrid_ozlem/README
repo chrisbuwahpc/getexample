@@ -29,13 +29,13 @@ ftn -O2 -h omp hybrid_hello.f90 -o hello_hybrid
 # To submit the job to Magnus
 sbatch hello_hybrid.slurm
 
-echo ¨The sbatch command returns what jobid is for this job."
+echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
-echo ¨Your job is deleted from the scratch."
-echo ¨It is now moved to your group.¨
-echo ¨Your results are now located in ${MYGROUP}/hello_hybrid_results/¨
-echo ¨To change to your jobID directory, type:¨
-echo ¨cd ${MYGROUP}/hello_hybrid_results/jobID/¨
-echo ¨To view the results, use the cat command and type:¨
-echo ¨cat hello_hybrid.log¨
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/hello_hybrid_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/hello_hybrid_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat hello_hybrid.log"
