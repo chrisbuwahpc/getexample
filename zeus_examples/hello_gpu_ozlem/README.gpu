@@ -1,6 +1,6 @@
 #!/bin/bash
 # This is the README file is an executable script.
-# To run type: ./README
+# To run type: ./README.gpu
 #
 # Example OBjECTIVE: to demostrate hello_cuda.cu example
 # on Zeus. 
