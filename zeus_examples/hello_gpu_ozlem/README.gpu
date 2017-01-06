@@ -22,7 +22,7 @@
 # To compile the hello_cuda.cu code
 nvcc hello_cuda.cu -o hello_gpu
 
-# To submit the job to Magnus
+# To submit the job to Zeus
 sbatch hello_gpu.slurm
 
 echo "The sbatch command returns what jobid is for this job."
