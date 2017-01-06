@@ -5,7 +5,7 @@
 # Example OBjECTIVE: to demostrate omp_hello.c example
 # on Zeus. 
 # To run this code, edit the partition, load the necessary modules
-# and specify the total number of MPI tasks.
+# and specify the total number of OpenMP threads.
 # This information is located under hello_world_mpi.slurm
 # You can edit the SLURM as: emacs hello_world_mpi.slurm &
 
