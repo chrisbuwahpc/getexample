@@ -24,13 +24,13 @@ ftn -O2 hello_mpi.f90 -o hello_mpi2
 # To submit the job to Magnus
 sbatch hello_mpi2.slurm
 
-echo ¨The sbatch command returns what jobid is for this job."
+echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
-echo ¨Your job is deleted from the scratch."
-echo ¨It is now moved to your group.¨
-echo ¨Your results are now located in ${MYGROUP}/hello_mpi2_results/¨
-echo ¨To change to your jobID directory, type:¨
-echo ¨cd ${MYGROUP}/hello_mpi2_results/jobID/¨
-echo ¨To view the results, use the cat command and type:¨
-echo ¨cat hello_mpi2.log¨
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/hello_mpi2_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/hello_mpi2_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat hello_mpi2.log"

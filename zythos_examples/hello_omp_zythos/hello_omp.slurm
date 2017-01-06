@@ -1,19 +1,23 @@
 #!/bin/bash --login
 #SBATCH --job-name=hostname
-#SBATCH --partition=debugq
-##SBATCH --reservation=courseq
-#SBATCH --nodes=2
-#SBATCH --time=00:05:00
-#SBATCH --export=NONE
+#SBATCH --partition=zythos
+#SBATCH --ntasks=2
+#SBATCH --cpus-per-task=6
+#SBATCH --account=interns2016
+#SBATCH --time=00:10:00
+
+# Default loaded compiler is gcc module
+# load necessary modules
+module load mpt
 
 # leave in, it list the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_hybrid
+EXECUTABLE=hello_omp_zythos
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_hybrid_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_results_zythos/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -31,7 +35,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_hybrid.log
+OUTPUT=hello_omp_zythos.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -41,9 +45,9 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-export OMP_NUM_THREADS=6
-echo "Number of threads is $OMP_NUM_THREADS"
-aprun -n 8 -N 4 -S 2 -d 6 ./$EXECUTABLE >> ${OUTPUT}
+export OMP_NUM_THREADS=12
+
+omplace -nt $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir

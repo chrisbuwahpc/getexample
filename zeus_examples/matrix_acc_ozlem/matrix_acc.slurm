@@ -1,19 +1,26 @@
 #!/bin/bash --login
 #SBATCH --job-name=hostname
-#SBATCH --partition=debugq
-##SBATCH --reservation=courseq
-#SBATCH --nodes=2
-#SBATCH --time=00:05:00
-#SBATCH --export=NONE
+#SBATCH --partition=workq
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:1
+#SBATCH --constraint=k20x
+#SBATCH --time=00:10:00
+#SBATCH --account=interns2016
+
+# unload gcc compiler to swap to pgi module compiler
+module unload gcc
+
+# load the pgi module compiler
+module load pgi
 
 # leave in, it list the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_hybrid
+EXECUTABLE=matrix_acc
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_hybrid_results/$SLURM_JOBID
+RESULTS=$MYGROUP/matrix_results_acc/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -31,7 +38,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_hybrid.log
+OUTPUT=matrix_acc.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -41,9 +48,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-export OMP_NUM_THREADS=6
-echo "Number of threads is $OMP_NUM_THREADS"
-aprun -n 8 -N 4 -S 2 -d 6 ./$EXECUTABLE >> ${OUTPUT}
+./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
