@@ -26,7 +26,7 @@
 # To compile the omp_hello.c code
 icc -O2 -qopenmp omp_hello.c -o hello_omp_zeus
 
-# To submit the job to Magnus
+# To submit the job to Zeus
 sbatch hello_omp.slurm
 
 echo "The sbatch command returns what jobid is for this job."
