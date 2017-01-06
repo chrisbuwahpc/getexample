@@ -5,11 +5,14 @@
 #SBATCH --nodes=1
 #SBATCH --time=00:10:00
 
-#unload gcc compiler
+# unload gcc compiler to swap to intel module compiler
 module unload gcc
 
-#load the necessary modules
+# load the intel module compiler
 module load intel
+
+# load the other necessary module
+module load mpt
 
 # leave in, it list the environment loaded by the modules
 module list
