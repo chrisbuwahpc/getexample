@@ -6,12 +6,12 @@
 # on Zeus. 
 # To run this code, edit the partition, load the necessary modules
 # and specify the total number of OpenMP threads.
-# This information is located under hello_world_mpi.slurm
-# You can edit the SLURM as: emacs hello_world_mpi.slurm &
+# This information is located under hello_omp.slurm
+# You can edit the SLURM as: emacs hello_omp.slurm &
 
 # SLURM directives
 # 
-# Here we specify to SLURM we want 1 node (--node=1)
+# Here specify to SLURM that we want 1 node (--node=1)
 # Modify the partition to --partition==workq
 # Unload the gcc compiler to compile with intel: 
 # module unload gcc
