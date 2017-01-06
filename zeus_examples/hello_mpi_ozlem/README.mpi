@@ -31,7 +31,7 @@
 # To compile the hello_mpi.f90 code
 mpif90 hello_mpi.f90 -I${FPATH} -o hello_mpi_zeus
 
-# To submit the job to Magnus
+# To submit the job to Zeus
 sbatch hello_world_mpi.slurm
 
 echo "The sbatch command returns what jobid is for this job."
