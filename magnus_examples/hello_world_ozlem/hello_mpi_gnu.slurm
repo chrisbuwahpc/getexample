@@ -1,15 +1,14 @@
 #!/bin/bash -l
 #SBATCH --job-name=hostname
 #SBATCH --partition=debugq
-##SBATCH --reservation=courseq
 #SBATCH --nodes=2
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
-# leave in, it list the environment loaded by the modules
+# leave in, it lists the environment loaded by the modules
 module list
 
-# To run it with GNU
+# To run it with GNU compiler
 module swap PrgEnv-gnu
 
 
