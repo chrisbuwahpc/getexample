@@ -18,7 +18,7 @@
 # export OMP_NUM_THREADS=24
 # To launch a job, we specify to aprun 1 OpenMP task (-n 1)
 # with 24 threads (-d 24)
-# Therefore, the aprun command should look like: 
+# Therefore, the aprun command looks like: 
 # aprun -n 1 -d 24 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the omp_hello.f code
