@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/bin/bash --login
 # This is the README file is an executable script.
 # To run type: ./README
 #
 # Example OBjECTIVE: to demostrate hello_mpi.f90 example on 
 # Magnus with two partially occupied nodes.
-# To run this code, specify the total number of MPI tasks,
+# hello_mpi.f90 code is taken from
+# https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.f90
+# To run this code, we need to specify the total number of MPI tasks,
 # the number of MPI tasks per node
-# and the number of MPI tasks per socket
+# and the number of MPI tasks per socket.
 # This information is located under hello_mpi2.slurm
 # You can edit the SLURM as: emacs hello_mpi2.slurm &
 
@@ -16,7 +18,8 @@
 # To launch a job, we specify to aprun 24 MPI tasks (-n 24)
 # with 12 MPI tasks per node (-N 12)
 # and 6 MPI tasks per socket (-S 6)
-# Therefore the aprun command: aprun -n 24 -N 12 -S 6
+# Therefore, the aprun command looks like: 
+# aprun -n 24 -N 12 -S 6 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the hello_mpi.f90 code
 ftn -O2 hello_mpi.f90 -o hello_mpi2
