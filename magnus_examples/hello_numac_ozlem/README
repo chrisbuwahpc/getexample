@@ -19,7 +19,7 @@
 # To launch a job, we specify to aprun 1 task (-n 1)
 # with 12 threads (-d 12)
 # placed expilicitly on cores 0-11 (-cc 0-11)
-# Therefore, the aprun command should look like: 
+# Therefore, the aprun command looks like: 
 # aprun -n 1 -d 12 -cc 0-11 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the omp_hello.c code
