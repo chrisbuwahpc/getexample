@@ -5,7 +5,7 @@
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
-# leave in, it list the environment loaded by the modules
+# leave in, it lists the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
