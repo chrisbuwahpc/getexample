@@ -6,8 +6,8 @@
 # with thread placement on Magnus. 
 # This is a hybrid MPI/OpenMP job where we run 24 MPI tasks
 # with 2 OpenMP threads per MPI task.
-# To run this code, specify the number of MPI tasks,
-# the number of tasks per node,
+# To run this code, we need to specify the number of MPI tasks,
+# the number of MPI tasks per node,
 # the number of threads per each task which are also 
 # the hyper-threads per core.
 # This information is located under hello_hybrid2.slurm
@@ -16,13 +16,14 @@
 # SLURM directives
 # 
 # Here we specify to SLURM we want 1 node (--node=1)
-# Set the total number of threads to 2
+# Then, we set the total number of threads to 2
 # export OMP_NUM_THREADS=2
 # To launch a job, we specify to aprun 24 MPI tasks (-n 24)
 # with 24 MPI tasks on each node (-N 24).
 # with 2 threads for each task (-d 2)
 # and these are hyper-threads per core (-j 2).
-# Therefore the aprun command: aprun -n 24 -N 24 -d 2 -j 2
+# Therefore, the aprun command looks like:
+# aprun -n 24 -N 24 -d 2 -j 2 ./$EXECUTABLE  >> ${OUTPUT}
 
 # To compile the hybrid_hello.f90 code
 ftn -O2 -h omp hybrid_hello.f90 -o hello_hybrid2
