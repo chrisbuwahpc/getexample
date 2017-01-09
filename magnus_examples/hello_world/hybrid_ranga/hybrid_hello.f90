@@ -2,6 +2,8 @@ PROGRAM HYBRID
 IMPLICIT NONE
 include 'mpif.h'
 
+# use "include" instead of "if" because the code run is for OMP
+ 
 !iopenMPI variables
  integer :: rank
  integer :: size
