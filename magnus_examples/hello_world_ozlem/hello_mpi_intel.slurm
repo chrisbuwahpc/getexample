@@ -8,7 +8,7 @@
 # leave in, it list the environment loaded by the modules
 module list
 
-# To run it with GNU module compiler
+# To run it with intel compiler
 module swap PrgEnv-intel
 
 
