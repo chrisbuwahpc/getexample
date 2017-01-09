@@ -1,10 +1,10 @@
 #!/bin/bash 
-# this is the README file is an executable script
-# to run type: ./README 
-# to compile with the PrgEnv-cray use
+# this is the README file and it is an executable script
+# to run script type: ./README 
+# to compile with the PrgEnv-cray use with source code
 ftn -O2 -h omp hybrid_hello.f90
 
-# Example OBJECTIVE:  to demonstrate the difference between 
+# Example OBJECTIVE: the script serves to demonstrate the difference between 
 # the mom nodes and compute nodes on magnus.
 # We use the hostname command to show what nodes on the system the 
 # hostname commands is actually executed on.
