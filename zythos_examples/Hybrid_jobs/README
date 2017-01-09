@@ -2,6 +2,7 @@
 # this is the README file is an executable script
 # to run type: ./README 
 # to compile with the PrgEnv-cray use
+
 ftn -O2 -h omp hybrid_hello.f90
 
 # Example OBJECTIVE:  to demonstrate the difference between 
@@ -28,5 +29,4 @@ echo "cd ${MYGROUP}/hostname_results"
 echo " "
 echo "the change into the jobid directory and use cat command to inspect the "
 echo "hostname.log file!" 
-echo "cd 44444444"
 echo "cat hostname.log"
