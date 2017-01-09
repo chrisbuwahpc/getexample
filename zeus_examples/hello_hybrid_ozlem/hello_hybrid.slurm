@@ -67,6 +67,3 @@ cd $HOME
 rm -r $SCRATCH
 
 echo hostname job finished at  `date`
-
-
-
