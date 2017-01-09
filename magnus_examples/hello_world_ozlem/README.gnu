@@ -14,7 +14,7 @@
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
 # To launch a job, we specify to aprun 48 MPI tasks (-n 48)
 # with 24 tasks per node (-N 24)
-# Therefore the aprun command should look like: 
+# Therefore, the aprun command looks like: 
 # aprun -n 48 -N 24 ./$EXECUTABLE  >> ${OUTPUT}
 
 # To compile the hello_mpi.f90 code with GNU
