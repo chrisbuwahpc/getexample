@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash --login
 # This is the README file is an executable script.
 # To run type: ./README
 #
@@ -6,7 +6,7 @@
 # where omp_hello.c is restricted to a single node.
 # omp_hello.c is taken from 
 # https://computing.llnl.gov/tutorials/openMP/exercise.html
-# To run this code, specify the number of tasks
+# To run this code, we need to specify the number of tasks
 # and the number of threads.
 # This information is located under hello_omp_c.slurm
 # You can edit the SLURM as: emacs hello_omp_c.slurm &
