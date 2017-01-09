@@ -9,7 +9,7 @@
 
 # load the necessary modules
 module load cuda
-# leave in, it list the environment loaded by the modules
+# leave in, it lists the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
