@@ -20,12 +20,16 @@
 # two (hyper-) threads per core (-j 2).
 
 # leave in, it list the environment loaded by the modules
+
 module list
 
 # Define variables local to this script
 #  Note: SLURM_JOBID is a unique number for every job.
+
 JOBID=$SLURM_JOBID
+
 # Define directory paths
+
 SCRATCH=$MYSCRATCH/run_hello_mpi/${JOBID}
 RESULTS=$MYGROUP/hello_mpi_results/${JOBID}
 
