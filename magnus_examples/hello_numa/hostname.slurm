@@ -8,7 +8,7 @@
 # Replace hello_mpi.f90 with appropriate project name
 # following --account (e.g., --account=project123)
 
-#SBATCH --account=hello_mpi.f90
+#SBATCH --account=omp_hello.c
 #SBATCH --partition=workq
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
@@ -32,8 +32,8 @@ JOBID=$SLURM_JOBID
 
 # Define directory paths
 
-SCRATCH=$MYSCRATCH/run_hostname/${JOBID}
-RESULTS=$MYGROUP/hostname_results/${JOBID}
+SCRATCH=$MYSCRATCH/run_omp_hello/${JOBID}
+RESULTS=$MYGROUP/omp_hello_results/${JOBID}
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -54,7 +54,7 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=hostname.log
+OUTPUT=omp_hello.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -63,16 +63,16 @@ OUTPUT=hostname.log
 cd $SCRATCH
  
 echo "/bin/hostname"  
-/bin/hostname  
+/bin/omp_hello
 
 echo "/bin/hostname" > ${OUTPUT}   
-/bin/hostname  >> ${OUTPUT}
+/bin/omp_hello >> ${OUTPUT}
 
 echo "aprun -n -N 8 /bin/hostname"  
-aprun -n 16 -N 8 /bin/hostname
+aprun -n 16 -N 8 /bin/omp_hello
 
 echo "aprun -n -N 8 /bin/hostname"   >> ${OUTPUT}
-aprun -n 16 -N 8 /bin/hostname  >> ${OUTPUT}
+aprun -n 16 -N 8 /bin/omp_hello >> ${OUTPUT}
 
 
 #############################################
@@ -91,4 +91,4 @@ rm -r $SCRATCH
 echo hostname job finished at  `date`
 
 export OMP_NUM_THREADS=1
-aprun -n 24 -N 12 -S 6 ./hello_mpi.f90
+aprun -n 24 -N 12 -S 6 ./omp_hello
