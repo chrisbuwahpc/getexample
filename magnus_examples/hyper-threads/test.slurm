@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
 # SLURM directives
-#
+# for source code hello_mpi.f90
 # Here we specify to SLURM we want one node (--nodes=1)
 # a wall-clock time limit of 1 hours (--time=01:00:00)
 #
@@ -24,7 +24,7 @@
 module list
 
 # Define variables local to this script
-#  Note: SLURM_JOBID is a unique number for every job.
+# Note: SLURM_JOBID is a unique number for every job.
 
 JOBID=$SLURM_JOBID
 
@@ -35,6 +35,7 @@ RESULTS=$MYGROUP/hello_mpi_results/${JOBID}
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
+
 if [ ! -d $SCRATCH ]; then 
     mkdir -p $SCRATCH 
 fi 
@@ -42,6 +43,7 @@ echo SCRATCH is $SCRATCH
 
 ###############################################
 # Creates a unique directory in your GROUP directory for the results of this job
+
 if [ ! -d $RESULTS ]; then 
     mkdir -p $RESULTS 
 fi
@@ -49,6 +51,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
+
 OUTPUT=hello_mpi.log
 
 #############################################
