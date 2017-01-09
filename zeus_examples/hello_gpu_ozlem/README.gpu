@@ -12,7 +12,7 @@
 # You can edit the SLURM as: emacs hello_gpu.slurm &
 
 # SLURM directives
-# $%
+# 
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # Then, we change the partition to the GPU partition (--partition==workq)
 # We also specify to SLURM a single GPU node: #SBATCH --gres=gpu:1
