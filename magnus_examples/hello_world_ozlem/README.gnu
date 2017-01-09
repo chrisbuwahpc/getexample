@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/bash --login
 # This is the README.gnu file is an executable script.
 # To run type: ./README.gnu
 #
 # Example OBJECTIVE: to demonstrate hello_mpi.f90 example
 # on Magnus with GNU compiler.
-# To run this code, specify the total number of processes per node
-# and the number of processes per node.
+# To run this code, we need to specify the total number of MPI tasks
+# and the number of MPI tasks per node.
 # This information is located under hello_world_mpi.slurm
 # You can edit the SLURM as: emacs hello_world_mpi.slurm &
 
