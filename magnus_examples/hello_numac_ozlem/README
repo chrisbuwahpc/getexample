@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash --login
 # This is the README file is an executable script.
 # To run type: ./README
 #
