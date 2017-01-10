@@ -5,6 +5,8 @@
 # Example OBjECTIVE: to demostrate matrix-acc.c example
 # on Zeus.
 # This code is an OpenACC example.
+# matrix-acc.c code is taken from
+# https://www.olcf.ornl.gov/wp-content/uploads/2012/08/OpenACC.pdf
 # To run this code, we need to edit the partition, 
 # load the necessary modules
 # and specify the total number of OpenMP threads.
