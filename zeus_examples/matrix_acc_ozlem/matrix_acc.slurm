@@ -13,7 +13,7 @@ module unload gcc
 # load the pgi module compiler
 module load pgi
 
-# leave in, it list the environment loaded by the modules
+# leave in, it lists the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
