@@ -3,7 +3,7 @@
 # To run type: ./README
 #
 # Example OBJECTIVE: to demostrate omp_hello.f example on Magnus
-# where omp_hello.f is restricted to a single node.
+# where omp_hello.f is an OpenMP code and restricted to a single node.
 # omp_hello.f is taken from
 # https://computing.llnl.gov/tutorials/openMP/exercise.html
 # To run this code, we need to specify the number of tasks
