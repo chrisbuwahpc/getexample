@@ -5,13 +5,13 @@
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
 
-#swap from gcc to intel
+# swap from gcc to intel
 module swap gcc intel
 
-#load the necessary modules
+# load the necessary modules
 module load mpt
 
-# leave in, it list the environment loaded by the modules
+# leave in, it lists the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
