@@ -1,29 +1,33 @@
-#!/bin/bash
+#!/bin/bash --login
 # This is the README file is an executable script.
 # To run type: ./README.acc
 #
 # Example OBjECTIVE: to demostrate matrix-acc.c example
-# on Zeus. 
-# To run this code, edit the partition, load the necessary modules
+# on Zeus.
+# This code is an OpenACC example.
+# To run this code, we need to edit the partition, 
+# load the necessary modules
 # and specify the total number of OpenMP threads.
 # This information is located under matrix_acc.slurm
 # You can edit the SLURM as: emacs matrix_acc.slurm &
 
 # SLURM directives
 # 
-# Here specify to SLURM that we require 1 node (--node=1)
-# Modify the partition to --partition==workq
-# This OpenACC code requires a single GPU node: (--gres=gpu:1)
+# Here we specify to SLURM that we require 1 node (--node=1)
+# Then we modify the partition to --partition==workq
+# To run this code correctly, we need to comment out --export=NONE on Zeus.
+# If --export=NONE is included, the code does not compile.
+# We specify to SLURM that this OpenACC code 
+# requires a single GPU node: (--gres=gpu:1)
 # with a constraint that it is a K20x GPU node 
 # to run the job. (--constraint=k20x)
-# Unload the gcc compiler to compile with pgi: 
+# To compile the code with pgi, we need to unload the gcc compiler: 
 # module unload gcc
-# Load the pgi module compiler:
+# We then load the pgi module compiler before module listing:
 # module load pgi
 # To run the code:
 # ./$EXECUTABLE >> ${OUTPUT}
  
-
 # To compile the matrix-acc.c code
 pgcc -acc matrix-acc.c -o matrix_acc
 
