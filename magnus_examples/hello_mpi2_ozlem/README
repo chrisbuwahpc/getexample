@@ -4,6 +4,8 @@
 #
 # Example OBjECTIVE: to demostrate hello_mpi.f90 example on 
 # Magnus with two partially occupied nodes.
+# hello_mpi.f90 is an MPI code which runs on 2 nodes
+# with 12 MPI tasks on each node.
 # hello_mpi.f90 code is taken from
 # https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.f90
 # To run this code, we need to specify the total number of MPI tasks,
