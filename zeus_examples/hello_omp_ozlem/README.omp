@@ -29,7 +29,7 @@
 # Therefore, the srun looks like:
 # srun -n 1 -c $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
  
-# To compile the omp_hello.c code 2
+# To compile the omp_hello.c code
 icc -O2 -qopenmp omp_hello.c -o hello_omp_zeus
 # With intel compiler, -openmp does not compile the code.
 # Therefore, we use -qopenmp as shown above.
