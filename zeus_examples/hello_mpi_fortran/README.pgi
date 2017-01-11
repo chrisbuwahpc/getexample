@@ -11,8 +11,8 @@
 # To run this code, we need to edit the partition, 
 # load the necessary modules
 # and specify the total number of MPI tasks.
-# This information is located under hello_world_mpi_intel.slurm
-# You can edit the SLURM as: emacs hello_world_mpi_intel.slurm &
+# This information is located under hello_world_mpi.slurm
+# You can edit the SLURM as: emacs hello_world_mpi.slurm &
 
 # SLURM directives
 # 
@@ -20,8 +20,6 @@
 # Then, we modify the partition to --partition==workq
 # To run this code correctly on Zeus, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
-# To compile the code with intel we need to swap from gcc compiler as shown:
-# module swap gcc intel
 # We then load the necessary modules before module listing.
 # module load mpt
 # We also specify to srun that 32 MPI tasks are required. (-n 32)
@@ -34,19 +32,20 @@
  
 # To compile the hello_mpi.f90 code
 
-mpif90 -O2 hello_mpi.f90  -o hello_mpi_intel
+pgf90 -acc hello_mpi.f90 -o hello_mpi_pgi
 
 # To submit the job to Zeus
-sbatch hello_world_mpi.slurm
+
+sbatch hello_world_mpi_pgi.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_mpi_intel_results_zeus/"
+echo "Your results are now located in ${MYGROUP}/hello_mpi_pgi_results_zeus/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_mpi_intel_results_zeus/jobID/"
+echo "cd ${MYGROUP}/hello_mpi_pgi_results_zeus/jobID/"
 echo "To view the results, use the cat command and type:"
-echo "cat hello_mpi_intel..log"
+echo "cat hello_mpi_pgi.log"
 

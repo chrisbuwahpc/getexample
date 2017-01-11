@@ -1,6 +1,6 @@
 #!/bin/bash --login
 # This is the README file is an executable script.
-# To run type: ./README.mpi
+# To run type: ./README.gnu
 #
 # Example OBjECTIVE: to demostrate hello_mpi.f90 example
 # on Zeus. 
@@ -11,8 +11,8 @@
 # To run this code, we need to edit the partition, 
 # load the necessary modules
 # and specify the total number of MPI tasks.
-# This information is located under hello_world_mpi.slurm
-# You can edit the SLURM as: emacs hello_world_mpi.slurm &
+# This information is located under hello_world_mpi_gnu.slurm
+# You can edit the SLURM as: emacs hello_world_mpi_gnu.slurm &
 
 # SLURM directives
 # 
@@ -20,8 +20,7 @@
 # Then, we modify the partition to --partition==workq
 # To run this code correctly on Zeus, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
-# To compile the code with intel we need to swap from gcc compiler as shown:
-# module swap gcc intel
+# To compile the code with intel we need to swap from gcc compiler to gnu 
 # We then load the necessary modules before module listing.
 # module load mpt
 # We also specify to srun that 32 MPI tasks are required. (-n 32)
@@ -33,19 +32,20 @@
 # srun --mpi=pmi2 -n 32 -N 2 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hello_mpi.f90 code
-mpif90 hello_mpi.f90 -I${FPATH} -o hello_mpi_zeus
+
+mpif90 --fopenmp -O2 hello_mpi.f90 -o hello_mpi_gnu
 
 # To submit the job to Zeus
-sbatch hello_world_mpi.slurm
+sbatch hello_world_mpi_gnu.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_results_zeus/"
+echo "Your results are now located in ${MYGROUP}/hello_mpi_gnu_results_zeus/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_results_zeus/jobID/"
+echo "cd ${MYGROUP}/hello_mpi_gnu_results_zeus/jobID/"
 echo "To view the results, use the cat command and type:"
-echo "cat hello_mpi_zeus.log"
+echo "cat hello_mpi_gnu.log"
 
