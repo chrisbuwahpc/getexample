@@ -5,14 +5,17 @@
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
+# to swap from Cray Environment to Intel
+module swap PrgEnv-intel
+
 # leave in, it lists the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_numac
+EXECUTABLE=hello_numa_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_numac_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_numa_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -30,7 +33,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_numac.log
+OUTPUT=hello_numa_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH
