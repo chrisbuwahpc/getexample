@@ -32,20 +32,22 @@
 # srun -n 1 -c $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the omp_hello.c code
-icc -O2 -qopenmp omp_hello.c -o hello_omp_zeus
-# With intel compiler, -openmp does not compile the code.
-# Therefore, we use -qopenmp as shown above.
+
+mpicc -O2 -fopenmp omp_hello.c -o hello_omp_gnu
+
+# With gnu compiler, -fopenmp is used to compile the code.
 
 # To submit the job to Zeus
-sbatch hello_omp.slurm
+
+sbatch hello_omp_gnu.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_results_omp/"
+echo "Your results are now located in ${MYGROUP}/hello_omp_gnu_results_omp/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_results_omp/jobID/"
+echo "cd ${MYGROUP}/hello_omp_gnu_results_omp_/jobID/"
 echo "To view the results, use the cat command and type:"
-echo "cat hello_omp_zeus.log"
+echo "cat hello_omp_gnu.log"

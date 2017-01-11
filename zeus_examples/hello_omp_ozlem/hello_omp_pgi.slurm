@@ -5,23 +5,21 @@
 #SBATCH --nodes=1
 #SBATCH --time=00:10:00
 
-# unload gcc compiler to swap to intel module compiler
+# unload gcc compiler to swap to pgi module compiler
 module unload gcc
 
-# load the intel module compiler
-module load intel
-
-# load the other necessary module
-module load mpt
+# load the pgi module compiler
+module pgi intel
 
 # leave in, it lists the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_omp_zeus
+
+EXECUTABLE=hello_omp_pgi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_omp/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_omp_pgi_results_omp/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -39,7 +37,8 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_omp_zeus.log
+
+OUTPUT=hello_omp_pgi.log
 
 #############################################
 #   Copy input files to $SCRATCH
