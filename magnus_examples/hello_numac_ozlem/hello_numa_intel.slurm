@@ -4,7 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
-
+  
 # to swap from Cray Environment to Intel
 module swap PrgEnv-intel
 
