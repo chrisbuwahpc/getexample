@@ -17,7 +17,7 @@
 
 # To compile the omp_hello.c code
 
-CC -O2 -h omp_hello.c  hello_omp_gnu
+cc -O2 -h omp omp_hello.c -o hello_omp_gnu
 
 # To submit the job to Magnus
 
