@@ -8,8 +8,8 @@
 # https://www.pdc.kth.se/resources/computers/historical-computers/zorn/how-to/how-to-compile-and-run-a-simple-cuda-hello-world
 # To run this code, edit the partition and 
 # load the necessary modules.
-# This information is located under hello_intel_c.slurm
-# You can edit the SLURM as: emacs hello_intel_c.slurm &
+# This information is located under hello_gnu_c.slurm
+# You can edit the SLURM as: emacs hello_gnu_c.slurm &
 
 # SLURM directives
 # 
@@ -20,18 +20,18 @@
 # module load intel
 
 # To compile the helloworld.intel code
-icc -O2 helloworld_c -o helloworld_zeus_intel
+gcc -O2 helloworld_c -o helloworld_gnu_intel
 
 # To submit the job to Magnus
-sbatch helloworld_intel_c.slurm
+sbatch helloworld_gnu_c.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_zeus_intel_results/"
+echo "Your results are now located in ${MYGROUP}/hello_zeus_gnu_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/helloworld_zeus_intel_results/jobID/"
+echo "cd ${MYGROUP}/helloworld_zeus_gnu_results/jobID/"
 echo "To view the results, use the cat command and type:"
-echo "cat helloworld_zeus_intel.log"
+echo "cat helloworld_gnu_intel.log"
