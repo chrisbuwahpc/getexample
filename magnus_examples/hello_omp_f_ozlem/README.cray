@@ -26,7 +26,7 @@
 ftn -O2 -h omp omp_hello.f -o hello_omp_cray
 
 # To submit the job to Magnus
-sbatch hello_omp_f.slurm
+sbatch hello_omp_cray.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
