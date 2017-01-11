@@ -4,7 +4,7 @@
 #
 # Example OBjECTIVE: to demostrate omp_hello.c example on Magnus
 # with GNU Environment where threads are restricted 
-# to a single NUMA region of 12 cores.
+# to a single NUMA region of 12 cores. 
 # omp_hello.c is taken from 
 # https://computing.llnl.gov/tutorials/openMP/exercise.html
 # To run this code,we need to specify the number of tasks
