@@ -23,7 +23,8 @@
 # To compile the code with PGI compiler, we first unload the gcc compiler:
 # module unload gcc
 # We then load the necessary modules before module listing.
-# module load pgi
+# module load pgi openmpi
+# module load mpt
 # We also specify to srun that 32 MPI tasks are required. (-n 32)
 # with 2 nodes (-N 2) given that 
 # there are 16 MPI tasks per node.
