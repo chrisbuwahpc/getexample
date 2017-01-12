@@ -16,7 +16,7 @@
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
-# To compile the hello_mpi.f90 code
+# To compile the hello_world.f90 code
 ftn -O2 hello_world.f90 -o hello_fortran_cray
 
 # To submit the job to Magnus
