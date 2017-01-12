@@ -25,7 +25,6 @@
 # module unload gcc
 # Then, we load the necessary modules before module listing.
 # module load pgi openmpi
-# module load mpt
 # This script requires 2 nodes and runs 1 MPI process with
 # 16 OpenMP threads on each intel compiled executable.
 # Hence, we set the number of threads to 16 as shown below: 
