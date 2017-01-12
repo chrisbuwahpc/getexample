@@ -12,9 +12,6 @@ module unload gcc
 # Load the PGI module compiler
 module load pgi openmpi
 
-# Load the other necessary modules
-module load mpt
-
 # leave in, it lists the environment loaded by the modules
 module list
 
