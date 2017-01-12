@@ -15,7 +15,7 @@
 # You can edit the SLURM as: emacs hello_mpi_pgi.slurm &
 
 # SLURM directives
-# 
+#   
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
 # Then, we modify the partition to --partition==workq
 # To run this code correctly on Zeus, we need to remove --export=NONE
