@@ -22,7 +22,7 @@
 # If it is still included in the SLURM, the code does not compile.
 # To compile with GNU compiler, we need to load gcc as shown below:
 # module load gcc
-# Then, we load the necessary modules before module listing.
+# Then, we load the necessary modules before listing.
 # module load mpt
 # This script requires 2 nodes and runs 1 MPI process with
 # 16 OpenMP threads on each intel compiled executable.
