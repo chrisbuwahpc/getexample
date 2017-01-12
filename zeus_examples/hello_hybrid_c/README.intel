@@ -37,7 +37,7 @@
 mpicc -qopenmp hybrid_hello.c -o hello_hybrid_intel
 
 # This code also can be compiled with:
-# mpif90 -openmp hybrid_hello.c -o hello_hybrid_zeus
+# mpicc -openmp hybrid_hello.c -o hello_hybrid_zeus
 
 # To submit the job to Zeus
 sbatch hello_hybrid_intel.slurm
