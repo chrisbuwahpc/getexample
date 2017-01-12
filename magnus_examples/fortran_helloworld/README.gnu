@@ -1,6 +1,6 @@
 #!/bin/bash --login
 # This is the README file is an executable script.
-# To run type: ./README.cray
+# To run type: ./README.gnu
 #
 # Example OBJECTIVE: to demonstrate hello_world.f90 example 
 # in GNU environment on Magnus.
@@ -20,7 +20,7 @@
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
-# To compile the hello_mpi.f90 code
+# To compile the hello_world.f90 code
 ftn -O2 hello_world.f90 -o hello_fortran_gnu
 
 # To submit the job to Magnus
