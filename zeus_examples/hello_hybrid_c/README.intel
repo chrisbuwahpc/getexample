@@ -3,7 +3,10 @@
 # To run type: ./README.intel
 #
 # Example OBjECTIVE: to demostrate hybrid_hello.c example
-# on Zeus with Intel Compiler.
+# on Zeus with Intel Compiler.This is a mixed-mode job
+# which includes both MPI and OpenMP jobs.
+# hybrid_hello.c code is taken from
+# http://www.slac.stanford.edu/comp/unix/farm/mpi_and_openmp.html
 # To run this code, we need to edit the partition, 
 # load the necessary modules,
 # specify the total number of MPI tasks and
