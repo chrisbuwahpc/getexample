@@ -5,9 +5,9 @@
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
 
-# swap intel to gnu environment
+# To swap intel to pgi.
 
-module swap PrgEnv-intel PrgEnv-gnu
+module swap PrgEnv-intel PrgEnv-pgi
 
 # Load the other necessary modules
 module load mpt
@@ -17,7 +17,7 @@ module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_hybrid_gnu
+EXECUTABLE=hello_hybrid_pgi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/hello_results_hybrid/$SLURM_JOBID
 
@@ -37,7 +37,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_hybrid_gnu.log
+OUTPUT=hello_hybrid_pgi.log
 
 #############################################
 #   Copy input files to $SCRATCH
