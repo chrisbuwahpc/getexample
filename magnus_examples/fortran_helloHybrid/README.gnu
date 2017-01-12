@@ -27,7 +27,7 @@
 
 # To compile the hybrid_hello.f90 code
 
-ftn -O2 -h omp hybrid_hello.f90 -o hello_hybrid_gnu
+ftn -O2 -fopenmp hybrid_hello.f90 -o hello_hybrid_gnu
 
 # To submit the job to Magnus
 
