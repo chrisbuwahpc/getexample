@@ -24,8 +24,9 @@
 # 16 OpenMP threads on each intel compiled executable.
 # Hence, we set the number of threads to 16 as shown below: 
 # export OMP_NUM_THREADS=16
-# Therefore, the srun command looks like:
-# srun --mpi=pmi2 -n 2 -N 2 ./$EXECUTABLE >> ${OUTPUT}
+# The code is in PGI compiler suggesting that the job is OpenACC
+# the resulting command looks like:
+# ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hybrid_hello.f90 code with pgi compiler
 
