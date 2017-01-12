@@ -6,8 +6,8 @@
 # on Zeus. 
 # To run this code, edit the partition and 
 # load the necessary modules.
-# This information is located under hello_intel_c.slurm
-# You can edit the SLURM as: emacs hello_intel_c.slurm &
+# This information is located under hello_intelc.slurm
+# You can edit the SLURM as: emacs hello_intelc.slurm &
 
 # SLURM directives
 # 
@@ -19,11 +19,11 @@
 
 # To compile the intel code
 
-icc -O2 helloworld.intel.c -o helloworld_mpi
+icc -O2 helloworld.c -o helloworld_mpi
 
 # To submit the job to Magnus
 
-sbatch helloworld_intel_c.slurm
+sbatch helloworld_intelc.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
