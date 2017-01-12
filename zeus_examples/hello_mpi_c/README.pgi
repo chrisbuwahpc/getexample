@@ -33,7 +33,7 @@
 # srun --mpi=pmi2 -n 32 -N 2 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hello_mpi.c code with PGI
-mpipcc hello_mpi.c -I${FPATH} -o hello_mpi_pgi
+mpicc hello_mpi.c -I${FPATH} -o hello_mpi_pgi
 
 # To submit the job to Zeus
 sbatch hello_mpi_pgi.slurm
