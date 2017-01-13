@@ -14,7 +14,7 @@
 
 # To compile the omp_hello.c code
 
-pgcc -O2 -acc -fopenmp omp_hello.c -o hello_hello.pgi
+pgcc -O2 -mp omp_hello.c -o hello_hello.pgi
 
 # To submit the job to zythos
 
