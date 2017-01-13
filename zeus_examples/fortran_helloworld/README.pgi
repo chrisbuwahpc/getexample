@@ -14,6 +14,9 @@
 # SLURM directives
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1)
+# We then change the partition to --partition=workq
+# To run this code correctl, we need to remove --export=NONE
+# If this is included in the SLURM, the code does not run properly.
 # To compile this code in Intel, we swap
 # from GNU to PGI as shown below:
 # module unload gcc
