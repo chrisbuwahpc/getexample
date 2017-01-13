@@ -14,8 +14,11 @@
 # SLURM directives
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1)
+# We then change the partition to --partition=workq
+# To run this code correctl, we need to remove --export=NONE
+# If this is included in the SLURM, the code does not run properly.
 # To compile this code with GNU, we load gcc as shown below:
-# module unload gcc
+# module load gcc
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
