@@ -1,0 +1,60 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README.hybrid.intel
+#
+# Example OBjECTIVE: to demostrate hybrid_hello.f90 example
+# on Zythos
+# The natural way to run the hybrid jobs on zythos is to run one MPI task per 6-core
+# NUMA region
+# the hybrid slurm script requests 4 nodes and starts 4 MPI tasks via mpirun;
+# this is combined with omplace to place threads
+# 
+# To run this code, we need to edit the partition, 
+# load the necessary modules,
+# specify the total number of MPI tasks and
+# the number of OpenMP threads.
+# this code runs in the intel module 
+# This information is located under hello_hybrid_intel.slurm
+# You can edit the SLURM as: emacs hello_hybrid_intel.slurm &
+
+# SLURM directives
+# 
+# Here specify to SLURM that we want 4 ntasks (--node=4)
+# We the modify the partition to --partition==zythos
+# To compile with intel compiler, we need to unload 
+# the default gcc compiler as shown below:
+# module unload gcc
+# Then, we load the necessary modules before module listing.
+# module load intel
+# module load mpt
+# This script requires 4 ntasks and runs 1 MPI task per 6-core with
+# 6 OpenMP threads on each intel compiled executable.
+# Hence, we set the number of threads to 16 as shown below: 
+# export OMP_NUM_THREADS=6
+# Therefore, the mpirun command looks like:
+# mpirun -np 4 omplace -nt $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
+ 
+# To compile the hybrid_hello.f90 code with intel compiler
+
+mpif90 -fopenmp hybrid_hello.f90 -o hello_hybrid_intel
+
+# hybrid_hello.f90 can be also compiled with:
+# mpif90 -openmp hybrid_hello.f90 -o hello_hybrid_intel
+
+# This code also can be compiled with:
+# mpif90 -openmp hybrid_hello.f90 -o hello_hybrid_intel
+
+# To submit the job to Zythos
+
+sbatch hello_hybrid_intel.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/hello_results_hybrid/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/hello_results_hybrid/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat hello_hybrid_intel.log"

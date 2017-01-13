@@ -1,8 +1,9 @@
 #!/bin/bash --login
 #SBATCH --job-name=hostname
-#SBATCH --partition=workq
+#SBATCH --partition=zythos
 #SBATCH --account=interns2016
-#SBATCH --nodes=2
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 
 # To swap intel to pgi.
@@ -49,7 +50,8 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
- ./$EXECUTABLE >> ${OUTPUT}
+export OMP_NUM_THREADS=6
+mpirun -np 4 omplace -nt $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir

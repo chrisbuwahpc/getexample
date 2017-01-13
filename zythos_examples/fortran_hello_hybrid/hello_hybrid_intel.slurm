@@ -1,14 +1,20 @@
 #!/bin/bash --login
 #SBATCH --job-name=hostname
 #SBATCH --partition=zythos
-#SBATCH --account=interns2016
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=6
+#SBATCH --account=interns2016
 #SBATCH --time=00:10:00
 
-# swap intel to gnu environment which is the default module
+# The natural way to run hybrid jobs on zythos is to run one MPI task per 6-core
+# NUMA region
+# Default loaded module compiler is gcc.
+# To swap from gcc module compiler to intel, unload gcc.
 
-module swap PrgEnv-intel PrgEnv-gnu
+module unload gcc
+
+# Load the intel module compiler
+module load intel
 
 # Load the other necessary modules
 module load mpt
@@ -18,7 +24,7 @@ module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_hybrid_gnu
+EXECUTABLE=hello_hybrid_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/hello_results_hybrid/$SLURM_JOBID
 
@@ -38,7 +44,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_hybrid_gnu.log
+OUTPUT=hello_hybrid_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH

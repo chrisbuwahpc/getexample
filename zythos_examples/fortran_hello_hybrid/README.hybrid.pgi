@@ -3,9 +3,14 @@
 # To run type: ./README.hybrid.pgi
 #
 # Example OBjECTIVE: to demostrate hybrid_hello.f90 example
-# on Zeus. 
+# on Zythos.
+# the natural  way to run hybrid jobs on Zythos is to run one MPI task per:
+# 6-core NUMA region
+# the slurm script requests 4 nodes and starts 4 MPI tasks via mpirun;
+# this is combined with omplace to place threads;
+#
 # this code runs in the pgi module
-# To run this code, we need to edit the partition, 
+# To run this code, we need to edit the partition to zythos, 
 # load the necessary modules,
 # specify the total number of MPI tasks and
 # the number of OpenMP threads.
@@ -14,31 +19,31 @@
 
 # SLURM directives
 # 
-# Here specify to SLURM that we want 2 nodes (--node=2)
-# We the modify the partition to --partition==workq
+# Here specify to SLURM that we want 4 ntasks (--ntasks=4)
+# We the modify the partition to --partition==zythos
 # To compile with intel compiler, we need to unload 
 # the gcc compiler as shown below:
 
 # Then, we load the necessary modules before module listing.
-# This script requires 2 nodes and runs 1 MPI process with
-# 16 OpenMP threads on each intel compiled executable.
-# Hence, we set the number of threads to 16 as shown below: 
-# export OMP_NUM_THREADS=16
+# This script requires 4 tasks and runs 1 MPI process with
+# 6 OpenMP threads on each intel compiled executable.
+# Hence, we set the number of threads to 6 as shown below: 
+# export OMP_NUM_THREADS=6
 # The code is in PGI compiler suggesting that the job is OpenACC
 # the resulting command looks like:
-# ./$EXECUTABLE >> ${OUTPUT}
+# mpirun -np 4 omplace -nt $OMP_NUM_THREADS./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hybrid_hello.f90 code with pgi compiler
 
-mpif90 -mp hybrid_hello.f90 -o hello_hybrid_pgi
+pgf90 -openmp -O2 hybrid_hello.f90 -o hello_hybrid_pgi
 
 # hybrid_hello.f90 can be also compiled with:
 # mpif90 -openmp hybrid_hello.f90 -o hello_hybrid_pgi
 
 # This code also can be compiled with:
-# mpif90 -openmp hybrid_hello.f90 -o hello_hybrid_pgi
+# pgf90 -acc hybrid_hello.f90 -o hello_hybrid_pgi
 
-# To submit the job to Zeus
+# To submit the job to Zythos
 
 sbatch hello_hybrid_pgi.slurm
 
