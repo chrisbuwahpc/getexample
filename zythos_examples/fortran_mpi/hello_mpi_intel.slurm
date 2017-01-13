@@ -1,8 +1,11 @@
 #!/bin/bash --login
+# Request 24 cores [--ntasks=4 and --cpus-per-task=6]
+# ntasks is specified , not --nodes.
 #SBATCH --job-name=hostname
-#SBATCH --partition=workq
+#SBATCH --partition=zythos
 #SBATCH --account=interns2016
-#SBATCH --nodes=2
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 
 # swap from gcc to intel
