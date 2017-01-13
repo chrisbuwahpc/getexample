@@ -1,8 +1,9 @@
 #!/bin/bash --login
 #SBATCH --job-name=hostname
-#SBATCH --partition=workq
+#SBATCH --partition=zythos
 #SBATCH --account=interns2016
-#SBATCH --nodes=2
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 
 # swap gcc and load module pgi
@@ -51,8 +52,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-./$EXECUTABLE >> ${OUTPUT}
-
+mpirun -np 24 ./$EXECUTABLE >> ${OUTPUT}
 #############################################
 #    $OUTPUT file to the unique results dir
 # note this can be a copy or move  

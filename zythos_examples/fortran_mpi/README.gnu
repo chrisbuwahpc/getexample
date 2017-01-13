@@ -3,8 +3,10 @@
 # To run type: ./README.gnu
 #
 # Example OBjECTIVE: to demostrate hello_mpi.f90 example
-# on Zeus. 
-# This code is an MPI example that requests 2 nodes with 16
+# on Zythos
+# This code is an MPI example that requests 24 cores [--ntasks=4 and
+# --cpus-per-task=6]
+# Note that --ntasks is specified, not --nodes.
 # MPI tasks running on each node.
 # This example is taken from:
 # https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.html
@@ -16,24 +18,23 @@
 
 # SLURM directives
 # 
-# Here we specify to SLURM we want 2 nodes (--nodes=2)
-# Then, we modify the partition to --partition==workq
-# To run this code correctly on Zeus, we need to remove --export=NONE
+# Here we specify to SLURM we want 4 natasks (--ntasks=4)
+# Then, we modify the partition to --partition==zythos
+# To run this code correctly on Zythos, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
-# To compile the code with intel we need to swap from gcc compiler to gnu 
+# To compile the code with gnu load gcc 
 # We then load the necessary modules before module listing.
 # module load mpt
-# We also specify to srun that 32 MPI tasks are required. (-n 32)
-# with 2 nodes (-N 2) given that 
-# there are 16 MPI tasks per node.
-# For the correct operation, MPI also needs to be specified to srun
-# via the option "--mpi=pmi2"
-# Therefore, the srun command looks like:
-# srun --mpi=pmi2 -n 32 -N 2 ./$EXECUTABLE >> ${OUTPUT}
+# 
+# Therefore, the mpirun command looks like:
+# mpirun -np 24 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hello_mpi.f90 code
 
-gfortran -fopenmp -O2 hello_mpi.f90 -o hello_mpi_gnu
+mpif90 -fopenmp -O2 hello_mpi.f90 -o hello_mpi_gnu
+
+# The code can also be compiled by:
+# gfortran -fopenmp -O2 hello_mpi.f90 -o hello_mpi_gnu
 
 # To submit the job to Zeus
 sbatch hello_world_mpi_gnu.slurm

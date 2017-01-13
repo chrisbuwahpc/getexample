@@ -1,8 +1,9 @@
 #!/bin/bash --login
 #SBATCH --job-name=hostname
-#SBATCH --partition=workq
+#SBATCH --partition=zythos
+#SBATCH --ntasks=4
+#SBATCH --cpus-per-task=6
 #SBATCH --account=interns2016
-#SBATCH --nodes=2
 #SBATCH --time=00:10:00
 
 # load the necessary modules
@@ -48,7 +49,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-srun -n 32 -N 2 --mpi=pmi2 ./$EXECUTABLE >> ${OUTPUT}
+mpirun -np 24 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir

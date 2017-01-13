@@ -3,9 +3,10 @@
 # To run type: ./README.mpi
 #
 # Example OBjECTIVE: to demostrate hello_mpi.f90 example
-# on Zeus. 
-# This code is an MPI example that requests 2 nodes with 16
-# MPI tasks running on each node.
+# on Zythos. 
+# This code is an MPI example that requests 24 cores [--ntasks=4 and 
+# --cpus-per-task=6]
+# 
 # This example is taken from:
 # https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.html
 # To run this code, we need to edit the partition, 
@@ -16,15 +17,12 @@
 
 # SLURM directives
 # 
-# Here we specify to SLURM we want 2 nodes (--nodes=2)
-# Then, we modify the partition to --partition==workq
-# To run this code correctly on Zeus, we need to remove --export=NONE
+# Here we specify to SLURM we want 4 ntasks (--ntasks=4)
+# Then, we modify the partition to --partition==zythos
+# To run this code correctly on Zythos, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
 # We then load the necessary modules before module listing.
 # module load mpt
-# We also specify to srun that 32 MPI tasks are required. (-n 32)
-# with 2 nodes (-N 2) given that 
-# there are 16 MPI tasks per node.
 #
 # This is a OpenACC job because it is compiled by PGI compiler
 # when it is compiled the command looks like:
@@ -32,9 +30,12 @@
  
 # To compile the hello_mpi.f90 code
 
-pgf90 -acc hello_mpi.f90 -o hello_mpi_pgi
+pgf90 -acc -O2 hello_mpi.f90 -o hello_mpi_pgi
 
-# To submit the job to Zeus
+# we can also compile using the code
+# mpif90 -O2  hello_mpi.f90 -o hello_mpi_pgi
+
+# To submit the job to Zythos
 
 sbatch hello_world_mpi_pgi.slurm
 
