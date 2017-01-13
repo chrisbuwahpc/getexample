@@ -1,6 +1,6 @@
 #!/bin/bash --login
 # This is the README file is an executable script.
-# To run type: ./README.intel
+# To run type: ./README.pgi
 #
 # Example OBjECTIVE: to demostrate hybrid_hello.c example
 # on Zeus with PGI Compiler.This is a mixed-mode job
@@ -33,7 +33,7 @@
 # srun --mpi=pmi2 -n 2 -N 2 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hybrid_hello.c code with PGI compiler
-mpicc -mp hybrid_hello.c -o hello_hybrid_pgi
+mpipcc -mp hybrid_hello.c -o hello_hybrid_pgi
 
 # To submit the job to Zeus
 sbatch hello_hybrid_pgi.slurm
