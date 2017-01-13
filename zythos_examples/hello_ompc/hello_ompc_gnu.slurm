@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash --login
 
 # Request 12 cores [--ntasks=2 and --cpus-per-task=6]
 # Note that --ntasks is specified, not --nodes
@@ -9,11 +9,11 @@
 #SBATCH --ntasks=2
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
-
 #SBATCH --export=NONE
 
 # Default loaded compiler module is gcc module which applies for gnu
 
+module load gcc
 module load mpt
  
 #  Note: SLURM_JOBID is a unique number for every job.

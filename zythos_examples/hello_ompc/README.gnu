@@ -14,7 +14,7 @@
 
 # To compile the omp_hello.c code
 
-gcc -O2 -fopenmp omp_hello.c -o hello_hello.gnu
+gcc -O2 -openmp omp_hello.c -o hello_hello.gnu
 
 # To submit the job to zythos
 
