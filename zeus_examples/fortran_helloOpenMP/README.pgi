@@ -31,7 +31,7 @@
 # srun -n 1 -c $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the omp_hello.f code with PGI
-pgf90 -O2 -mp omp_hello.f -o hello_omp_pgi
+pgfortran -O2 -mp omp_hello.f -o hello_omp_pgi
 
 # To submit the job to Zeus
 sbatch hello_omp_pgi.slurm
