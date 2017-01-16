@@ -1,0 +1,8 @@
+# this is a simple example from a website to compute eigenvalues and eigenvectors
+# using LAPACK.  The makefile links in the MKL library.  To compile type:
+
+make
+
+# to run type
+
+./eigenvalue_example

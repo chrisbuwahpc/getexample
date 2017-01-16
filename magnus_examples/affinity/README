@@ -1,0 +1,9 @@
+# Simple examples on how to set the affinity for a job.  There are two ways that this is supposed to work:
+#
+# 1- Use taskset to run the job (affinityTest.qsub)
+# 2- Use taskset to change the affinity of the job (affinityTest_change.qsub)
+#
+# Currently only the affinityTest.qsub test is working. Not sure why we can not change affinity after a task is running.
+
+make
+qsub affinityTest.qsub

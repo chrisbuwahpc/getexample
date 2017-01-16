@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# setup the appropriate modules
+module swap GNU Intel
+
+# to send environment variables to the MIC (in offload mode), you need to 
+# set the environment variable, MIC_ENV_PREFIX
+
+export MIC_ENV_PREFIX=MIC
+
+# then, you can set the number of MIC threads using
+
+export MIC_OMP_NUM_THREADS=42
+
+# just for fun, you can also set the number of CPU threads using
+
+export OMP_NUM_THREADS=6
+
+
+# compile the program
+make
+
+# run
+./test.mic

@@ -1,0 +1,44 @@
+#!/bin/bash -login
+#PBS -l nodes=1:ppn=6,walltime=00:10:00,mem=7gb,feature=gbe
+#PBS -j oe
+
+#TEST To see if I can start a OMP program and force the affinity
+
+shopt -s expand_aliases
+cd $PBS_O_WORKDIR
+module load powertools
+export LANG=C
+export TERM=vt100
+source ./setup.test
+export OMP_NUM_THREADS=${PBS_NUM_PPN}
+
+#Figure out what cores the current script is running on
+core=`ps axo psr,pid,cmd | grep $$ | head -n 1 | awk '{ print $1; }'`
+
+#Start the example using taskset command
+taskset -c $core ./simpleOMP.exe start &
+
+#Get the Process ID
+PID=$!
+
+#Wait for things to get started
+sleep 30
+
+#Check to see how many cores example is running on
+echo "*********************************************"
+echo "Job should not be using more than 1 core"
+echo "*********************************************"
+echo ""
+top -b -n 1 -u $USER
+echo "*********************************************"
+echo ""
+echo ""
+
+
+#Return job statistics 
+qstat -f $PBS_JOBID
+
+#Kill job and Clean up
+kill $PID
+cd $PBS_O_WORKDIR 
+rm -rf $WORK

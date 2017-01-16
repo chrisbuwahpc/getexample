@@ -1,0 +1,11 @@
+This example shows how to use MKL for FFTW calls.
+It shows both C and Fortran version.
+
+Make sure that you have Intel moduel loaded.
+
+$ module load Intel
+or
+$ module swap GNU Intel
+
+To compile and run the test, do
+$ make test

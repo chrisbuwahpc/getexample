@@ -1,0 +1,27 @@
+#!/bin/bash
+# This is a simple fortran file that does a linear solve on a dense 8000x800
+# matrix, and computes the residual of the solution to check that the answer 
+# is correct (at least to within machine precision).
+
+# to compile using the (sequential) MKL Libraries:
+echo "=== compiling/linking to MKL library ==="
+module purge
+module load GNU MKL
+make -f makefile.mkl clean
+make -f makefile.mkl
+
+
+# and the time:
+echo "=== timing linear solve using MKL library ==="
+time ./linear_solve_mkl.exe 
+
+# now, compile using the BLAS libraries
+echo "=== compiling/linking to BLAS/LAPACK library ==="
+module purge
+module load GNU LAPACK BLAS
+make -f makefile.lapack clean
+make -f makefile.lapack
+
+# and time
+echo "=== timing linear solve using BLAS/LAPACK library ==="
+time ./linear_solve

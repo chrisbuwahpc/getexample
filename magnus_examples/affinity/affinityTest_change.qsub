@@ -1,0 +1,52 @@
+#!/bin/bash -login
+#PBS -l nodes=1:ppn=6,walltime=00:10:00,mem=7gb,feature=gbe
+#PBS -j oe
+
+#TEST to see if I can change the affinity for a running OMP program
+
+shopt -s expand_aliases
+cd $PBS_O_WORKDIR
+module load powertools
+export LANG=C
+export TERM=vt100
+source setup.test
+export OMP_NUM_THREADS=${PBS_NUM_PPN}
+
+#Determin what core the current script is running on
+ps axo psr,pid,cmd | grep $$ 
+core=`ps axo psr,pid,cmd | grep $$ | head -n 1 | cut -d " " -f 2`
+echo "Trying to run on core $core"
+
+#Start job normally
+./simpleOMP.exe &
+
+#Keep track of task PID
+PID=$!
+
+#Wait for stuff to happen
+sleep 30
+
+#See current CPU utilization (Should be greater than %100)
+top -b -n 1 -u colbrydi
+
+echo ""
+echo ""
+echo "******** SETTING TASK AFFINITY ***************"
+echo ""
+taskset -pc $core $PID
+
+#wait for this to take root
+sleep 30
+
+#Check CPU utilization again (Should be 100%)
+top -b -n 1 -u colbrydi
+echo "*********************************************"
+echo ""
+echo ""
+qstat -f $PBS_JOBID
+
+
+#Kill job and clean up
+kill $PID
+cd $PBS_O_WORKDIR 
+rm -rf $WORK

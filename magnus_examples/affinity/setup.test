@@ -1,0 +1,17 @@
+cd ${PBS_O_WORKDIR}
+
+srcdir=${PBS_O_WORKDIR}
+WORK=${PBS_O_WORKDIR}/_${PBS_JOBNAME}/${PBS_JOBID}
+mkdir -p ${WORK}
+
+echo "*************************************"
+cat $0 > ${WORK}/thisjob.qsub
+cat $0
+echo "*************************************"
+
+# Copy files to work directory
+cp -r $srcdir/*.exe $WORK/
+
+#Run main simulation program
+cd $WORK
+

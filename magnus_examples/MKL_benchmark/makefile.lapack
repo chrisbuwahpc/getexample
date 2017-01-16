@@ -1,0 +1,20 @@
+# To run this make file
+# make sure that BLAS AND LAPACk is loaded then type
+#  make -f makefile.lapack
+# 
+
+EXE=linear_solve
+
+FFLAGS =  
+LFLAGS =
+LIBS = -llapack -lblas
+
+
+$(EXE): $(EXE).f
+	$(FC) $(LFLAGS) -o $(EXE) $(EXE).f  $(LIBS)
+
+.f.o:  
+	$(FC) $(FFLAGS) $< -o $(<:.f=.o)
+
+clean:
+	$(RM) $(EXE)
