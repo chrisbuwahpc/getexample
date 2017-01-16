@@ -1,4 +1,4 @@
-BASE_PATH=/opt/software/ClusterStudio/2013sp1/composer_xe_2013_sp1.0.080
+BASE_PATH=/opt/intel/compilers_and_libraries/linux
 MKL_INC=-I$(BASE_PATH)/mkl/include
 INTEL_LPATH=-L$(BASE_PATH)/mkl/lib/intel64
 INTEL_LIBS=-lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -lm
