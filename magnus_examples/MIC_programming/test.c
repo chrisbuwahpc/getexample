@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
   int nprocs;
   int nthreads;
 
-# pragma offload target(mic) 
+// pragma offload target(mic) 
 # pragma omp parallel 
   {
     nthreads = omp_get_num_threads();
