@@ -3,7 +3,7 @@
 #  make -f makefile.mkl 
 # 
 
-CFLAGS = -fopenmp -m64
+CFLAGS = -O3 -qopenmp -m64
 
 #parallel mkl libs
 LIBS = -lmkl_intel_lp64 -lmkl_core -lmkl_gnu_thread -ldl -lpthread -lm
