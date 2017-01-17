@@ -7,8 +7,9 @@ EXE=linear_solve
 
 FFLAGS =  
 LFLAGS =
-LIBS = -llapack -lblas
+CFLAGS = -O2 -m64
 
+LIBS = -lmkl_intel_lp64 -lmkl_sequential -lmkl_core  -lm
 
 $(EXE): $(EXE).f
 	$(FC) $(LFLAGS) -o $(EXE) $(EXE).f  $(LIBS)

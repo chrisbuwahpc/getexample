@@ -5,7 +5,7 @@
 
 FFLAGS =  
 LFLAGS = 
-CFLAGS = -fopenmp -m64
+CFLAGS = -qopenmp -m64
 
 # sequential MKL libs
 LIBS = -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lm
