@@ -1,0 +1,25 @@
+#!/bin/bash 
+# this is the README file is an executable script
+# to run type: ./README
+#
+# Example OBJECTIVE: to demonstrate the difference between
+# the mom nodes and compute nodes on magnus.
+# It is to demonstrate the differences between the mom nodes
+# and the compute nodes on magnus.  We use the hello_world command
+# for this purpose.
+# to compile with the PrgEnv-gnu use
+ftn -O2 hello_mpi.f90 -o hello_world
+
+# To run this example just submit a job to magnus using the 
+# hello_world.slurm script 
+
+sbatch hello_world.slurm
+
+echo "your jobid is returned with the sbatch command"
+echo "the results from this job are moved to ${MYGROUP}/hello_world_results/"
+
+echo "To view the results change to the ${MYGROUP}/hello_world_results"
+echo "cd into the $JOBID directory" 
+echo "use cat command to inspect the contents of the file" 
+echo "hello_world.log file!"
+
