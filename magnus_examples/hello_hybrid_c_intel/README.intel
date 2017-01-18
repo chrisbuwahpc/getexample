@@ -31,7 +31,7 @@
 # aprun -n 8 -N 4 -S 2 -d 6 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the hybrid_hello.c code with Intel Environment
-cc -O2 -openmp hybrid_hello.c -o hello_hybrid_intel
+cc -O2 -openmp hello_hybrid.c -o hello_hybrid_intel
 
 # To submit the job to Magnus
 sbatch hello_hybrid_intel.slurm
