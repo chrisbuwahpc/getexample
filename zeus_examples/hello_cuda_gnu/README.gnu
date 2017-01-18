@@ -1,0 +1,38 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README.gpu
+#
+# Example OBjECTIVE: to demostrate hello_cuda.cu example
+# on Zeus with GPU nodes. 
+# This example is taken from:
+# https://www.pdc.kth.se/resources/computers/historical-computers/zorn/how-to/how-to-compile-and-run-a-simple-cuda-hello-world
+# To run this code, we need to change the partition to GPU and 
+# load the necessary modules.
+# This information is located under hello_gpu.slurm
+# You can edit the SLURM as: emacs hello_gpu.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# Then, we change the partition to the GPU partition (--partition==workq)
+# We also specify to SLURM a single GPU node: #SBATCH --gres=gpu:1
+# To compile hello_cuda.cu correctly, we need to load
+# the necessary modules before module listing as shown below:
+# module load cuda
+
+# To compile the hello_cuda.cu code
+nvcc hello_cuda.cu -o hello_gpu
+
+# To submit the job to Zeus
+sbatch hello_gpu.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/hello_gpu_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/hello_gpu_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat hello_gpu.log"
