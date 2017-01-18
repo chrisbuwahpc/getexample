@@ -27,7 +27,7 @@
 # aprun -n 8 -N 4 -S 2 -d 6 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the hybrid_hello.c code with Cray Environment
-cc -O2 -h omp hybrid_hello.c -o hello_hybrid_cray
+cc -O2 -h omp hello_hybrid.c -o hello_hybrid_cray
 
 # To submit the job to Magnus
 sbatch hello_hybrid_cray.slurm
