@@ -2,10 +2,10 @@
 # This is the README file is an executable script.
 # To run type: ./README.gnu
 #
-# Example OBjECTIVE: to demostrate hybrid_hello.c example
+# Example OBjECTIVE: to demostrate hello_hybrid.c example
 # on Magnus with GNU Environment. This is a mixed-mode job 
 # which includes both MPI and OpenMP jobs.
-# hybrid_hello.c code is taken from
+# hello_hybrid.c code is taken from
 # http://www.slac.stanford.edu/comp/unix/farm/mpi_and_openmp.html
 # To run this code, we need to swap from the default environment
 # to GNU to be able to compile it with GNU 
@@ -30,8 +30,8 @@
 # Therefore, the aprun command looks like:
 # aprun -n 8 -N 4 -S 2 -d 6 ./$EXECUTABLE >> ${OUTPUT}
 
-# To compile the hybrid_hello.c code on GNU Environment
-cc -O2 -fopenmp hybrid_hello.c -o hello_hybrid_gnu
+# To compile the hello_hybrid.c code on GNU Environment
+cc -O2 -fopenmp hello_hybrid.c -o hello_hybrid_gnu
 
 # To submit the job to Magnus
 sbatch hello_hybrid_gnu.slurm
