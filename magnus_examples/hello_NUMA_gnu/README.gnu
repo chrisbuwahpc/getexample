@@ -1,6 +1,6 @@
 #!/bin/bash --login
 # This is the README file is an executable script.
-# To run type: ./README.gnu
+# To run type: ./README.gnu 
 # 
 # Example OBjECTIVE: to demostrate omp_hello.c example on Magnus
 # with GNU Environment where threads are restricted 
