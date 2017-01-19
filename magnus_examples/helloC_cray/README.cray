@@ -17,7 +17,7 @@
 
 # To compile the hello_cray_c.slurm
 
-CC -O2 helloworld.c -o helloworld_c 
+cc -O2 helloworld.c -o helloworld_c 
 
 # To submit the job to Magnus
 
