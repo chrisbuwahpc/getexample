@@ -18,7 +18,7 @@
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # To change the compiler environment from Cray to GNU,
-# we simply add: module swap PrgEnv-gnu
+# we simply add: module swap PrgEnv-cray PrgEnv-gnu
 # Then, we set the total number of threads to 24:
 # export OMP_NUM_THREADS=24
 # To launch a job, we specify to aprun 1 OpenMP task (-n 1)
