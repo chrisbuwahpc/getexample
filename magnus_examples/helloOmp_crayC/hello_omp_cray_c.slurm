@@ -1,7 +1,6 @@
 #!/bin/bash -l
 #SBATCH --job-name=hostname
 #SBATCH --partition=debugq
-#SBATCH --reservation=courseq
 #SBATCH --ntasks=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=24
