@@ -20,7 +20,7 @@
 # 
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
 # To compile the code with GNU environment, we swap from Cray to GNU:
-# module swap PrgEnv-gnu
+# module swap PrgEnv-cray PrgEnv-gnu
 # Then, we set the total number of threads to 6:
 # export OMP_NUM_THREADS=6
 # To launch a job, we specify to aprun 8 MPI tasks (-n 8)
