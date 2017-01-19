@@ -1,0 +1,34 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate hello_world.f90 example 
+# in Cray environment on Magnus.
+# hello_world.f90 is a simple FORTRAN code prints "Hello World!" 
+# and runs on a single node.
+# To run this code, we need to specify the number of nodes used.
+# This information is located under hello_fortran_cray.slurm
+# You can edit the SLURM as: emacs hello_fortran_cray.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# To run the code, we simply type:
+# ./$EXECUTABLE >> ${OUTPUT}
+
+# To compile the hello_world.f90 code
+ftn -O2 hello_world.f90 -o hello_fortran_cray
+
+# To submit the job to Magnus
+sbatch hello_fortran_cray.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/hello_fortran_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/hello_fortran_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat hello_fortran_cray.log"
