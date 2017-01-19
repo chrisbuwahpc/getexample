@@ -16,7 +16,7 @@
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # To compile this code in GNU Environment, we swap
 # from Cray to GNU as shown below:
-# module swap PrgEnv-gnu
+# module swap PrgEnv-cray PrgEnv-gnu
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
