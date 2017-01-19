@@ -19,7 +19,7 @@
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # To compile this code with GNU, we need to change
 # the environment from Cray to GNU as shown below:
-# module swap PrgEnv-gnu
+# module swap PrgEnv-cray PrgEnv-intel
 # Then, we set the total number of threads to 12
 # export OMP_NUM_THREADS=12
 # To launch a job, we specify to aprun 1 task (-n 1)
