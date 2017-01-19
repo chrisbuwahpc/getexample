@@ -1,10 +1,10 @@
-/ program in C++ taken from http://www.cplusplus.com/doc/tutorial/program_structure/
+/* Hello World program */
 
-#include <iostream>
+#include <stdio.h>
 
-int main ()
+main ()
 {
-  std::cout << "Hello World! ";      // prints Hello World!
-  std::cout << "I'm a C++ program";  // prints I'm a C++ program
-  std::cout << "That's it.Okay Bye"; // prints That's it.Okay Bye
+
+  printf("Hello World!\n");  
+    
 }

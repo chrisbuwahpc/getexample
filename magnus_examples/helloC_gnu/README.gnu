@@ -2,9 +2,7 @@
 # This is the README file that is an executable script to demonstrate
 # helloworld.c example on Magnus.
 # This runs in the gnu environment
-# It is a simple code that prints out "Hello World!, I'm a C++ program. That's it.Bye"
-
-# The example is taken from : http://www.cplusplus.com/doc/tutorial/program_structure/
+# It is a simple code that prints out "Hello World!"
 # To run the code,you specify the total number of processes per node
 # and the number of processes per node.
 # This information is located under hello_gnu_c.slurm
