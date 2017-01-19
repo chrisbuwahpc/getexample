@@ -20,7 +20,7 @@
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
 # To compile hello_mpi.c with Intel, we change the compiler
 # from Cray to Intel as shown below:
-# module swap PrgEnv-intel
+# module swap PrgEnv-cray PrgEnv-intel
 # To launch a job, we specify to aprun 48 MPI tasks (-n 48)
 # with 24 tasks per node (-N 24)
 # Therefore, the aprun command looks like:
