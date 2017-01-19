@@ -33,7 +33,7 @@
  
 # To compile the omp_hello.c code
 
-mpicc -O2 -fopenmp omp_hello.c -o hello_omp_gnu
+gcc -O2 -fopenmp omp_hello.c -o hello_omp_gnu
 
 # With gnu compiler, -fopenmp is used to compile the code.
 
