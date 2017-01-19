@@ -1,6 +1,6 @@
 #!/bin/bash --login
 # This is the README file is an executable script.
-# To run type: ./README.intel
+# To run type: ./README
 #
 # Example OBJECTIVE: to demonstrate hello_world.f90 example 
 # in Intel environment on Magnus.
