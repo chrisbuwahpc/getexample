@@ -6,7 +6,7 @@
 #SBATCH --export=NONE
 
 # To swap from Cray environment to Intel
-module swap PrgEnv-intel
+module swap PrgEnv-cray PrgEnv-intel
 
 # leave in, it lists the environment loaded by the modules
 module list
