@@ -46,10 +46,16 @@ cd $SCRATCH
 ./$EXECUTABLE >> ${OUTPUT}
 
 if [ $? -ne 0 ]; then
-    echo "$SLURM_JOBID Failed" >> ${OUTPUT}
+    cd
+    OUTPUT2=magnus_results.log
+    echo "$SLURM_JOBID Failed" >> ${OUTPUT2}
 else
-    echo "$SLURM_JOBID Succeeded" >> ${OUTPUT}
+    cd
+    OUTPUT2=magnus_results.log
+    echo "$SLURM_JOBID Succeeded" >> ${OUTPUT2}
 fi
+
+cd $SCRATCH
 
 #############################################
 #    $OUTPUT file to the unique results dir
