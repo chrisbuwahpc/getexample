@@ -10,9 +10,9 @@ module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_mpi
+EXECUTABLE=hello_mpi_cray
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_mpifortran_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -30,7 +30,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello.log
+OUTPUT=hello_mpifortran_gnu.log
 
 #############################################
 #   Copy input files to $SCRATCH
