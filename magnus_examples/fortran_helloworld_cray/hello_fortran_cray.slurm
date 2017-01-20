@@ -42,6 +42,12 @@ cd $SCRATCH
 
 ./$EXECUTABLE >> ${OUTPUT}
 
+if [ $? -ne 0 ]; then
+    echo "$SLURM_JOBID Failed" >> ${OUTPUT}
+else
+    echo "$SLURM_JOBID Succeeded" >> ${OUTPUT}
+fi
+
 #############################################
 #    $OUTPUT file to the unique results dir
 # note this can be a copy or move  
