@@ -43,6 +43,7 @@ cd $SCRATCH
 export OMP_NUM_THREADS=12
 aprun -n 1 -d 12 -cc 0-11 ./$EXECUTABLE >> ${OUTPUT}
 
+
 #############################################
 #    $OUTPUT file to the unique results dir
 # note this can be a copy or move  
