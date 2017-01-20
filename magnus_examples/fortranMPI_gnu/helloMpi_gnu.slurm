@@ -13,7 +13,7 @@ module load gcc
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_mpi2
+EXECUTABLE=hello_mpi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/hello_mpi_results/$SLURM_JOBID
 
