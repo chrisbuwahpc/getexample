@@ -5,6 +5,9 @@
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
+# To swap from Cray Environment to GNU
+module swap PrgEnv-cray PrgEnv-gnu
+
 # leave in, it lists the environment loaded by the modules
 module list
 
