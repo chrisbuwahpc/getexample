@@ -10,8 +10,8 @@
 # with 24 MPI tasks on each node.
 # To run this code, we need to specify the total number of MPI tasks
 # and the number of MPI tasks per node.
-# This information is located under hello_world_mpi.slurm
-# You can edit the SLURM as: emacs hello_world_mpi.slurm &
+# This information is located under hello_mpi_gnu.slurm
+# You can edit the SLURM as: emacs hello_mpi_gnu.slurm &
 
 # SLURM directives
 # 
