@@ -1,7 +1,7 @@
 #!/bin/bash --login
 # This is the README file is an executable script.
-# To run type: ./README
-#
+# To run type: ./README.cray
+#  
 # Example OBJECTIVE: to demonstrate hello_mpi.f90 example on Magnus.
 # hello_mpi.f90 code is taken from
 # https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.f90
@@ -9,8 +9,8 @@
 # with 24 MPI tasks on each node.
 # To run this code, we need to specify the total number of MPI tasks
 # and the number of MPI tasks per node.
-# This information is located under hello_world_mpi.slurm
-# You can edit the SLURM as: emacs hello_world_mpi.slurm &
+# This information is located under hello_mpi_cray.slurm
+# You can edit the SLURM as: emacs hello_mpi_cray.slurm &
 
 # SLURM directives
 # 
@@ -20,19 +20,19 @@
 # Therefore, the aprun command looks like:
 # aprun -n 48 -N 24 ./$EXECUTABLE >> ${OUTPUT}
 
-# To compile the hello_mpi.f90 code
-ftn -O2 hello_mpi.f90 -o hello_mpi
+# To compile the hello_mpi.f90 code on Cray
+ftn -O2 hello_mpi.f90 -o hello_mpi_cray
 
 # To submit the job to Magnus
-sbatch hello_world_mpi.slurm
+sbatch hello_mpi_cray.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_results/"
+echo "Your results are now located in ${MYGROUP}/hello_mpifortran_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_results/jobID/"
+echo "cd ${MYGROUP}/hello_mpifortran_results/jobID/"
 echo "To view the results, use the cat command and type:"
-echo "cat hello.log"
+echo "cat hello_mpifortran_cray.log"
