@@ -46,7 +46,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-srun -n 32 -N 2 --mpi=pmi2 ./$EXECUTABLE >> ${OUTPUT}
+srun --mpi=pmi2 -n 32 -N 2 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
