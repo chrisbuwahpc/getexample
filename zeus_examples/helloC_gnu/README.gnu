@@ -1,36 +1,38 @@
 #!/bin/bash
-# This is the README file is an executable script.
-# To run type: ./README
-#
-# Example OBJECTIVE: to demostrate helloworld with intel compiler 
-# on Zeus. 
-# 
-# To run this code, edit the partition and 
-# load the necessary modules.
+# This is the README file that is an executable script 
+# To run type: ./README.gnu
+
+# This script aims to demostrate helloworld.c example on Zeus.
+# with GNU compiler.
+# It is a simple code that prints out "Hello World!"
+# To run the code, we specify the number of nodes used.
 # This information is located under hello_gnu_c.slurm
 # You can edit the SLURM as: emacs hello_gnu_c.slurm &
 
 # SLURM directives
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1)
-# Change the partition  (--partition==workq)
-# Add #SBATCH --gres=gpu:1
-# Load the necessary modules before module listing.
+# We then change the partiton to --partition=workq
+# To compile this code with GNU compiler, we load
+# the gcc module compiler as shown below:
 # module load gcc
+# To run the code, we simply type:
+# ./$EXECUTABLE >> ${OUTPUT}
 
-# To compile the helloworld.intel code
-gcc -O2 helloworld.c -o helloworld_zeus_gnu
+# To compile the helloworld.c with GNU
+gcc -O2 helloworld.c -o helloworld_gnu 
 
-# To submit the job to Magnus
+# To submit the job to Zeus
 sbatch hello_gnu_c.slurm
 
-echo "The sbatch command returns what jobid is for this job."
-echo "To check the status of your job, use the slurm command:"
-echo "squeue -u $USER"
+# To view when the job starts
+squeue -u $USER
+
+echo "Your jobID is returned with the sbatch command."
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_zeus_gnu_results/"
+echo "Your results are now located in /${MYGROUP}/helloworld_gnu_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/helloworld_zeus_gnu_results/jobID/"
+echo "cd /${MYGROUP}/helloworld_gnu_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat helloworld_gnu.log"
