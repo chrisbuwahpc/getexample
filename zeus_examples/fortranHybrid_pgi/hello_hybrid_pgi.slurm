@@ -7,12 +7,15 @@
 
 # To swap intel to pgi.
 
-module swap PrgEnv-intel PrgEnv-pgi
+module unload intel
+module load pgi
 
 # Load the other necessary modules
+
 module load mpt
 
 # leave in, it lists the environment loaded by the modules
+
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
