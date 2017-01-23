@@ -36,7 +36,7 @@
 # srun --mpi=pmi2 -n 2 -N 2 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hello_hybrid.c code with PGI compiler
-mpicc -mp hello_hybrid.c -o hello_hybrid_pgi
+pgcc -Mmpi=sgimpi -mp hello_hybrid.c -o hello_hybrid_pgi
 
 # To submit the job to Zeus
 sbatch hello_hybrid_pgi.slurm
