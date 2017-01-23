@@ -48,11 +48,11 @@ cd $SCRATCH
 if [ $? -ne 0 ]; then
     cd
     OUTPUT2=magnus_results.log
-    echo "$EXECUTABLE with $SLURM_JOBID Failed" >> ${OUTPUT2}
+    echo "$EXECUTABLE with jobID $SLURM_JOBID Failed" >> ${OUTPUT2}
 else
     cd
     OUTPUT2=magnus_results.log
-    echo "$EXECUTABLE with $SLURM_JOBID Succeeded" >> ${OUTPUT2}
+    echo "$EXECUTABLE with jobID $SLURM_JOBID Succeeded" >> ${OUTPUT2}
 fi
 
 cd $SCRATCH
