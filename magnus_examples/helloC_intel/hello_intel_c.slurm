@@ -1,13 +1,12 @@
 #!/bin/bash -l
 #SBATCH --job-name=hostname
 #SBATCH --partition=debugq
-##SBATCH --reservation=courseq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
-# To swap from Cray Environment to INTEL Environment
-module swap PrgEnv-intel
+# To swap from Cray Environment to Intel Environment
+module swap PrgEnv-cray PrgEnv-intel
 
 # leave in, it list the environment loaded by the modules
 module list
