@@ -1,11 +1,10 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+
 #SBATCH --partition=workq
-#SBATCH --nodes=1
-#SBATCH --gres=gpu:1
+#SBATCH --job-name=hostname
+#SBATCH --nodes=2
 #SBATCH --time=00:10:00
 #SBATCH --account=interns2016
-#SBATCH --export=NONE
 
 # to swap with pgi and load the necessary modules for intel
 # Default loaded compiler module is gcc module

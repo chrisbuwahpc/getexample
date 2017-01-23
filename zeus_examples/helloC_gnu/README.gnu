@@ -4,8 +4,7 @@
 #
 # Example OBJECTIVE: to demostrate helloworld with intel compiler 
 # on Zeus. 
-# This example is taken from:
-# https://www.pdc.kth.se/resources/computers/historical-computers/zorn/how-to/how-to-compile-and-run-a-simple-cuda-hello-world
+# 
 # To run this code, edit the partition and 
 # load the necessary modules.
 # This information is located under hello_gnu_c.slurm
@@ -17,13 +16,13 @@
 # Change the partition  (--partition==workq)
 # Add #SBATCH --gres=gpu:1
 # Load the necessary modules before module listing.
-# module load intel
+# module load gcc
 
 # To compile the helloworld.intel code
-gcc -O2 helloworld_c -o helloworld_gnu_intel
+gcc -O2 helloworld.c -o helloworld_zeus_gnu
 
 # To submit the job to Magnus
-sbatch helloworld_gnu_c.slurm
+sbatch hello_gnu_c.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
@@ -34,4 +33,4 @@ echo "Your results are now located in ${MYGROUP}/hello_zeus_gnu_results/"
 echo "To change to your jobID directory, type:"
 echo "cd ${MYGROUP}/helloworld_zeus_gnu_results/jobID/"
 echo "To view the results, use the cat command and type:"
-echo "cat helloworld_gnu_intel.log"
+echo "cat helloworld_gnu.log"
