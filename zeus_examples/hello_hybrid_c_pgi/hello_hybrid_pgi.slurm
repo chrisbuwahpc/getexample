@@ -10,7 +10,10 @@
 module unload gcc
 
 # Load the PGI module compiler
-module load pgi openmpi
+module load pgi
+
+# Load the other necessary modules
+module load mpt
 
 # leave in, it lists the environment loaded by the modules
 module list
