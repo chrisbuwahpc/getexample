@@ -51,6 +51,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
+export OMP_NUM_THREADS=16
 srun --mpi=pmi2 -n 2 -N 2 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
