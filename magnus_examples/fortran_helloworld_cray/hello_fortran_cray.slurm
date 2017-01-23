@@ -7,7 +7,7 @@
 
 # leave in, it lists the environment loaded by the modules
 module list
-f
+
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_fortran_cray
