@@ -31,7 +31,7 @@
  
 # To compile the hybrid_hello.f90 code with intel compiler
 
-mpif90 -qopenmp hybrid_hello.f90 -o hello_hybrid_intel
+mpif90 -openmp hybrid_hello.f90 -o hello_hybrid_intel
 
 # hybrid_hello.f90 can be also compiled with:
 # mpif90 -openmp hybrid_hello.f90 -o hello_hybrid_intel
