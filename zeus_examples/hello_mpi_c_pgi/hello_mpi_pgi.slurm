@@ -9,7 +9,7 @@
 module unload gcc
 
 # to load the pgi module compiler
-module load pgi openmpi
+module load pgi
 
 # leave in, it lists the environment loaded by the modules
 module list
