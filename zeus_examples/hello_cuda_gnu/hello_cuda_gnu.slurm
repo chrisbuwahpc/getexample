@@ -9,14 +9,15 @@
 
 # load the necessary modules
 module load cuda
+
 # leave in, it lists the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_gpu
+EXECUTABLE=hello_cuda_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_gpu_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_cuda_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -34,7 +35,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_gpu.log
+OUTPUT=hello_cuda_gnu.log
 
 #############################################
 #   Copy input files to $SCRATCH
