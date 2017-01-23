@@ -8,6 +8,7 @@
 # Default loaded compiler module is gcc module
 
 # load the other necessary module
+module load gcc
 module load mpt
 
 # leave in, it lists the environment loaded by the modules

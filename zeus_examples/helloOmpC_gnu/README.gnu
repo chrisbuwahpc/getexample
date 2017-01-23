@@ -1,11 +1,9 @@
-##!/bin/bash --login
+#!/bin/bash --login
 # This is the README file is an executable script.
 # To run type: ./README.omp
 #
 # Example OBjECTIVE: to demostrate omp_hello.c example
 # on Zeus. 
-# omp_hello.c code is taken from
-# https://computing.llnl.gov/tutorials/openMP/exercise.html
 # This code is an OpenMP example that runs one 16-thread
 # OpenMP instance with one node.
 # To run this code, we need to edit the partition,
@@ -24,7 +22,7 @@
 # we need to unload the gcc module as shown below: 
 # module unload gcc
 # We also need to load the necessary modules before module listing.
-# module load intel
+# module load gnu
 # module load mpt
 # Then, we set the number of threads to 16 as shown below: 
 # export OMP_NUM_THREADS=16
