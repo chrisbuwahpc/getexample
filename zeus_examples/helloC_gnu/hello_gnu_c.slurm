@@ -1,26 +1,24 @@
-#!/bin/bash --login
-
-#SBATCH --partition=workq
+#!/bin/bash -l
 #SBATCH --job-name=hostname
-#SBATCH --nodes=2
-#SBATCH --time=00:10:00
-#SBATCH --account=interns2016
+#SBATCH --partition=workq
+#SBATCH --nodes=1
+#SBATCH --time=00:05:00
+#SBATCH --export=NONE
 
-# to swap with pgi and load the necessary modules for intel
-# Default loaded compiler module is gcc module
-
-module load gcc 
+# To swap from Cray Environment to GNU Environment
+module swap PrgEnv-cray PrgEnv-gnu
 
 # leave in, it list the environment loaded by the modules
-
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
+#  This is a slurm script for helloworld in gcc for PrgEnv/gnu
 
-EXECUTABLE=helloworld_zeus_gnu
-SCRATCH=$MYSCRATCH/run_helloworld_zeus_gnu/$SLURM_JOBID
-RESULTS=$MYGROUP/helloworld_zeus_gnu_results/$SLURM_JOBID
+
+EXECUTABLE=helloworld_gnu
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+RESULTS=$MYGROUP/helloworld_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -41,23 +39,22 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=helloworld_zeus_gnu.log
+OUTPUT=helloworld_gnu.log
 
 #############################################
 #   Copy input files to $SCRATCH
 #   then change directory to $SCRATCH
 
-cp $EXECUTABLE $SCRATCH
+cp $HOME/$EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-export OMP_NUM_THREADS=16
 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
-# note this can be a copy or move  
-
+# note this can be a copy or move
+  
 mv  $OUTPUT ${RESULTS}
 
 cd $HOME
