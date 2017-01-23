@@ -5,8 +5,6 @@
 #SBATCH --export=NONE
 
 # leave in, it lists the environment loaded by the modules
-
-module load PrgEnv-cray
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
