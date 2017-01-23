@@ -7,7 +7,6 @@
 
 # To swap intel to pgi.
 
-module unload intel
 module load pgi
 
 # Load the other necessary modules
@@ -52,7 +51,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
- ./$EXECUTABLE >> ${OUTPUT}
+srun --mpi=pmi2 -n 2 -N 2 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
