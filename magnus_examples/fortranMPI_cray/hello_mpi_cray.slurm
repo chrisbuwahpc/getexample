@@ -1,5 +1,6 @@
 #!/bin/bash --login
 #SBATCH --job-name=hostname
+#SBATCH --partition=debugq
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
 #SBATCH --export=NONE
