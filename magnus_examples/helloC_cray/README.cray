@@ -15,7 +15,7 @@
 # To run this code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
-# To compile the hello_cray_c.slurm
+# To compile the helloworld.c on Cray
 cc -O2 helloworld.c -o helloworld_c 
 
 # To submit the job to Magnus
