@@ -6,6 +6,7 @@
 #SBATCH --time=00:10:00
 
 # load the necessary modules
+module load gcc
 module load mpt
 
 # leave in, it lists the environment loaded by the modules

@@ -33,10 +33,10 @@
  
 # To compile the hello_mpi.f90 code
 
-mpif90 --fopenmp -O2 hello_mpi.f90 -o hello_mpi_gnu
+mpif90 -fopenmp -O2 hello_mpi.f90 -o hello_mpi_gnu
 
 # To submit the job to Zeus
-sbatch hello_world_mpi_gnu.slurm
+sbatch hello_mpi_gnu.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
