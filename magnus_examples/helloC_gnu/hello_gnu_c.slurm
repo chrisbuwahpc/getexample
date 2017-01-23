@@ -1,13 +1,12 @@
 #!/bin/bash -l
 #SBATCH --job-name=hostname
 #SBATCH --partition=debugq
-##SBATCH --reservation=courseq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
 # To swap from Cray Environment to GNU Environment
-module swap PrgEnv-gnu
+module swap PrgEnv-cray PrgEnv-gnu
 
 # leave in, it list the environment loaded by the modules
 module list
