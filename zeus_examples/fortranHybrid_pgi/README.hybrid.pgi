@@ -30,7 +30,7 @@
  
 # To compile the hybrid_hello.f90 code with pgi compiler
 
-mpif90 -mp hybrid_hello.f90 -o hello_hybrid_pgi
+mpif90 -mp -O2 hybrid_hello.f90 -o hello_hybrid_pgi
 
 # hybrid_hello.f90 can be also compiled with:
 # mpif90 -openmp hybrid_hello.f90 -o hello_hybrid_pgi
