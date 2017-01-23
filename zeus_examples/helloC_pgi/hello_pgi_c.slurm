@@ -2,14 +2,15 @@
 #SBATCH --job-name=hostname
 #SBATCH --partition=workq
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:1
 #SBATCH --time=00:10:00
 #SBATCH --account=interns2016
 #SBATCH --export=NONE
 
 # load the necessary modules for pgi
 
+module unload intel
 module load pgi
+module load mpt
 
 # leave in, it list the environment loaded by the modules
 
