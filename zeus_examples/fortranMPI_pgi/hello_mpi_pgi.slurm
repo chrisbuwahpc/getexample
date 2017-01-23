@@ -7,6 +7,7 @@
 
 # swap gcc and load module pgi
 
+module unload gcc
 module load pgi
 
 # load the necessary modules
