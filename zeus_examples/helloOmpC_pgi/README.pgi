@@ -31,7 +31,7 @@
  
 # To compile the omp_hello.c code
 
-pgcc -O2 omp_hello.c -o hello_omp_pgi
+pgcc -O2 -mp omp_hello.c -o hello_omp_pgi
 
 # To submit the job to Zeus
 
