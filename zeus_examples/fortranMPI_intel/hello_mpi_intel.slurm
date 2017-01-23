@@ -6,7 +6,8 @@
 #SBATCH --time=00:10:00
 
 # swap from gcc to intel
-module swap gcc intel
+module unload gcc
+module load intel
 
 # load the necessary modules
 module load mpt
