@@ -28,7 +28,7 @@
  
 # To compile the hybrid_hello.f90 code with gnu compiler
 
-ftn -O2 -fopenmp hybrid_hello.f90 -o hello_hybrid_gnu
+mpif90 -O2 -openmp hybrid_hello.f90 -o hello_hybrid_gnu
 
 # To submit the job to Zeus
 
