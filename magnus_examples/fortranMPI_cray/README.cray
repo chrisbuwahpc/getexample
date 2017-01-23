@@ -15,10 +15,10 @@
 # SLURM directives
 # 
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
-# To launch a job, we specify to aprun 48 MPI tasks (-n 48)
-# with 24 tasks per node (-N 24)
+# To launch a job, we specify to aprun 24 MPI tasks (-n 24)
+# with 12 tasks per node (-N 12)
 # Therefore, the aprun command looks like:
-# aprun -n 48 -N 24 ./$EXECUTABLE >> ${OUTPUT}
+# aprun -n 24 -N 12 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the hello_mpi.f90 code on Cray
 ftn -O2 hello_mpi.f90 -o hello_mpi_cray
@@ -33,6 +33,6 @@ echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
 echo "Your results are now located in ${MYGROUP}/hello_mpifortran_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_mpifortran_results/jobID/"
+echo "cd ${MYGROUP}/mpifortran_cray_results/jobID/"
 echo "To view the results, use the cat command and type:"
-echo "cat hello_mpifortran_cray.log"
+echo "cat mpifortran_cray.log"

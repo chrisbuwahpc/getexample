@@ -1,18 +1,20 @@
-#!/bin/bash -l
+#!/bin/bash --login
 #SBATCH --job-name=hostname
-#SBATCH --partition=debugq
 #SBATCH --nodes=2
-#SBATCH --time=00:05:00
+#SBATCH --time=00:10:00
 #SBATCH --export=NONE
 
 # leave in, it lists the environment loaded by the modules
+
+module load PrgEnv-cray
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
+
 #  These are generic variables
 EXECUTABLE=hello_mpi_cray
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_mpifortran_results/$SLURM_JOBID
+RESULTS=$MYGROUP/mpifortran_cray_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -30,7 +32,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_mpifortran_gnu.log
+OUTPUT=mpifortran_cray.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -40,7 +42,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-aprun -n 48 -N 24 ./$EXECUTABLE >> ${OUTPUT}
+aprun -n 24 -N 12 -S 6 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
