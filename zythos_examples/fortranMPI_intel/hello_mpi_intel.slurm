@@ -1,7 +1,5 @@
 #!/bin/bash --login
-# Request 24 cores [--ntasks=4 and --cpus-per-task=6]
-# ntasks is specified , not --nodes.
-#SBATCH --job-name=hostname
+#SBATCH --job-name=g-hostname
 #SBATCH --partition=zythos
 #SBATCH --account=interns2016
 #SBATCH --ntasks=4
@@ -24,8 +22,8 @@ module list
 #  These are generic variables
 
 EXECUTABLE=hello_mpi_intel
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_mpi_intel_results_zeus/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+RESULTS=$MYGROUP/zythosmpi_intel_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
