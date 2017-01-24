@@ -28,7 +28,7 @@
  
 # To compile the hybrid_hello.f90 code with gnu compiler
 
-mpif90 -O2 -openmp hybrid_hello.f90 -o hello_hybrid_gnu
+mpif90 -O2 -fopenmp hybrid_hello.f90 -o hello_hybrid_gnu
 
 # To submit the job to Zeus
 
@@ -39,8 +39,8 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_results_hybrid/"
+echo "Your results are now located in ${MYGROUP}/hellohybrid_gnu_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_results_hybrid/jobID/"
+echo "cd ${MYGROUP}/hellohybrid_gnu_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_hybrid_gnu.log"
