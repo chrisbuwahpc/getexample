@@ -34,7 +34,7 @@
 pgcc -acc matrix-acc.c -o matrix_acc
 
 # To submit the job to Zeus
-sbatch hello_omp.slurm
+sbatch matrix_acc.slurm
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
