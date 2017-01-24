@@ -5,9 +5,8 @@
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
 
-# swap from gcc to intel
-module unload gcc
-module load intel
+# to compile the code with Intel compiler, swap from gcc to intel
+module swap gcc intel
 
 # load the necessary modules
 module load mpt
@@ -47,7 +46,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-srun -n 32 -N 2 --mpi=pmi2 ./$EXECUTABLE >> ${OUTPUT}
+srun --mpi=pmi2 -n 32 -N 2 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
