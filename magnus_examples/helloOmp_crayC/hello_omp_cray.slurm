@@ -5,6 +5,12 @@
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
+# do a module avail to see the latest updated version of cray
+# unless its already the default version
+
+# load the necessary module of cray
+module load PrgEnv-cray
+
 # leave in, it lists the environment loaded by the modules
 module list
 
