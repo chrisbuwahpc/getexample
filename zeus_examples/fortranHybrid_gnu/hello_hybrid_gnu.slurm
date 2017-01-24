@@ -7,7 +7,7 @@
 
 # swap intel to gnu environment
 
-module swap PrgEnv-intel PrgEnv-gnu
+module swap intel gnu
 
 # Load the other necessary modules
 module load mpt
@@ -19,7 +19,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_hybrid_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_hybrid/$SLURM_JOBID
+RESULTS=$MYGROUP/hellohybrid_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
