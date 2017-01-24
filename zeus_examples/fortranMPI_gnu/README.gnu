@@ -34,6 +34,7 @@
 # srun --mpi=pmi2 -n 32 -N 2 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hello_mpi.f90 code
+
 mpif90 -fopenmp -O2 hello_mpi.f90 -o hello_mpi_gnu
 
 # To submit the job to Zeus
