@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=ge-hostname
 #SBATCH --partition=debugq
 #SBATCH --nodes=2
 #SBATCH --time=00:05:00
@@ -14,7 +14,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_hybrid_gnu
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/fortranhybrid_gnu_results/$SLURM_JOBID
 
 ###############################################
