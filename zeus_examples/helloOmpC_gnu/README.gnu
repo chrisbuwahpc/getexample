@@ -1,16 +1,18 @@
 #!/bin/bash --login
 # This is the README file is an executable script.
-# To run type: ./README.omp
+# To run type: ./README.gnu
 #
 # Example OBjECTIVE: to demostrate omp_hello.c example
-# on Zeus. 
+# on Zeus with GNU compiler.
+# omp_hello.f code is taken from
+# https://computing.llnl.gov/tutorials/openMP/exercise.html
 # This code is an OpenMP example that runs one 16-thread
 # OpenMP instance with one node.
 # To run this code, we need to edit the partition,
 # load the necessary modules
 # and specify the total number of OpenMP threads.
-# This information is located under hello_omp.slurm
-# You can edit the SLURM as: emacs hello_omp.slurm &
+# This information is located under hello_omp_gnu.slurm
+# You can edit the SLURM as: emacs hello_omp_gnu.slurm &
 
 # SLURM directives
 # 
@@ -18,25 +20,21 @@
 # Then, we modify the partition to --partition==workq
 # To run this code correctly, we comment out: --export=NONE
 # If this is not commented out, the code does not run.
-# To compile the code with intel, 
-# we need to unload the gcc module as shown below: 
-# module unload gcc
+# To compile the code with GNU,
+# we need to load the gcc module as shown below: 
+# module load gcc
 # We also need to load the necessary modules before module listing.
-# module load gnu
 # module load mpt
 # Then, we set the number of threads to 16 as shown below: 
 # export OMP_NUM_THREADS=16
 # Therefore, the srun looks like:
 # srun -n 1 -c $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
  
-# To compile the omp_hello.c code
-
+# To compile the omp_hello.c code with GNU
 gcc -O2 -fopenmp omp_hello.c -o hello_omp_gnu
-
-# With gnu compiler, -fopenmp is used to compile the code.
+# With gnu compiler, -fopenmp wrapper is used to compile the code.
 
 # To submit the job to Zeus
-
 sbatch hello_omp_gnu.slurm
 
 echo "The sbatch command returns what jobid is for this job."
@@ -44,8 +42,8 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_omp_gnu_results_omp/"
+echo "Your results are now located in ${MYGROUP}/hello_omp_gnu_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_omp_gnu_results_omp_/jobID/"
+echo "cd ${MYGROUP}/hello_omp_gnu_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_omp_gnu.log"
