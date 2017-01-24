@@ -11,8 +11,8 @@
 # To run this code, we need to edit the partition, 
 # load the necessary modules
 # and specify the total number of MPI tasks.
-# This information is located under hello_world_mpi_gnu.slurm
-# You can edit the SLURM as: emacs hello_world_mpi_gnu.slurm &
+# This information is located under hello_mpi_gnu.slurm
+# You can edit the SLURM as: emacs hello_mpi_gnu.slurm &
 
 # SLURM directives
 # 
