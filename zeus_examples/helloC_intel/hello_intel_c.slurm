@@ -1,16 +1,14 @@
 #!/bin/bash --login
 #SBATCH --job-name=hostname
 #SBATCH --partition=workq
-#SBATCH --nodes=2
-#SBATCH --time=00:10:00
-#SBATCH --account=interns2016
+#SBATCH --nodes=1
+#SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
-# to swap with gcc and load the necessary modules for intel
-
+# to swap from GNU compiler to Intel
 module unload gcc
 module load intel
-module load mpt
+
 
 # leave in, it list the environment loaded by the modules
 
@@ -19,9 +17,9 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 
-EXECUTABLE=helloworld_zeus_intel
-SCRATCH=$MYSCRATCH/run_helloworld_zeus_intel/$SLURM_JOBID
-RESULTS=$MYGROUP/helloworld_zeus_intel_results/$SLURM_JOBID
+EXECUTABLE=helloworld_intel
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+RESULTS=$MYGROUP/helloworld_intel_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -42,7 +40,7 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=helloworld_zeus_intel.log
+OUTPUT=helloworld_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH
