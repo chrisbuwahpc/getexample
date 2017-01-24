@@ -1,6 +1,6 @@
 #!/bin/bash --login
 # This is the README file is an executable script.
-# To run type: ./README.cray
+# To run type: ./README
 #
 # Example OBJECTIVE: to demonstrate helloworld.c example 
 # in Cray environment on Magnus.
