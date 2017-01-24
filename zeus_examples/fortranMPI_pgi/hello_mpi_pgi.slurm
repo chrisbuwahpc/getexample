@@ -5,17 +5,15 @@
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
 
-# swap gcc and load module pgi
-
+# To compile with PGI compiler, unload the gcc module
+# and then load the PGI module
 module unload gcc
 module load pgi
 
 # load the necessary modules
-
 module load mpt
 
 # leave in, it lists the environment loaded by the modules
-
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
@@ -50,7 +48,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-srun -n 32 -N 2 --mpi=pmi2 ./$EXECUTABLE >> ${OUTPUT}
+srun --mpi=pmi2 -n 32 -N 2 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
