@@ -6,8 +6,7 @@
 #SBATCH --time=00:10:00
 
 # Default loaded compiler module is gcc module
-
-# load the other necessary module
+# load the other necessary modules
 module load gcc
 module load mpt
 
@@ -19,7 +18,7 @@ module list
 
 EXECUTABLE=hello_omp_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_omp_gnu_results_omp/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_omp_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
