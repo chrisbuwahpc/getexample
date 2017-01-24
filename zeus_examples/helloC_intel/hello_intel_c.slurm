@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=ge-hostname
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
@@ -18,7 +18,7 @@ module list
 #  These are generic variables
 
 EXECUTABLE=helloworld_intel
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/helloworld_intel_results/$SLURM_JOBID
 
 ###############################################
