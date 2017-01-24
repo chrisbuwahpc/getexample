@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=ge-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=6
@@ -19,8 +19,8 @@ module list
 #  These are generic variables
 
 EXECUTABLE=hello_mpi_gnu
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_mpi_gnu_results_zeus/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+RESULTS=$MYGROUP/zythosmpi_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
