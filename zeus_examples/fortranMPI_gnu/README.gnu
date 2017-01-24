@@ -20,7 +20,9 @@
 # Then, we modify the partition to --partition==workq
 # To run this code correctly on Zeus, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
-# To compile the code with intel we need to swap from gcc compiler to gnu 
+# To compile the code with GNU compiler, 
+# we need to load the gcc module as shown below:
+# module load gcc
 # We then load the necessary modules before module listing.
 # module load mpt
 # We also specify to srun that 32 MPI tasks are required. (-n 32)
@@ -32,7 +34,6 @@
 # srun --mpi=pmi2 -n 32 -N 2 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hello_mpi.f90 code
-
 mpif90 -fopenmp -O2 hello_mpi.f90 -o hello_mpi_gnu
 
 # To submit the job to Zeus
