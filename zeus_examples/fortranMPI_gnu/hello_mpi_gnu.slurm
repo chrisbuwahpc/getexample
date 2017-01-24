@@ -5,8 +5,7 @@
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
 
-# swap from intel to gcc
-module unload intel
+# to compile with GNU compiler, load the gcc module
 module load gcc
 
 # load the necessary modules
