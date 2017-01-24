@@ -1,0 +1,37 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate helloworld.c example 
+# in GNU environment on Magnus.
+# helloworld.c is a simple c code that prints "Hello World!" 
+# and runs on a single node.
+# To run this code, we need to specify the number of nodes used.
+# This information is located under helloworld_gnu.slurm
+# You can edit the SLURM as: emacs helloworld_gnu.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# To compile the code with the GNU environment, we change
+# the environment from Cray to GNU as shown below:
+# module swap PrgEnv-cray PrgEnv-gnu
+# To run the code, we simply type:
+# ./$EXECUTABLE >> ${OUTPUT}
+
+# To compile the helloworld.c code on GNU
+cc -O2 helloworld.c -o helloworld_gnu
+
+# To submit the job to Magnus
+sbatch helloworld_gnu.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/helloworld_gnu_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/helloworld_gnu_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat helloworld_gnu.log"
