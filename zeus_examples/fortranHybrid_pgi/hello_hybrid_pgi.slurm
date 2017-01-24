@@ -5,24 +5,25 @@
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
 
-# To swap intel to pgi.
+# Default loaded module compiler is gcc.
+# To swap from gcc module compiler to intel, unload gcc.
 
+module unload intel
+
+# Load the intel module compiler
 module load pgi
 
 # Load the other necessary modules
-
 module load mpt
 
 # leave in, it lists the environment loaded by the modules
-
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-
 EXECUTABLE=hello_hybrid_pgi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_hybrid/$SLURM_JOBID
+RESULTS=$MYGROUP/pgi_hybrid_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -40,7 +41,6 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-
 OUTPUT=hello_hybrid_pgi.log
 
 #############################################
