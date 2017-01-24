@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=ge-hostname
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:10:00
@@ -17,7 +17,7 @@ module list
 #  These are generic variables
 
 EXECUTABLE=hello_omp_pgi
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/hello_omp_pgi_results/$SLURM_JOBID
 
 ###############################################
