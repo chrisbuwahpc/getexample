@@ -2,7 +2,7 @@
 # Request 24 cores [--ntasks=4 and --cpus-per-task=6
 # Note that --ntasks is specified, not --nodes.
 
-#SBATCH --job-name=hostname
+#SBATCH --job-name=ge-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=2
 #SBATCH --cpus-per-task=6
@@ -27,8 +27,8 @@ module list
 #  These are generic variables
 
 EXECUTABLE=helloworld.pgi
-SCRATCH=$MYSCRATCH/run_helloworld.pgi/$SLURM_JOBID
-RESULTS=$MYGROUP/helloworld.pgi_results/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+RESULTS=$MYGROUP/zythosC.pgi_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
