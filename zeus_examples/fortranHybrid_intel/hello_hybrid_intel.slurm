@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=ge-hostname
 #SBATCH --partition=workq
 #SBATCH --account=interns2016
 #SBATCH --nodes=2
@@ -22,7 +22,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_hybrid_intel
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/intel_hybrid_results/$SLURM_JOBID
 
 ###############################################
