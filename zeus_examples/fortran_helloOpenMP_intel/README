@@ -20,11 +20,11 @@
 # Then, we modify the partition to --partition==workq
 # To run this code correctly, we comment out: --export=NONE
 # If this is not commented out, the code does not run.
-# To compile the code with intel, 
-# we need to unload the gcc module as shown below: 
+# To compile the code with intel, we need to unload 
+# the gcc module and load the intel module as shown below: 
 # module unload gcc
-# We also need to load the necessary modules before module listing.
 # module load intel
+# We also need to load the necessary modules before module listing.
 # module load mpt
 # Then, we set the number of threads to 16 as shown below: 
 # export OMP_NUM_THREADS=16
@@ -45,8 +45,8 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_results_omp_f/"
+echo "Your results are now located in ${MYGROUP}/helloomp_intel_results_zeus/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_results_omp_f/jobID/"
+echo "cd ${MYGROUP}/helloomp_intel_results_zeus/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_omp_intel.log"
