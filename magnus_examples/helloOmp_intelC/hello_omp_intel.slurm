@@ -15,7 +15,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_omp_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_openmp_c_results/$SLURM_JOBID
+RESULTS=$MYGROUP/helloomp_c_intel_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
