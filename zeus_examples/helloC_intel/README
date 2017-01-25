@@ -1,0 +1,38 @@
+#!/bin/bash
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demostrate helloworld.c 
+# with intel compiler on Zeus. 
+# To run this code, we need to edit the partition and 
+# load the necessary modules.
+# This information is located under hello_intel_c.slurm
+# You can edit the SLURM as: emacs hello_intel_c.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# We the change the partition to --partition==workq
+# To compile with Intel compiler, we need to unload
+# the gcc module and load the intel compiler as shown below:
+# module unload gcc
+# module load intel
+# To run the code, we simply type:
+# ./$EXECUTABLE >> ${OUTPUT}
+
+# To compile the helloworld.c code with Intel
+icc -O2 helloworld.c -o helloworld_intel
+
+# To submit the job to Zeus
+sbatch hello_intel_c.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/helloworld_intel_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/helloworld_intel_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat helloworld_intel.log"
