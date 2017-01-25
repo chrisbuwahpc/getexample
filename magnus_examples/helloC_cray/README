@@ -13,6 +13,8 @@
 # SLURM directives
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1)
+# To compile the code on Cray, we load the Cray environment:
+# module load PrgEnv-cray
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
@@ -27,8 +29,8 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/zythosC_cray_results/"
+echo "Your results are now located in ${MYGROUP}/helloc_cray_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/zythosC_cray_results/jobID/"
+echo "cd ${MYGROUP}/helloc_cray_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat helloworld_cray.log"
