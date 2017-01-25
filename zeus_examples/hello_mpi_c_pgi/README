@@ -23,10 +23,12 @@
 # If it is still included in the SLURM, 
 # the code does not compile.
 # To compile the code with PGI compiler, 
-# we first unload the gcc compiler as shown below:
+# we first unload the gcc compiler and 
+# then load the pgi module as shown below:
 # module unload gcc
-# We then load the necessary modules before module listing.
 # module load pgi
+# We then load the necessary modules before module listing.
+# module load mpt
 # We also specify to srun that 32 MPI tasks are required. (-n 32)
 # with 2 nodes (-N 2) given that 
 # there are 16 MPI tasks per node.
@@ -46,9 +48,9 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_mpi_results/"
+echo "Your results are now located in ${MYGROUP}/hellompi_pgi_results_zeus/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_mpi_results/jobID/"
+echo "cd ${MYGROUP}/hellompi_pgi_results_zeus/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_mpi_pgi.log"
 
