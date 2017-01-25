@@ -14,7 +14,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_hybrid_intel
-SCRATCH=$MYSCRATCH/run_GE-hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/fortranhybrid_intel_results/$SLURM_JOBID
 
 ###############################################
