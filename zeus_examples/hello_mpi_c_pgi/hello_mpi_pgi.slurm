@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=workq
 #SBATCH --account=interns2016
 #SBATCH --nodes=2
@@ -8,8 +8,12 @@
 # to unload the gcc module compiler
 module unload gcc
 
-# to load the pgi module compiler
+# to compiler with PGI compiler
+# load the pgi module compiler
 module load pgi
+
+# load the other necessary modules
+module load mpt
 
 # leave in, it lists the environment loaded by the modules
 module list
@@ -18,7 +22,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_mpi_pgi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_mpi_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hellompi_pgi_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
