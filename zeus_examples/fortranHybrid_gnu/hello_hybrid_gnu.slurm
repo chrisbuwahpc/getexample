@@ -1,13 +1,12 @@
 #!/bin/bash --login
-#SBATCH --job-name=ge-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=workq
 #SBATCH --account=interns2016
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
 
-# swap intel to gnu environment
-
-module swap intel gnu
+# To compile with GNU compiler, load the gcc module
+module load gcc
 
 # Load the other necessary modules
 module load mpt
@@ -18,7 +17,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_hybrid_gnu
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/hellohybrid_gnu_results/$SLURM_JOBID
 
 ###############################################
