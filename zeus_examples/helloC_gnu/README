@@ -1,6 +1,6 @@
 #!/bin/bash
 # This is the README file that is an executable script 
-# To run type: ./README.gnu
+# To run type: ./README
 
 # This script aims to demostrate helloworld.c example on Zeus.
 # with GNU compiler.
