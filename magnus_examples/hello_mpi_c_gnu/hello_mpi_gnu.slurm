@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=debugq
 #SBATCH --nodes=2
 #SBATCH --time=00:05:00
@@ -15,7 +15,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_mpi_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_mpi_c_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hellompi_c_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
