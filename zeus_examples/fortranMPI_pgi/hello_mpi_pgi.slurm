@@ -19,7 +19,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_mpi_pgi
-SCRATCH=$MYSCRATCH/run_-hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/hello_mpi_pgi_results_zeus/$SLURM_JOBID
 
 ###############################################
