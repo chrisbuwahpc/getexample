@@ -1,12 +1,13 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=workq
 #SBATCH --account=interns2016
 #SBATCH --nodes=2
 #SBATCH --time=00:10:00
 
-# swap from gcc to intel
-module swap gcc intel
+# To compile with Intel compiler, swap from gcc module to intel
+module unload gcc
+module load intel
 
 # load the necessary modules
 module load mpt
@@ -18,7 +19,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_mpi_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_mpi_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hellompi_intel_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
