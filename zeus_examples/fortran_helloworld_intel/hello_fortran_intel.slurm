@@ -1,11 +1,12 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
-# To swap from GNU module compiler to Intel
+# To swap from GNU compiler to Intel, unload the gcc module
+# and then load the intel module
 module unload gcc
 module load intel
 
@@ -16,7 +17,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_fortran_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_fortran/$SLURM_JOBID
+RESULTS=$MYGROUP/hellofortran_intel_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
