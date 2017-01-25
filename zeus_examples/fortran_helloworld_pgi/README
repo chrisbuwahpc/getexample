@@ -17,7 +17,7 @@
 # We then change the partition to --partition=workq
 # To run this code correctl, we need to remove --export=NONE
 # If this is included in the SLURM, the code does not run properly.
-# To compile this code in Intel, we swap
+# To compile this code with PGI, we swap
 # from GNU to PGI as shown below:
 # module unload gcc
 # module load pgi
@@ -35,8 +35,8 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_results_fortran/"
+echo "Your results are now located in ${MYGROUP}/hellofortran_pgi_results_zeus/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_results_fortran/jobID/"
+echo "cd ${MYGROUP}/hellofortran_pgi_results_zeus/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_fortran_pgi.log"
