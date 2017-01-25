@@ -23,10 +23,10 @@
 # If it is still included in the SLURM, 
 # the code does not compile.
 # To compile with intel compiler, we need to unload 
-# the gcc compiler as shown below:
+# the gcc compiler and load the intel module as shown below:
 # module unload gcc
-# Then, we load the necessary modules before module listing.
 # module load intel
+# Then, we load the necessary modules before module listing.
 # module load mpt
 # This script requires 2 nodes and runs 1 MPI process with
 # 16 OpenMP threads on each intel compiled executable.
@@ -49,8 +49,8 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_results_hybrid_c/"
+echo "Your results are now located in ${MYGROUP}/hellohybridc_intel_results_zeus/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_results_hybrid_c/jobID/"
+echo "cd ${MYGROUP}/hellohybridc_intel_results_zeus/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_hybrid_intel.log"
