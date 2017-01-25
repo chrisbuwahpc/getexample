@@ -5,8 +5,8 @@
 #SBATCH --time=00:05:00   
 #SBATCH --export=NONE
 
-# do module avail to see the most updated version of cray
-# load the necessary module of cray to enter the cray environment
+# do module list to see which environment is loaded on Magnus
+# to compile on Cray environment, load cray module
 module load PrgEnv-cray
 
 # leave in, it lists the environment loaded by the modules
@@ -16,7 +16,7 @@ module list
 #  These are generic variables
 EXECUTABLE=helloworld_cray
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/zythosC_cray_results/$SLURM_JOBID
+RESULTS=$MYGROUP/helloc_cray_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
