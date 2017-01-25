@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=ge-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
@@ -11,14 +11,13 @@ module load intel
 
 
 # leave in, it list the environment loaded by the modules
-
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 
 EXECUTABLE=helloworld_intel
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/helloworld_intel_results/$SLURM_JOBID
 
 ###############################################
