@@ -1,12 +1,12 @@
 #!/bin/bash --login
-#SBATCH --job-name=ge-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=workq
 #SBATCH --account=interns2016
 #SBATCH --nodes=1
 #SBATCH --time=00:10:00
 
 # Default loaded compiler module is gcc module
-# load the other necessary modules
+# load the necessary modules to compile with GNU
 module load gcc
 module load mpt
 
@@ -17,8 +17,8 @@ module list
 #  These are generic variables
 
 EXECUTABLE=hello_omp_gnu
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_omp_gnu_results/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+RESULTS=$MYGROUP/helloomp_gnu_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
