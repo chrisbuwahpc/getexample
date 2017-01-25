@@ -5,12 +5,6 @@
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
-# do a module avail to see the latest updated version of cray
-# unless its already the default version
-
-# load the necessary module of cray
-module load PrgEnv-cray
-
 # leave in, it lists the environment loaded by the modules
 module list
 
@@ -18,7 +12,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_omp_cray
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_openmp_c_results/$SLURM_JOBID
+RESULTS=$MYGROUP/helloomp_c_cray_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
