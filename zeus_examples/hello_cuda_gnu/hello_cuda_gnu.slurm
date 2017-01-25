@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
