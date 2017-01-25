@@ -20,7 +20,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_hybrid_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hellohybrid_intel_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hellohybrid_intel_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
