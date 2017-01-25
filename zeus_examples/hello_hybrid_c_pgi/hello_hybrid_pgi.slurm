@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=workq
 #SBATCH --account=interns2016
 #SBATCH --nodes=2
@@ -22,7 +22,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_hybrid_pgi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_hybrid_c/$SLURM_JOBID
+RESULTS=$MYGROUP/hellohybridc_pgi_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
