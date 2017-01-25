@@ -11,8 +11,8 @@
 # load the necessary modules,
 # specify the total number of MPI tasks and
 # the number of OpenMP threads.
-# This information is located under hello_hybrid_intel.slurm
-# You can edit the SLURM as: emacs hello_hybrid_intel.slurm &
+# This information is located under hello_hybrid_gnu.slurm
+# You can edit the SLURM as: emacs hello_hybrid_gnu.slurm &
 
 # SLURM directives
 # 
