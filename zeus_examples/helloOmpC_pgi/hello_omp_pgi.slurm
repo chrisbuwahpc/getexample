@@ -1,14 +1,17 @@
 #!/bin/bash --login
-#SBATCH --job-name=ge-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:10:00
 
 # Default loaded compiler module is gcc module
-# To swap from GNU compiler to Intel, unload the gcc module
-# and load the intel module
+# To swap from GNU compiler to PGI, unload the gcc module
+# and load the PGI module
 module unload gcc
 module load pgi
+
+# load the other necessary modules
+module load mpt
 
 # leave in, it lists the environment loaded by the modules
 module list
@@ -17,8 +20,8 @@ module list
 #  These are generic variables
 
 EXECUTABLE=hello_omp_pgi
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_omp_pgi_results/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+RESULTS=$MYGROUP/helloomp_pgi_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
