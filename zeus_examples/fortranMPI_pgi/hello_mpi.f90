@@ -1,5 +1,5 @@
 program main
-  use mpi
+  include "mpif.h"
 
   integer(kind = 4) error
   integer(kind = 4) id
