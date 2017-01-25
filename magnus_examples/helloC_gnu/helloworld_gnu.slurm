@@ -15,7 +15,7 @@ module list
 #  These are generic variables
 EXECUTABLE=helloworld_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/zythosC_gnu_results/$SLURM_JOBID
+RESULTS=$MYGROUP/helloc_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
