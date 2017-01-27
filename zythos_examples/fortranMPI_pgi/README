@@ -1,0 +1,52 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBjECTIVE: to demostrate hello_mpi.f90 example
+# on Zythos. 
+# This code is an MPI example that requests 24 cores [--ntasks=4 and 
+# --cpus-per-task=6]
+# 
+# This example is taken from:
+# https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.html
+# To run this code, we need to edit the partition, 
+# load the necessary modules
+# and specify the total number of MPI tasks.
+# This information is located under hello_world_mpi.slurm
+# You can edit the SLURM as: emacs hello_world_mpi.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 4 ntasks (--ntasks=4)
+# Then, we modify the partition to --partition==zythos
+# To run this code correctly on Zythos, we need to remove --export=NONE
+# If it is still included in the SLURM, the code does not compile.
+# We then load the necessary modules before module listing.
+# module load mpt
+#
+# This is a OpenACC job because it is compiled by PGI compiler
+# when it is compiled the command looks like:
+# ./$EXECUTABLE >> ${OUTPUT}
+ 
+# To compile the hello_mpi.f90 code
+
+pgf90 -Mmpi=sgimpi hello_mpi.f90 -o hello_mpi_pgi
+
+# we can also compile using the code
+# mpif90 -O2  hello_mpi.f90 -o hello_mpi_pgi
+
+# To submit the job to Zythos
+
+sbatch hello_mpi_pgi.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/zythosmpi_pgi_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/zythosmpi_pgi_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat hello_mpi_pgi.log"
+
