@@ -18,7 +18,7 @@
 # from Cray to GNU as shown below:
 # module swap PrgEnv-cray PrgEnv-gnu
 # To run the code, we simply type:
-# ./$EXECUTABLE >> ${OUTPUT}
+# aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the hello_world.f90 code
 ftn -O2 hello_world.f90 -o hello_fortran_gnu
