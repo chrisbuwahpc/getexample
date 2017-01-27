@@ -5,10 +5,6 @@
 #SBATCH --time=00:05:00   
 #SBATCH --export=NONE
 
-# do module list to see which environment is loaded on Magnus
-# to compile on Cray environment, load cray module
-module load PrgEnv-cray
-
 # leave in, it lists the environment loaded by the modules
 module list
 
@@ -44,7 +40,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-./$EXECUTABLE >> ${OUTPUT}
+aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
