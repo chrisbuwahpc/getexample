@@ -16,7 +16,7 @@
 # To compile the code on Cray, we load the Cray environment:
 # module load PrgEnv-cray
 # To run the code, we simply type:
-# ./$EXECUTABLE >> ${OUTPUT}
+# aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the helloworld.c code on Cray
 cc -O2 helloworld.c -o helloworld_cray
