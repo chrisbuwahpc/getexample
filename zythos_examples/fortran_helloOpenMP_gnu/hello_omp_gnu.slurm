@@ -1,10 +1,11 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=2
 #SBATCH --cpus-per-task=6
-#SBATCH --account=interns2016
+#SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
+#SBATCH --export=NONE
 
 # Default loaded module compiler is gcc.
 # To compile with GNU, load the gcc module compiler
@@ -18,9 +19,9 @@ module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_omp_gnu
+EXECUTABLE=hello_omp
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_omp_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/ompf_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -38,7 +39,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_omp_gnu.log
+OUTPUT=hello_omp.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -49,7 +50,6 @@ cp $EXECUTABLE $SCRATCH
 cd $SCRATCH
 
 export OMP_NUM_THREADS=12
-
 omplace -nt $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
