@@ -1,8 +1,9 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=1
 #SBATCH --time=00:05:00
+#SBATCH --account=pawsey0001
 
 # To swap from GNU module compiler to Intel
 module unload gcc
