@@ -1,9 +1,9 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=6
-#SBATCH --account=interns2016
+#SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
 # to compile with GNU compiler load gcc
@@ -19,7 +19,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_hybrid_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_hybrid_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/gnu_hybrid_zythos/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
