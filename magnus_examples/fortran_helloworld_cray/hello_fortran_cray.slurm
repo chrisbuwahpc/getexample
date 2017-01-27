@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=debugq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00   
@@ -12,7 +12,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_fortran_cray
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_fortran_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hellofortran_cray_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
