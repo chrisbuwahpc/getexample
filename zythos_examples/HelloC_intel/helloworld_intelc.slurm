@@ -1,14 +1,9 @@
 #!/bin/bash --login
-# Request 24 cores [--ntasks=4 and --cpus-per-task=6
-# Note that --ntasks is specified, not --nodes.
-
-#SBATCH --job-name=ge-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
-#SBATCH --ntasks=2
-#SBATCH --cpus-per-task=6
-#SBATCH --gres=gpu:1
-#SBATCH --time=00:10:00
-#SBATCH --account=interns2016
+#SBATCH --nodes=1
+#SBATCH --time=00:05:00
+#SBATCH --account=pawsey0001
 #SBATCH --export=NONE
 
 # load the necessary modules
@@ -24,8 +19,8 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 
-EXECUTABLE=helloworld.intel
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+EXECUTABLE=helloworld_intel
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/zythosC.intel_results/$SLURM_JOBID
 
 ###############################################
@@ -57,7 +52,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-mpirun -np 24 helloworld.intel./$EXECUTABLE >> ${OUTPUT}
+./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
