@@ -3,13 +3,12 @@
 # Request 12 cores [--ntasks=2 and --cpus-per-task=6]
 # Note that --ntasks is specified, not --nodes
 
-#SBATCH --job-name=ge-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
-#SBATCH --reservation=courseq
 #SBATCH --ntasks=2
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
-
+#SBATCH --account=pawsey0001
 #SBATCH --export=NONE
 
 # Default loaded compiler module is gcc module
@@ -24,8 +23,8 @@ module load mpt
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 
-EXECUTABLE=omp_hello.intel
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+EXECUTABLE=omp_hello
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/zythos_omp.intel_results/$SLURM_JOBID
 
 ###############################################
@@ -47,13 +46,13 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=hello_omp.intel.log
+OUTPUT=omp_hello.log
 
 #############################################
 #   Copy input files to $SCRATCH
 #   then change directory to $SCRATCH
 
-cp $HOME/$EXECUTABLE $SCRATCH
+cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
