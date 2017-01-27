@@ -43,7 +43,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-./$EXECUTABLE >> ${OUTPUT}
+aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
