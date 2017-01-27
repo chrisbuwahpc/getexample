@@ -40,7 +40,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-./$EXECUTABLE >> ${OUTPUT}
+aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
 if [ $? -ne 0 ]; then
     cd
