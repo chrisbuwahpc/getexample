@@ -1,7 +1,7 @@
 #!/bin/bash --login
-#SBATCH --job-name=ge-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
-#SBATCH --account=interns2016
+#SBATCH --account=pawsey0001
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
@@ -19,7 +19,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_hybrid_gnu
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/zythoshybrid_gnu_results/$SLURM_JOBID
 
 ###############################################
