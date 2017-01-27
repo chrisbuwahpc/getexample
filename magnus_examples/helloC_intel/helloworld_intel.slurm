@@ -5,7 +5,7 @@
 #SBATCH --time=00:05:00   
 #SBATCH --export=NONE
 
-# To compile with the Intel environment, swap from Cray to Intel
+#To compile with the Intel environment, swap from Cray to Intel
 module swap PrgEnv-cray PrgEnv-intel
 
 # leave in, it lists the environment loaded by the modules
