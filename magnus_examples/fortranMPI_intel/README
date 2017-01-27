@@ -3,7 +3,7 @@
 # To run type: ./README
 #
 # Example OBJECTIVE: to demonstrate hello_mpi.f90 example 
-# on Magnus with Intel compiler.
+# on Magnus with Intel environment.
 # hello_mpi.f90 code is taken from
 # https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.f90
 # hello_mpi.f90 is an MPI code that runs on 2 nodes 
