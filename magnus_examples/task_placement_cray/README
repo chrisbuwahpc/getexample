@@ -1,0 +1,42 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate hello_mpi.f90 example
+# on Magnus on the Cray environment with task placement.
+# hello_mpi.f90 is an MPI code that runs with hyper-threading 
+# which helps specifying how tasks bind to logical cores.
+# hello_mpi.f90 code is taken from
+# https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.f90
+# To run this code, we need to specify the total number of MPI tasks,
+# the number of MPI tasks per node
+# and the number of hyper threads per core.
+# This information is located under task_placement_cray.slurm
+# You can edit the SLURM as: emacs task_placement_cray.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# To launch a job, we specify to aprun 48 MPI tasks (-n 48)
+# with 48 tasks required on the node (-N 48)
+# These tasks are accomodated using hyper-threading with
+# two (hyper-) threads per core (-j 2).
+# Therefore, the aprun command looks like: 
+# aprun -n 48 -N 48 -j 2 ./$EXECUTABLE >> ${OUTPUT}
+
+# To compile the hello_mpi.f90 code on Cray
+ftn -O2 hello_mpi.f90 -o task_placement_cray
+
+# To submit the job to Magnus
+sbatch task_placement_cray.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/task_placement_cray_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/task_placement_cray_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat task_placement_cray.log"
