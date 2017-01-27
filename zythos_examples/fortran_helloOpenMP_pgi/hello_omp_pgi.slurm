@@ -1,9 +1,9 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=2
 #SBATCH --cpus-per-task=6
-#SBATCH --account=interns2016
+#SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
 # Default loaded module compiler is gcc.
