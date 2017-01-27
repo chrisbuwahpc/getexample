@@ -1,7 +1,7 @@
 #!/bin/bash --login
-#SBATCH --job-name=g-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
-#SBATCH --account=interns2016
+#SBATCH --account=pawsey0001
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
@@ -22,7 +22,7 @@ module list
 #  These are generic variables
 
 EXECUTABLE=hello_mpi_intel
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/zythosmpi_intel_results/$SLURM_JOBID
 
 ###############################################
