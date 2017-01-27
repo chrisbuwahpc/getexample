@@ -1,8 +1,9 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=1
 #SBATCH --time=00:05:00
+#SBATCH --account=pawsey0001
 
 # To swap from GNU module compiler to PGI
 module unload gcc
@@ -15,7 +16,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_fortran_pgi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_fortran_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/pgi_fortran_zythos/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
