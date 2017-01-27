@@ -1,14 +1,14 @@
 #!/bin/bash --login
-#SBATCH --job-name=ge-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
-#SBATCH --account=interns2016
+#SBATCH --account=pawsey0001
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 
 # To swap intel to pgi.
 
-module swap PrgEnv-intel PrgEnv-pgi
+module load pgi
 
 # Load the other necessary modules
 module load mpt
@@ -20,7 +20,7 @@ module list
 #  These are generic variables
 
 EXECUTABLE=hello_hybrid_pgi
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/zythoshybrid_pgi_results/$SLURM_JOBID
 
 ###############################################
@@ -40,7 +40,7 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=hello_hybrid_pgi.log
+OUTPUT=hellohybrid_pgi.log
 
 #############################################
 #   Copy input files to $SCRATCH
