@@ -1,9 +1,9 @@
 #!/bin/bash --login
-#SBATCH --job-name=ge-hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=6
-#SBATCH --account=interns2016
+#SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
 # The natural way to run hybrid jobs on zythos is to run one MPI task per 6-core
@@ -25,7 +25,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_hybrid_intel
-SCRATCH=$MYSCRATCH/run_ge-hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
 RESULTS=$MYGROUP/zythoshybrid_intel_results/$SLURM_JOBID
 
 ###############################################
