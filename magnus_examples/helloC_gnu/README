@@ -17,7 +17,7 @@
 # the environment from Cray to GNU as shown below:
 # module swap PrgEnv-cray PrgEnv-gnu
 # To run the code, we simply type:
-# ./$EXECUTABLE >> ${OUTPUT}
+# aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the helloworld.c code on GNU
 cc -O2 helloworld.c -o helloworld_gnu
