@@ -3,7 +3,7 @@
 # To run type: ./README
 #
 # Example OBjECTIVE: to demostrate hybrid_hello.c example
-# on Zythos with GNU Compiler.This is a mixed-mode job
+# on Zythos with GNU Compiler. This is a mixed-mode job
 # which includes both MPI and OpenMP jobs.
 # hybrid_hello.c code is taken from
 # http://www.slac.stanford.edu/comp/unix/farm/mpi_and_openmp.html
