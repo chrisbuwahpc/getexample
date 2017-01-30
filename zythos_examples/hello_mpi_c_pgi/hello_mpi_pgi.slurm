@@ -10,7 +10,7 @@
 module unload gcc
 
 # load the pgi compiler to compile the MPI code
-module load pgi openmpi
+module load pgi
 
 # load the necessary modules
 module load mpt
@@ -22,7 +22,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_mpi_pgi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/pgi_mpi_results_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/hellompi_pgi_results_zythos/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
