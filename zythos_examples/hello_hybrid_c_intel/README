@@ -39,7 +39,7 @@
 # To compile the hello_hybrid.c code with Intel compiler
 mpicc -qopenmp hello_hybrid.c -o hello_hybrid_intel
 
-# This code also can be compiled with:
+# This code also can be compiled with -openmp wrapper as shown:
 # mpicc -openmp hello_hybrid.c -o hello_hybrid_intel
 
 # To submit the job to Zythos
