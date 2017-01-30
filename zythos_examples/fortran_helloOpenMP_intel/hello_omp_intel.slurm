@@ -1,4 +1,7 @@
 #!/bin/bash --login
+# Request 12 cores [--ntasks=2 and --cpus-per-task=6]
+# Note that --ntasks is specified, not --nodes.
+
 #SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=2
@@ -23,7 +26,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_omp_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_omp_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/helloomp_intel_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
