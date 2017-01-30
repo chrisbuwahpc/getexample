@@ -13,11 +13,13 @@
 
 # SLURM directives
 # 
-# Here we specify to SLURM we want 1 node (--nodes=1)
+# Here we specify to SLURM we want 1 node (--ntasks=1)
 # We then change the partition to Zythos (--partition==zythos)
 # We also edit the account name (--account=pawsey0001)
 # If the account name is missing or not entered correctly,
 # the SLURM does not run.
+# To run this code correctly on Zythos, we need to remove --export=NONE
+# If it is still included in the SLURM, the code does not compile.
 # To compile this code with Intel compiler, we unload the gcc
 # module and load the intel module as shown below:
 # module unload gcc
