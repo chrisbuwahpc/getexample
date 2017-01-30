@@ -1,0 +1,43 @@
+#!/bin/bash
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBjECTIVE: to demostrate helloworld.c example
+# on Zythos with Intel compiler.
+# helloworld.c is a simple c code that prints out "Hello World!"
+# and runs on a single node. 
+# To run this code, we need to specify the number of nodes used
+# and edit the partition and load the necessary modules.
+# This information is located under helloworld_intelc.slurm
+# You can edit the SLURM as: emacs helloworld_intelc.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# We then change the partition to Zythos (--partition==zythos)
+# We also edit the account name (--account=pawsey0001)
+# If the account name is not entered correctly or missing,
+# the SLURM does not run.
+# To compile this code with Intel compiler, we unload the gcc
+# module and load the intel module as shown below:
+# module load gcc
+# module load intel
+# To run the code, we simply type:
+# ./$EXECUTABLE >> {$OUTPUT}
+
+# To compile the intel code
+icc -O2 helloworld.c -o helloworld_intel
+
+# To submit the job to Magnus
+sbatch helloworld_intelc.slurm
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job is deleted from the scratch."
+echo "It is now moved to your group."
+echo "Your results are now located in ${MYGROUP}/zythosC_intel_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/zythosC_intel_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat helloworld_intel.log"
