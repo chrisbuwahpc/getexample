@@ -2,10 +2,10 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBjECTIVE: to demostrate hybrid_hello.c example
+# Example OBjECTIVE: to demostrate hello_hybrid.c example
 # on Zythos with GNU Compiler. This is a mixed-mode job
 # which includes both MPI and OpenMP jobs.
-# hybrid_hello.c code is taken from
+# hello_hybrid.c code is taken from
 # http://www.slac.stanford.edu/comp/unix/farm/mpi_and_openmp.html
 # To run this code, we need to edit the partition, 
 # load the necessary modules,
@@ -36,7 +36,7 @@
 # Therefore, the mpirun command looks like:
 # mpirun -np 4 omplace -nt $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
  
-# To compile the hybrid_hello.c code with GNU compiler
+# To compile the hello_hybrid.c code with GNU compiler
 mpicc -fopenmp hello_hybrid.c -o hello_hybrid_gnu
 
 # To submit the job to Zythos
