@@ -35,7 +35,7 @@
 # Therefore, the omplace command looks like:
 # omplace -nt $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
  
-# To compile the omp_hello.c code with GNU
+# To compile the omp_hello.f90 code with GNU
 gfortran -O2 -fopenmp omp_hello.f90 -o hello_omp_gnu
 
 # To submit the job to Zythos
