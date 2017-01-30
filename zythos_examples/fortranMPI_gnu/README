@@ -2,7 +2,7 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBjECTIVE: to demostrate hello_mpi.f90 example
+# Example OBjECTIVE: to demonstrate hello_mpi.f90 example
 # on Zythos with GNU compiler.
 # This code is an MPI example that requests 4 nodes with 6 cores 
 # each giving 24 cores in total.
