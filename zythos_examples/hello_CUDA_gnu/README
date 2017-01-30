@@ -15,7 +15,7 @@
 
 # SLURM directives
 # 
-# Here we change the partition to --partition==zythos
+# Here we change the partition to Zythos (--partition==zythos)
 # Then, we specify to SLURM we want 1 node (--ntasks=1)
 # with 6 cores (--cpus-per-task=6)
 # We also specify to SLURM a single GPU node (--gres=gpu:1)
