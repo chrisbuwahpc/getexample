@@ -16,23 +16,27 @@
 # SLURM directives
 # 
 # Here we specify to SLURM we want 4 nodes (--ntasks=2)
-# Then, we modify the partition to --partition==zythos
+# Then, we modify the partition to Zythos (--partition==zythos)
 # We also specify total number of cores per node. (--cpus-per-task=6)
+# We, then edit the account name. (--account=pawsey0001)
+# If the account name is missing or not entered correctly, 
+# the SLURM does not run.
 # To run this code correctly on Zythos, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
-# To compile the code with PGI we need to unload gcc compiler as shown:
+# To compile the code with PGI we need to unload gcc compiler 
+# and load the pgi moducle as shown:
 # module unload gcc
+# module load  pgi
 # We then load the necessary modules before module listing.
-# module load pgi openmpi
 # module load mpt
 # We also specify to mpirun that there are 24 cores in total (-np 24)
 # Therefore, the mpirun command looks like:
 # mpirun -np 24 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hello_mpi.c code with PGI
-pgcc -Mmpi=sgimpi -mp hello_mpi.c -I${FPATH} -o hello_mpi_pgi
+pgcc -Mmpi=sgimpi hello_mpi.c -o hello_mpi_pgi
 
-# To submit the job to Zeus
+# To submit the job to Zythos
 sbatch hello_mpi_pgi.slurm
 
 echo "The sbatch command returns what jobid is for this job."
@@ -40,9 +44,9 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/pgi_mpi_results_zythos/"
+echo "Your results are now located in ${MYGROUP}/hellompi_pgi_results_zythos/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/pgi_mpi_results_zythos/jobID/"
+echo "cd ${MYGROUP}/hellompi_pgi_results_zythos/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_mpi_pgi.log"
 
