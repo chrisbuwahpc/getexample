@@ -1,13 +1,13 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
+#SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=6
 #SBATCH --gres=gpu:1
 #SBATCH --time=00:10:00
-#SBATCH --account=interns2016
+#SBATCH --account=pawsey0001
 
-
+# Default module is gcc module
 # load the necessary modules
 module load cuda
 # leave in, it lists the environment loaded by the modules
@@ -17,7 +17,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_cuda_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_cuda_results_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_cuda_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
