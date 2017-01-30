@@ -16,7 +16,7 @@
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # We then change the partition to Zythos (--partition==zythos)
 # We also edit the account name (--account=pawsey0001)
-# If the account name is not entered correctly or missing,
+# If the account name is missing or not entered correctly,
 # the SLURM does not run.
 # To compile this code with Intel compiler, we unload the gcc
 # module and load the intel module as shown below:
