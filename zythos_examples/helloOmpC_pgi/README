@@ -17,9 +17,9 @@
 
 # SLURM directives
 # 
+# We modify the partition to Zythos (--partition=zythos)
 # Here we specify to SLURM that we want 2 nodes (--ntasks=2)
 # and 6 cores (--cpus-per-task=6)
-# Then, we modify the partition to Zythos (--partition=zythos)
 # We also replace the account name with 
 # our own account name (--account=pawsey0001)
 # If the account name is missing or not entered correctly,
