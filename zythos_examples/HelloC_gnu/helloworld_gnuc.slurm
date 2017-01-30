@@ -6,13 +6,10 @@
 #SBATCH --account=pawsey0001
 #SBATCH --export=NONE
 
-# load the necessary modules for gnu ,gcc because it is c code
-
+# to compile with GNU compiler, load the gcc module
 module load gcc
-module load mpt
 
 # leave in, it list the environment loaded by the modules
-
 module list
 
 
@@ -21,7 +18,7 @@ module list
 
 EXECUTABLE=helloworld_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/zythosC.gnu_results/$SLURM_JOBID
+RESULTS=$MYGROUP/zythosC_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
