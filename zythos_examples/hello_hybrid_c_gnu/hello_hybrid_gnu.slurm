@@ -1,4 +1,7 @@
 #!/bin/bash --login
+# Request 24 cores [--ntasks=4 and --cpus-per-task=6]
+# Note that --ntasks is specified, not --nodes.
+
 #SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=4
@@ -6,7 +9,7 @@
 #SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
-# to compile with GNU compiler load gcc
+# to compile with GNU compiler, load the gcc module
 module load gcc
 
 # Load the other necessary modules
@@ -19,7 +22,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_hybrid_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/gnu_hybrid_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/hybrid_gnu_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
