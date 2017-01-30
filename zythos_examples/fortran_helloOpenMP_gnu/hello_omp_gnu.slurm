@@ -1,4 +1,7 @@
 #!/bin/bash --login
+# Request 12 cores [--ntasks=2 and --cpus-per-task=6]
+# Note that --ntasks is specified, not --nodes.
+
 #SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=2
@@ -19,9 +22,9 @@ module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
-EXECUTABLE=hello_omp
+EXECUTABLE=hello_omp_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/ompf_zythos_results/$SLURM_JOBID
+RESULTS=$MYGROUP/helloomp_gnu_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -39,7 +42,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_omp.log
+OUTPUT=hello_omp_gnu.log
 
 #############################################
 #   Copy input files to $SCRATCH
