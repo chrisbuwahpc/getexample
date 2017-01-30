@@ -18,12 +18,12 @@
 # 
 # We modify the partition to Zythos (--partition==zythos)
 # Here specify to SLURM that we want 4 nodes (--ntasks=4)
-# We then specify the number of cores for the NUMA region. (--cpus-per-task=6)
+# We then specify the number of cores for the NUMA region (--cpus-per-task=6)
 # We also replace the account name 
 # with our own account name (--account=pawsey0001)
 # If the account name is missing or not entered correctly,
 # the SLURM does not run.
-# To run this code correctly on Zeus, we need to remove --export=NONE
+# To run this code correctly on Zythos, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
 # To compile with GNU compiler, we need to load 
 # the gcc compiler as shown below:
