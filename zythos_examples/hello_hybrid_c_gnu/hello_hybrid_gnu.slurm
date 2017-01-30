@@ -1,7 +1,4 @@
 #!/bin/bash --login
-# Request 24 cores [--ntasks=4 and --cpus-per-task=6]
-# Note that --ntasks is specified, not --nodes.
-
 #SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=4
