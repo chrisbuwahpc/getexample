@@ -3,25 +3,32 @@
 # To run type: ./README
 #
 # Example OBjECTIVE: to demostrate helloworld.c example
-# on Zeus. 
-# To run this code, edit the partition and 
-# load the necessary modules.
-# This information is located under helloworld_pgi_c.slurm
-# You can edit the SLURM as: emacs helloworld_pgi_c.slurm &
+# on Zythos with PGI compiler. 
+# helloworld.c is a simple c code that prints out "Hello World!"
+# and runs on a single node. 
+# To run this code, we need to specify the number of nodes used
+# and edit the partition and load the necessary modules.
+# This information is located under helloworld_pgic.slurm
+# You can edit the SLURM as: emacs helloworld_pgic.slurm &
 
 # SLURM directives
 # 
-# Here we specify to SLURM we want 1 node (--nodes=1)
-# Change the partition to the zythos partition (--partition==zythos)
-# Load the necessary modules before module listing.
-# module load pgi
+# Here we specify to SLURM we want 1 node (--ntasks=1)
+# We then change the partition to Zythos (--partition==zythos)
+# We also edit the account name (--account=pawsey0001)
+# If the account name is not entered correctly or missing,
+# the SLURM does not run.
+# To compile this code with PGI compiler, we unload the gcc
+# module and load the pgi module as shown below:
+# module unload gcc
+# module load pgi 
+# To run the code, we simply type:
+# ./$EXECUTABLE >> {$OUTPUT}
 
-# To compile the intel code
+# To compile the helloworld.c with PGI
+pgcc -O2 helloworld.c -o helloworld_pgi
 
-pgcc -acc -O2 helloworld.c -o helloworld_pgi
-
-# To submit the job to Magnus
-
+# To submit the job to Zythos
 sbatch helloworld_pgic.slurm
 
 echo "The sbatch command returns what jobid is for this job."
@@ -33,4 +40,4 @@ echo "Your results are now located in ${MYGROUP}/zythosC_pgi_results/"
 echo "To change to your jobID directory, type:"
 echo "cd ${MYGROUP}/zythosC_pgi_results/jobID/"
 echo "To view the results, use the cat command and type:"
-echo "cat helloworld.pgi.log"
+echo "cat helloworld_pgi.log"
