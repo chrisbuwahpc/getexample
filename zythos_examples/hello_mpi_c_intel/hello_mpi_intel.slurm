@@ -19,7 +19,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_mpi_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/intel_mpi_results_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/hellompi_intel_results_zythos/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
