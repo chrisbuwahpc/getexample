@@ -18,6 +18,8 @@
 # We also edit the account name (--account=pawsey0001)
 # If the account name is missing or not entered correctly,
 # the SLURM does not run.
+# To run this code correctly on Zythos, we need to remove --export=NONE
+# If it is still included in the SLURM, the code does not compile
 # To compile this code with PGI compiler, we unload the gcc
 # module and load the pgi module as shown below:
 # module unload gcc
