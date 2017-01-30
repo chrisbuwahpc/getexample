@@ -1,5 +1,4 @@
 #!/bin/bash -l
-
 # Request 12 cores [--ntasks=2 and --cpus-per-task=6]
 # Note that --ntasks is specified, not --nodes
 
@@ -9,11 +8,9 @@
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 #SBATCH --account=pawsey0001
-#SBATCH --export=NONE
 
 # Default loaded compiler module is gcc module
-# Unload module gcc and load intel
-
+# Unload module gcc and load intel to compile with Intel compiler
 module unload gcc
 module load intel
 
@@ -23,9 +20,9 @@ module load mpt
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 
-EXECUTABLE=omp_hello
+EXECUTABLE=hello_omp_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/zythos_omp.intel_results/$SLURM_JOBID
+RESULTS=$MYGROUP/zythos_omp_intel_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -46,7 +43,7 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=omp_hello.log
+OUTPUT=hello_omp_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH
