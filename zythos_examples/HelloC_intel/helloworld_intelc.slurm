@@ -6,13 +6,12 @@
 #SBATCH --account=pawsey0001
 #SBATCH --export=NONE
 
-# load the necessary modules
-
+# to compile with Intel compiler, unload the gcc module
+# and load the intel module as shown:
+module unload gcc
 module load intel
-module load mpt
 
 # leave in, it list the environment loaded by the modules
-
 module list
 
 
@@ -21,7 +20,7 @@ module list
 
 EXECUTABLE=helloworld_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/zythosC.intel_results/$SLURM_JOBID
+RESULTS=$MYGROUP/zythosC_intel_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -42,7 +41,7 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=helloworld.intel.log
+OUTPUT=helloworld_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH
