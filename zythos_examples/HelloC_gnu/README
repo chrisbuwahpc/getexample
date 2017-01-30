@@ -24,7 +24,7 @@
 # To run the code, we simply type:
 # ./$EXECUTABLE >> {$OUTPUT}
 
-# To compile the gnu code with GNU
+# To compile the helloworld.c with GNU
 gcc -O2 helloworld.c -o helloworld_gnu
 
 # To submit the job to Zythos
