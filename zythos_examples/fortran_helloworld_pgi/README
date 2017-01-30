@@ -13,9 +13,13 @@
 
 # SLURM directives
 # 
+# We change the partition to Zythos (--partition=zythos)
 # Here we specify to SLURM we want 1 node (--ntasks=1)
-# We then change the partition to zythos (--partition=zythos)
-# To run this code correctly, we need to remove --export=NONE
+# We then replace the account name 
+# with our own account name (--account=pawsey0001)
+# If the account name is missing or not entered correctly,
+# the SLURM does not run.
+# To run this code correctly, we need also to remove --export=NONE
 # from the SLURM. If not removed, the code does not compile.
 # To compile this code with PGI, we swap
 # from GNU to PGI as shown below:
@@ -35,8 +39,8 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/pgi_fortran_zythos/"
+echo "Your results are now located in ${MYGROUP}/hello_pgi_zythos_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/pgi_fortran_zythos/jobID/"
+echo "cd ${MYGROUP}/hello_pgi_zythos_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_fortran_pgi.log"
