@@ -1,4 +1,4 @@
-\\ this example is taken from the website :https://computing.llnl.gov/tutorials/\\ openMP/samples/C/omp_hello.c
+\\ this example is taken from the website :https://computing.llnl.gov/tutorials\\\ openMP/samples/C/omp_hello.c
 
 #include <omp.h>
 #include <stdio.h>
