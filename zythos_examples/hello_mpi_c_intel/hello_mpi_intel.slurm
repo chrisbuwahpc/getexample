@@ -1,4 +1,7 @@
 #!/bin/bash --login
+# Request 24 cores [--ntasks=4 and --cpus-per-task=6]
+# Note that --ntasks is specified, not --nodes.
+
 #SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --ntasks=4
@@ -6,7 +9,7 @@
 #SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
-# swap from gcc to intel
+# To compile with Intel compiler, swap from gcc to intel module:
 module swap gcc intel
 
 # load the necessary modules
