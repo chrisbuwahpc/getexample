@@ -11,7 +11,7 @@
 module unload gcc
 
 # Load the PGI compiler
-module load pgi openmpi
+module load pgi
 
 # Load the other necessary modules
 module load mpt
@@ -23,7 +23,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_hybrid_pgi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/pgi_hybrid_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/hybrid_pgi_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
