@@ -16,7 +16,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_fortran_intel
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_results_fortran_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_intel_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
