@@ -1,4 +1,7 @@
 #!/bin/bash --login
+# Request 24 cores [--ntasks=4 and --cpus-per-task=6]
+# Note that --ntasks is specified, not --nodes.
+
 #SBATCH --job-name=GE-hostname
 #SBATCH --partition=zythos
 #SBATCH --account=pawsey0001
@@ -6,16 +9,15 @@
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 
-# swap gcc and load module pgi
-
+# To compile with PGI module compiler, unload the gcc module
+# and load the pgi module
+module unload gcc
 module load pgi
 
-# load the necessary modules
-
+# load the other necessary modules
 module load mpt
 
 # leave in, it lists the environment loaded by the modules
-
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
@@ -23,7 +25,7 @@ module list
 
 EXECUTABLE=hello_mpi_pgi
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/zythosmpi_pgi_results/$SLURM_JOBID
+RESULTS=$MYGROUP/zythos_hellompi_pgi_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
