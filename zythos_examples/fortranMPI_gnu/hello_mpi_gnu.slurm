@@ -6,13 +6,14 @@
 #SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
-# load the necessary modules
+# Default compiler is gcc. 
+# To compiler with GNU, load the gcc module
+module load gcc 
 
-module load gcc
+# load the other necessary modules
 module load mpt
 
 # leave in, it lists the environment loaded by the modules
-
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
@@ -20,7 +21,7 @@ module list
 
 EXECUTABLE=hello_mpi_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/zythosmpi_gnu_results/$SLURM_JOBID
+RESULTS=$MYGROUP/zythos_hellompi_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
