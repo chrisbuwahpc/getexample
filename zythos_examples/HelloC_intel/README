@@ -20,15 +20,15 @@
 # the SLURM does not run.
 # To compile this code with Intel compiler, we unload the gcc
 # module and load the intel module as shown below:
-# module load gcc
+# module unload gcc
 # module load intel
 # To run the code, we simply type:
 # ./$EXECUTABLE >> {$OUTPUT}
 
-# To compile the intel code
+# To compile the helloworld.c with Intel
 icc -O2 helloworld.c -o helloworld_intel
 
-# To submit the job to Magnus
+# To submit the job to Zythos
 sbatch helloworld_intelc.slurm
 
 echo "The sbatch command returns what jobid is for this job."
