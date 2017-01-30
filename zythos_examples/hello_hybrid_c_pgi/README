@@ -2,10 +2,10 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBjECTIVE: to demostrate hybrid_hello.c example
+# Example OBjECTIVE: to demostrate hello_hybrid.c example
 # on Zythos with PGI Compiler.This is a mixed-mode job
 # which includes both MPI and OpenMP jobs.
-# hybrid_hello.c code is taken from
+# hello_hybrid.c code is taken from
 # http://www.slac.stanford.edu/comp/unix/farm/mpi_and_openmp.html
 # To run this code, we need to edit the partition, 
 # load the necessary modules,
@@ -16,16 +16,20 @@
 
 # SLURM directives
 # 
+# We the modify the partition to Zythos (--partition==zythos)
 # Here specify to SLURM that we want 4 nodes (--ntasks=4)
-# We the modify the partition to --partition==zythos
 # We then specify the number of cores for the NUMA region. (--cpus-per-task=6)
-# To run this code correctly on Zeus, we need to remove --export=NONE
+# We also replace the account name 
+# with our own account name (--account=pawsey0001)
+# If the account name is missing or not entered correctly,
+# the SLURM does not run.
+# To run this code correctly on Zythos, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
 # To compile with PGI compiler, we need to unload 
 # the gcc compiler as shown below:
 # module unload gcc
 # Then, we load the necessary modules before module listing.
-# module load pgi openmpi
+# module load pgi
 # module load mpt
 # We also set the number of threads to 6 as shown below: 
 # export OMP_NUM_THREADS=6
@@ -35,7 +39,7 @@
 # To compile the hybrid_hello.c code with PGI compiler
 pgcc -Mmpi=sgimpi -mp hello_hybrid.c -o hello_hybrid_pgi
 
-# To submit the job to Zeus
+# To submit the job to Zythos
 sbatch hello_hybrid_pgi.slurm
 
 echo "The sbatch command returns what jobid is for this job."
@@ -43,8 +47,8 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/pgi_hybrid_zythos/"
+echo "Your results are now located in ${MYGROUP}/hybrid_pgi_zythos_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/pgi_hybrid_zythos/jobID/"
+echo "cd ${MYGROUP}/hybrid_pgi_zythos_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_hybrid_pgi.log"
