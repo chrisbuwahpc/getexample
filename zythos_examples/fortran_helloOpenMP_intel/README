@@ -37,7 +37,7 @@
 # Therefore, the omplace command looks like:
 # omplace -nt $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
  
-# To compile the omp_hello.c code with Intel
+# To compile the omp_hello.f90 code with Intel
 ifort -O2 -qopenmp omp_hello.f90 -o hello_omp_intel
 
 # With intel compiler, -openmp wrapper does not compile the code.
