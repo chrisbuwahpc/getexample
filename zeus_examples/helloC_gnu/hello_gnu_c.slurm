@@ -3,9 +3,9 @@
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
-#SBATCH --export=NONE
 
-# To compile with the GNU compiler, load the gcc module
+# Default loaded compiler module is gcc module.
+# To compile with the GNU compiler, load the gcc module in case.
 module load gcc
 
 # leave in, it lists the environment loaded by the modules
