@@ -2,7 +2,7 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBjECTIVE: to demostrate helloworld.c example
+# Example OBjECTIVE: to demonstrate helloworld.c example
 # on Zythos with GNU compiler.
 # helloworld.c is a simple c code that prints out "Hello World!"
 # and runs on a single node.
