@@ -9,7 +9,7 @@
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 
-# Default loaded module compiler is gcc module. 
+# Default loaded compiler module is gcc module. 
 # To compile with Intel, unload the gcc module and
 # load the intel module compiler as shown below:
 module unload gcc
