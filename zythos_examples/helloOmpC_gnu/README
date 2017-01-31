@@ -23,7 +23,7 @@
 # our own account name (--account=pawsey0001)
 # If the account name is missing or not entered correctly,
 # the SLURM does not run.
-# To run this code correctly, we comment out: --export=NONE
+# To run this code correctly on Zythos, we comment out: --export=NONE
 # If this is not commented out, the code does not run.
 # To compile the code with GNU, 
 # we need to load the gcc module as shown below: 
