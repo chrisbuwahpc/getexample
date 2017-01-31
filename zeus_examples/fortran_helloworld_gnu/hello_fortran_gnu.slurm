@@ -3,7 +3,7 @@
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
-#SBATCH --export=NONE
+
 
 # To compile the code with GNU module compiler
 module load gcc
