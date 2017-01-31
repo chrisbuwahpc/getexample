@@ -27,7 +27,6 @@
 # the gcc compiler as shown below:
 # module load gcc
 # Then, we load the necessary modules before module listing.
-# module load intel
 # module load mpt
 # We also set the number of threads to 6 as shown below: 
 # export OMP_NUM_THREADS=6
