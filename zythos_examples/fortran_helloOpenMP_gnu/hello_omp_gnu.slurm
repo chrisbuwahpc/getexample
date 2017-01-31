@@ -8,9 +8,8 @@
 #SBATCH --cpus-per-task=6
 #SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
-#SBATCH --export=NONE
 
-# Default loaded module compiler is gcc module.
+# Default loaded compiler module is gcc module.
 # To compile with GNU, load the gcc module compiler in case.
 module load gcc
 
