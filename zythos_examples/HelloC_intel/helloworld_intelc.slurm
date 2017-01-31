@@ -4,8 +4,8 @@
 #SBATCH --ntasks=1
 #SBATCH --time=00:05:00
 #SBATCH --account=pawsey0001
-#SBATCH --export=NONE
 
+# Default loaded module compiler is gcc module.
 # to compile with Intel compiler, unload the gcc module
 # and load the intel module as shown:
 module unload gcc
