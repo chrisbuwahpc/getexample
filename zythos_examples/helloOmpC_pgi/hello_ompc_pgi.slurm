@@ -17,6 +17,9 @@ module load pgi
 
 # load other necessary modules
 module load mpt
+
+# leave in, it lists the environment loaded by the modules
+module list
  
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables

@@ -25,9 +25,9 @@
 # To run this code correctly, we remove --export=NONE.
 # If it is still included in the SLURM, the code does not work.
 # To compile with the GNU compiler, we load the gcc module as shown below:
-# module load gcc
+module load gcc
 # Then, we load the other necessary modules before module listing.
-# module load mpt
+module load mpt
 # We also set the number of OpenMP threads to 12 as shown:
 # export OMP_NUM_THREADS=12
 # To run the code, we use omplace to control thread placement with 

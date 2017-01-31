@@ -26,10 +26,10 @@
 # If it is still included in the SLURM, the code does not compile.
 # To compile with Intel compiler, we need to unload the gcc module
 # and load the intel module as shown below:
-# module unload gcc
-# module load intel
+module unload gcc
+module load intel
 # Then, we load the necessary modules before module listing.
-# module load mpt
+module load mpt
 # We also set the number of threads to 6 as shown below: 
 # export OMP_NUM_THREADS=6
 # Therefore, the mpirun command looks like:

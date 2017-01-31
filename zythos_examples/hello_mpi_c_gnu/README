@@ -24,9 +24,9 @@
 # To run this code correctly, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
 # To compile the code with GNU compiler, we need to load gcc as shown below:
-# module load gcc
+module load gcc
 # We then load the necessary modules before module listing.
-# module load mpt
+module load mpt
 # We also specify to mpirun that there are 24 cores in total (-np 24)
 # Therefore, the mpirun command looks like:
 # mpirun -np 24 ./$EXECUTABLE >> ${OUTPUT}

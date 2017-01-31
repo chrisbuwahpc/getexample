@@ -22,7 +22,7 @@
 # If it is still included in the SLURM, the code does not compile
 # To compile this code with GNU compiler, we load the gcc
 # module as shown below:
-# module load gcc
+module load gcc
 # To run the code, we simply type:
 # ./$EXECUTABLE >> {$OUTPUT}
 

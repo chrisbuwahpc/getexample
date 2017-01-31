@@ -25,10 +25,10 @@
 # If it is still included in the SLURM, the code does not compile.
 # To compile the code with PGI we need to unload gcc compiler 
 # and load the pgi moducle as shown:
-# module unload gcc
-# module load  pgi
+module unload gcc
+module load  pgi
 # We then load the necessary modules before module listing.
-# module load mpt
+module load mpt
 # We also specify to mpirun that there are 24 cores in total (-np 24)
 # Therefore, the mpirun command looks like:
 # mpirun -np 24 ./$EXECUTABLE >> ${OUTPUT}

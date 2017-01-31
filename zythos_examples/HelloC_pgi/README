@@ -22,8 +22,8 @@
 # If it is still included in the SLURM, the code does not compile
 # To compile this code with PGI compiler, we unload the gcc
 # module and load the pgi module as shown below:
-# module unload gcc
-# module load pgi 
+module unload gcc
+module load pgi 
 # To run the code, we simply type:
 # ./$EXECUTABLE >> {$OUTPUT}
 

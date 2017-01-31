@@ -24,9 +24,10 @@
 # To run this code correctly on Zythos, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
 # To compile the code with Intel we need to swap from gcc compiler as shown:
-# module swap gcc intel
+module unload gcc
+module load intel
 # We then load the necessary modules before module listing.
-# module load mpt
+module load mpt
 # We also specify to mpirun that there are 24 cores in total (-np 24)
 # Therefore, the mpirun command looks like:
 # mpirun -np 24 ./$EXECUTABLE >> ${OUTPUT}

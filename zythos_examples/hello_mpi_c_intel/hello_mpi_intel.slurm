@@ -10,8 +10,9 @@
 #SBATCH --time=00:10:00
 
 # Default loaded compiler module is gcc module.
-# To compile with Intel compiler, swap from gcc to intel module.
-module swap gcc intel
+# To compile with Intel compiler, swap from gcc to intel module as shown:
+module unload gcc
+module load intel
 
 # load the necessary modules
 module load mpt
