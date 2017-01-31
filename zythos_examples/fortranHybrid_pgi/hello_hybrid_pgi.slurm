@@ -6,8 +6,10 @@
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 
-# To swap intel to pgi.
-
+# Default loaded module compiler is gcc module.
+# To compile with PGI compiler, unload the gcc module
+# and then load the pgi module as shown:
+module unload gcc
 module load pgi
 
 # Load the other necessary modules
@@ -40,7 +42,7 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=hellohybrid_pgi.log
+OUTPUT=hello_hybrid_pgi.log
 
 #############################################
 #   Copy input files to $SCRATCH
