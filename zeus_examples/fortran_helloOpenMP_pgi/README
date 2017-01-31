@@ -23,11 +23,11 @@
 # To compile the code with PGI, 
 # we need to unload the gcc module and
 # load the pgi module  as shown below: 
-# module unload gcc
-# module load pgi
+module unload gcc
+module load pgi
 # We then need to load the other necessary modules 
 # before module listing as shown:
-# module load mpt
+module load mpt
 # Then, we set the number of threads to 16 as shown below: 
 # export OMP_NUM_THREADS=16
 # Therefore, the srun looks like:
