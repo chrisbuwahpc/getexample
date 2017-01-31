@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 
-# Default loaded module compiler is gcc module.
+# Default loaded compiler module is gcc module.
 # To compile with PGI compiler, unload the gcc module
 # and then load the pgi module as shown:
 module unload gcc
