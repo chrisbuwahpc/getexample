@@ -19,8 +19,8 @@
 # If this is included in the SLURM, the code does not run properly.
 # To compile this code in Intel, we swap
 # from GNU to Intel as shown below:
-# module unload gcc
-# module load intel
+module unload gcc
+module load intel
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
