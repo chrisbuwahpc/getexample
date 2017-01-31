@@ -2,7 +2,7 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBjECTIVE: to demostrate hello_cuda.cu example
+# Example OBjECTIVE: to demonstrate hello_cuda.cu example
 # on Zythos with GNU compiler. 
 # This example is taken from:
 # https://www.pdc.kth.se/resources/computers/historical-computers/zorn/how-to/how-to-compile-and-run-a-simple-cuda-hello-world
