@@ -15,8 +15,8 @@
 # We the change the partition to --partition==workq
 # To compile with Intel compiler, we need to unload
 # the gcc module and load the intel compiler as shown below:
-# module unload gcc
-# module load intel
+module unload gcc
+module load intel
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
