@@ -9,6 +9,7 @@
 #SBATCH --time=00:10:00
 #SBATCH --account=pawsey0001
 
+# Default loaded compiler module is gcc module.
 # To compile with PGI compiler unload the gcc module 
 # and load the pgi module
 module unload gcc
