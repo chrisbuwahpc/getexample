@@ -18,7 +18,7 @@
 # We also specify to SLURM a single GPU node: # SBATCH --gres=gpu:1
 # To compile hello_cuda.cu correctly, we need to load
 # the necessary modules before module listing as shown below:
-# module load cuda
+module load cuda
 # To run the code, we simply type: ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the hello_cuda.cu code
