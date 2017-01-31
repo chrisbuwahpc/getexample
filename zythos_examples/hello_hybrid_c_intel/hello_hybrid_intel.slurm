@@ -6,7 +6,7 @@
 #SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
-# Default loaded module compiler is gcc.
+# Default loaded module compiler is gcc module.
 # To swap from gcc compiler to intel, unload gcc.
 module unload gcc
 
