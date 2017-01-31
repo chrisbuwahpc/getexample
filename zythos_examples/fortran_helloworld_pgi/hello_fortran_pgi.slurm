@@ -5,6 +5,7 @@
 #SBATCH --time=00:05:00
 #SBATCH --account=pawsey0001
 
+# Default loaded compiler module is gcc module.
 # To swap from GNU module compiler to PGI
 module unload gcc
 module load pgi
