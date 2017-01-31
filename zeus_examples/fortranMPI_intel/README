@@ -22,10 +22,10 @@
 # If it is still included in the SLURM, the code does not compile.
 # To compile the code with intel,
 # we need to swap from gcc compiler as shown below:
-# module unload gcc
-# module load intel
+module unload gcc
+module load intel
 # We then load the necessary modules before module listing.
-# module load mpt
+module load mpt
 # We also specify to srun that 32 MPI tasks are required. (-n 32)
 # with 2 nodes (-N 2) given that 
 # there are 16 MPI tasks per node.
