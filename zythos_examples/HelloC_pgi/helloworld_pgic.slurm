@@ -4,9 +4,9 @@
 #SBATCH --ntasks=1
 #SBATCH --time=00:05:00
 #SBATCH --account=pawsey0001
-#SBATCH --export=NONE
 
-# to compile with PGI compiler, we unload the gcc module
+# Default loaded compiler module is gcc module.
+# to compile with PGI compiler, unload the gcc module
 # and load the pgi module
 module unload gcc
 module load pgi
