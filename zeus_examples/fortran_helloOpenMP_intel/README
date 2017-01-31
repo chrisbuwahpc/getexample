@@ -22,11 +22,11 @@
 # If this is not commented out, the code does not run.
 # To compile the code with intel, we need to unload 
 # the gcc module and load the intel module as shown below: 
-# module unload gcc
-# module load intel
+module unload gcc
+module load intel
 # We also need to load the other necessary modules
 # before module listing as shown:
-# module load mpt
+module load mpt
 # Then, we set the number of threads to 16 as shown below: 
 # export OMP_NUM_THREADS=16
 # Therefore, the srun looks like:
