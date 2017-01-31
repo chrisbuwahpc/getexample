@@ -20,9 +20,10 @@
 # Then, we modify the partition to --partition==workq
 # To run this code correctly on Zeus, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
-# We then load the necessary modules before module listing.
-# module load gcc
-# module load mpt
+# To compile with GNU compiler, we load the gcc module as shown below:
+module load gcc
+# We then load the other necessary modules before module listing.
+module load mpt
 # We also specify to srun that 32 MPI tasks are required. (-n 32)
 # with 2 nodes (-N 2) given that 
 # there are 16 MPI tasks per node.
