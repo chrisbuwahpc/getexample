@@ -4,7 +4,6 @@
 #SBATCH --ntasks=1
 #SBATCH --time=00:05:00
 #SBATCH --account=pawsey0001
-#SBATCH --export=NONE
 
 # Default loaded module compiler is gcc module.
 # to compile with GNU compiler, load the gcc module in case.
