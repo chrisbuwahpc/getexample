@@ -27,7 +27,7 @@
 # If it is included in the SLURM, the code does not run properly.
 # We also need to load the necessary modules 
 # before module listing as shown below:
-# module load cuda
+module load cuda
 # To run this code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
