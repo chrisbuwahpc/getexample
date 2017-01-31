@@ -26,11 +26,11 @@
 # To run this code correctly on Zythos, we need to remove --export=NONE
 # If it is still included in the SLURM, the code does not compile.
 # To compile with PGI compiler, we need to unload 
-# the gcc compiler as shown below:
-# module unload gcc
+# the gcc compiler and load the pgi module as shown below:
+module unload gcc
+module load pgi
 # Then, we load the necessary modules before module listing.
-# module load pgi
-# module load mpt
+module load mpt
 # We also set the number of threads to 6 as shown below: 
 # export OMP_NUM_THREADS=6
 # Therefore, the mpirun command looks like:
