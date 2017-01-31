@@ -6,9 +6,9 @@
 #SBATCH --cpus-per-task=6
 #SBATCH --time=00:10:00
 
-# swap intel to gnu environment which is the default module
-
-module swap PrgEnv-intel PrgEnv-gnu
+# Default loaded compiler module is gcc module 
+# To compile with gnu, load the gcc module in case
+module load gcc
 
 # Load the other necessary modules
 module load mpt
