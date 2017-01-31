@@ -22,7 +22,7 @@
 # from the SLURM. If not removed, the code does not compile.
 # To compile this code with GNU, we load 
 # the gcc module compiler as shown below:
-# module load gcc
+module load gcc
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
