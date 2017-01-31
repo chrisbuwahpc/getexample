@@ -2,7 +2,7 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBjECTIVE: to demostrate omp_hello.f90 example
+# Example OBjECTIVE: to demonstrate omp_hello.f90 example
 # on Zythos with Intel compiler.
 # omp_hello.f90 code is taken from
 # https://computing.llnl.gov/tutorials/openMP/exercise.html
