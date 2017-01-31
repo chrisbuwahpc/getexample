@@ -9,7 +9,7 @@
 #SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
-# Default loaded module compiler is gcc module. 
+# Default loaded compiler module is gcc module. 
 # To compiler with GNU, load the gcc module in case.
 module load gcc 
 
