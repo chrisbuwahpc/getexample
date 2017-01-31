@@ -22,9 +22,9 @@
 # If this is not commented out, the code does not run.
 # To compile the code with GNU, 
 # we need to load the gcc module as shown below: 
-# module load gcc
+module load gcc
 # We also need to load the necessary modules before module listing.
-# module load mpt
+module load mpt
 # Then, we set the number of threads to 16 as shown below: 
 # export OMP_NUM_THREADS=16
 # Therefore, the srun looks like:
