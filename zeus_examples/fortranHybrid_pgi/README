@@ -22,10 +22,10 @@
 # the code does not compile.
 # To compile with PGI compiler, we need to unload gcc module
 # and load the pgi module as shown below:
-# module unload gcc
-# module load  pgi
+module unload gcc
+module load  pgi
 # Then, we load the other necessary modules before listing.
-# module load mpt
+module load mpt
 # This script requires 2 nodes and runs 1 MPI process with
 # 16 OpenMP threads on each intel compiled executable.
 # Hence, we set the number of threads to 16 as shown below: 
