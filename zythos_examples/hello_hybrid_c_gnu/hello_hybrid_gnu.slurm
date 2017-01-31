@@ -6,7 +6,8 @@
 #SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
-# to compile with GNU compiler, load the gcc module
+# Default module compiler is gcc module.
+# to compile with GNU compiler, load the gcc module in case.
 module load gcc
 
 # Load the other necessary modules
