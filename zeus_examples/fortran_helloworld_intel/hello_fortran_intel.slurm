@@ -3,7 +3,7 @@
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
-#SBATCH --export=NONE
+
 
 # To swap from GNU compiler to Intel, unload the gcc module
 # and then load the intel module
