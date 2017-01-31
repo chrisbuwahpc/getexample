@@ -6,7 +6,8 @@
 #SBATCH --account=pawsey0001
 #SBATCH --export=NONE
 
-# to compile with GNU compiler, load the gcc module
+# Default loaded module compiler is gcc module.
+# to compile with GNU compiler, load the gcc module in case.
 module load gcc
 
 # leave in, it list the environment loaded by the modules
