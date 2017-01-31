@@ -3,49 +3,42 @@
 # To run type: ./README
 #
 # Example OBjECTIVE: to demostrate hybrid_hello.f90 example
-# on Zythos
-# The natural way to run the hybrid jobs on zythos is to run one MPI task per 6-core
-# NUMA region
-# the hybrid slurm script requests 4 nodes and starts 4 MPI tasks via mpirun;
-# this is combined with omplace to place threads
-# 
+# on Zythos with Intel Compiler. This is a mixed-mode job
+# which includes both MPI and OpenMP jobs.
 # To run this code, we need to edit the partition, 
 # load the necessary modules,
-# specify the total number of MPI tasks and
+# specify the total number of nodes, cores per node and
 # the number of OpenMP threads.
-# this code runs in the intel module 
 # This information is located under hello_hybrid_intel.slurm
 # You can edit the SLURM as: emacs hello_hybrid_intel.slurm &
 
+
 # SLURM directives
 # 
-# Here specify to SLURM that we want 4 ntasks (--node=4)
-# We the modify the partition to --partition==zythos
-# To compile with intel compiler, we need to unload 
-# the default gcc compiler as shown below:
+# We modify the partition to Zythos (--partition==zythos)
+# Here specify to SLURM that we want 4 nodes (--ntasks=4)
+# We then specify the number of cores for the NUMA region (--cpus-per-task=6)
+# We also replace the account name 
+# with our own account name (--account=pawsey0001)
+# If the account name is missing or not entered correctly,
+# the SLURM does not run.
+# To run this code correctly on Zythos, we need to remove --export=NONE
+# If it is still included in the SLURM, the code does not compile.
+# To compile with Intel compiler, we need to unload the gcc module
+# and load the intel module as shown below:
 # module unload gcc
-# Then, we load the necessary modules before module listing.
 # module load intel
+# Then, we load the necessary modules before module listing.
 # module load mpt
-# This script requires 4 ntasks and runs 1 MPI task per 6-core with
-# 6 OpenMP threads on each intel compiled executable.
-# Hence, we set the number of threads to 16 as shown below: 
+# We also set the number of threads to 6 as shown below: 
 # export OMP_NUM_THREADS=6
 # Therefore, the mpirun command looks like:
 # mpirun -np 4 omplace -nt $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
- 
-# To compile the hybrid_hello.f90 code with intel compiler
 
-mpif90 -fopenmp hybrid_hello.f90 -o hello_hybrid_intel
-
-# hybrid_hello.f90 can be also compiled with:
-# mpif90 -openmp hybrid_hello.f90 -o hello_hybrid_intel
-
-# This code also can be compiled with:
-# mpif90 -openmp hybrid_hello.f90 -o hello_hybrid_intel
+# To compile the hybrid_hello.f90 code with Intel compiler
+mpif90 -qopenmp hybrid_hello.f90 -o hello_hybrid_intel
 
 # To submit the job to Zythos
-
 sbatch hello_hybrid_intel.slurm
 
 echo "The sbatch command returns what jobid is for this job."
