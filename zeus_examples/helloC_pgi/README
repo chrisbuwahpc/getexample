@@ -15,8 +15,8 @@
 # We the change the partition to --partition==workq
 # To compile with PGI compiler, we need to unload
 # the gcc module and load the PGI compiler as shown below:
-# module unload gcc
-# module load pgi
+module unload gcc
+module load pgi
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
