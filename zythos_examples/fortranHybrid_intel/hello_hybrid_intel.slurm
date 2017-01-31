@@ -6,14 +6,11 @@
 #SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
-# The natural way to run hybrid jobs on zythos is to run one MPI task per 6-core
-# NUMA region
-# Default loaded module compiler is gcc.
+# Default loaded module compiler is gcc module.
 # To swap from gcc module compiler to intel, unload gcc.
-
 module unload gcc
 
-# Load the intel module compiler
+# Then load the intel module compiler
 module load intel
 
 # Load the other necessary modules
