@@ -10,8 +10,8 @@
 #SBATCH --time=00:10:00
 #SBATCH --export=NONE
 
-# Default loaded module compiler is gcc.
-# To compile with GNU, load the gcc module compiler
+# Default loaded module compiler is gcc module.
+# To compile with GNU, load the gcc module compiler in case.
 module load gcc
 
 # Load the other necessary modules
