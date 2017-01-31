@@ -9,7 +9,8 @@
 #SBATCH --account=pawsey0001
 #SBATCH --time=00:10:00
 
-# To compile with Intel compiler, swap from gcc to intel module:
+# Default loaded module compiler is gcc module.
+# To compile with Intel compiler, swap from gcc to intel module.
 module swap gcc intel
 
 # load the necessary modules
