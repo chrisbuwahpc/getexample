@@ -19,8 +19,8 @@
 # If this is included in the SLURM, the code does not run properly.
 # To compile this code with PGI, we swap
 # from GNU to PGI as shown below:
-# module unload gcc
-# module load pgi
+module unload gcc
+module load pgi
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
