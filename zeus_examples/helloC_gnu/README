@@ -15,7 +15,7 @@
 # We then change the partiton to --partition=workq
 # To compile this code with GNU compiler, we load
 # the gcc module compiler as shown below:
-# module load gcc
+module load gcc
 # To run the code, we simply type:
 # ./$EXECUTABLE >> ${OUTPUT}
 
