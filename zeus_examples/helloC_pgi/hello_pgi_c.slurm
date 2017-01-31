@@ -3,8 +3,8 @@
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
-#SBATCH --export=NONE
 
+# Default loaded compiler module is gcc module
 # to swap from GNU compiler to PGI
 module unload gcc
 module load pgi
