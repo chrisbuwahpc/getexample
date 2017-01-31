@@ -7,9 +7,11 @@
 #SBATCH --time=00:10:00
 #SBATCH --account=pawsey0001
 
-# Default module compiler is gcc module.
+# Default loaded compiler module is gcc module.
+
 # load the necessary modules
 module load cuda
+
 # leave in, it lists the environment loaded by the modules
 module list
 
