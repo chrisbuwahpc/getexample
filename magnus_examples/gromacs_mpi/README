@@ -1,0 +1,67 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate gromacs example on Magnus
+# with the Cray GNU Program Environment.
+# 
+# Gromacs is an MPI code that runs on 2 nodes or more
+# with 24 MPI tasks on each node.
+# To run this code, we need to specify the total number of MPI tasks
+# and the number of MPI tasks per node.
+# We also need to change the compiler from Cray to GNU
+# to be able to run this code with GNU Environment.
+# We need to load the module gromacs/5.1.1
+# This information is located under gromacs_mpi_gnu.slurm
+# You can edit the SLURM as: emacs gromacs_mpi_gnu.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 2 nodes (--nodes=2)
+# To run the example, we change the Program Environment
+# from Cray to GNU as shown below:
+#   module swap PrgEnv-cray PrgEnv-gnu
+#
+# Load lammps module 
+#   module load gromacs/5.1.1
+#
+# To launch a job, we specify to aprun 48 MPI tasks (-n 48)
+# with 24 tasks per node (-N 24)
+# If the number of nodes changes, the N is 24 
+# multiplied by number of nodes given
+# Therefore, the aprun command looks like:
+# aprun -n 48 -N 24 mdrun_mpi_d .... ${OUTPUT}
+
+# there are many serial commands in gromacs that can be run but 
+# still require the aprun.  
+# aprun -n 1 -N 1 gmx_d <command>  arg1 arg2 etc
+
+# Download data necessary for this gromacs example
+# wget https://files.rcsb.org/download/1AKI.pdb.gz
+# note the 1AKI.pdb file must be edited first by removing all the 
+# lines with HOH (water) in it. The one included in this getexample
+# has been modified from the original.
+
+# Download the *.mdp files needed.
+wget http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/lysozyme/Files/ions.mdp
+wget http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/lysozyme/Files/minim.mdp
+wget http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/lysozyme/Files/nvt.mdp
+
+export SUBMIT_DIR=`pwd`
+# To submit the job to Magnus
+sbatch gromacs_mpi_gnu.slurm 
+
+echo "The sbatch command returns what jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo "Your job will be running in the $MYSCRATCH/run_gromacs/"
+echo " "
+echo "The results are moved to your group directory."
+echo "Your results are now located in ${MYGROUP}/gromacs_mpi_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/gromacs_mpi_results/jobID/"
+echo "To view the results, use the cat command and type:"
+echo "cat gromacs_mpi.log"
+echo " "
+echo "NOTE: Your job is deleted from the scratch when finished."
+
