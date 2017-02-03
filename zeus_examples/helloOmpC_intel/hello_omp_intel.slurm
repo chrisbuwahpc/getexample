@@ -51,7 +51,10 @@ cd $SCRATCH
 
 export OMP_NUM_THREADS=16
 
-srun -n 1 -c $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
+omplace -nt $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
+
+# Note that this job can be also run as:
+# srun -n 1 -c $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
