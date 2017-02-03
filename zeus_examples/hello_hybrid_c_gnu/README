@@ -28,7 +28,7 @@ module load gcc
 # Then, we load the necessary modules before listing.
 module load mpt
 # This script requires 2 nodes and runs 1 MPI process with
-# 16 OpenMP threads on each intel compiled executable.
+# 16 OpenMP threads on each compiled executable.
 # Hence, we set the number of threads to 16 as shown below: 
 # export OMP_NUM_THREADS=16
 # Therefore, the srun command looks like:
