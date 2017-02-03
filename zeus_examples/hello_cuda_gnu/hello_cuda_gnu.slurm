@@ -5,7 +5,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --time=00:10:00
 #SBATCH --account=interns2016
-#SBATCH --export=NONE
+
 
 # load the necessary modules
 module load cuda
