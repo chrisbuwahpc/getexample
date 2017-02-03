@@ -27,7 +27,13 @@ module load gcc
 module load mpt
 # Then, we set the number of threads to 16 as shown below: 
 # export OMP_NUM_THREADS=16
-# Therefore, the srun looks like:
+# Therefore, to run the code we simply type:
+# omplace -nt $OMP_NUM_THREADS -tm open64 ./$EXECUTABLE >> ${OUTPUT}
+# It is importrant to note that -tm open64 should be included above in
+# the omplace command because when compiling with GNU, this command
+# will not be identified as the default thread model is intel.
+# -tm open64 tells that the compiler module is GNU.
+# An alternative way to run this job is to use the srun command as shown:
 # srun -n 1 -c $OMP_NUM_THREADS ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the omp_hello.f code with GNU
