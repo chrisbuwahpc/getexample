@@ -35,7 +35,7 @@ module load mpt
 # srun --mpi=pmi2 -n 2 -N 2 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hello_hybrid.c code with GNU compiler
-mpicc -fopenmp -O2 hello_hybrid.c -o hello_hybrid_gnu
+mpicc -O2 -fopenmp hello_hybrid.c -o hello_hybrid_gnu
 
 # To submit the job to Zeus
 sbatch hello_hybrid_gnu.slurm
