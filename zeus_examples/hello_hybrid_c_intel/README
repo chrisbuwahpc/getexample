@@ -36,7 +36,7 @@ module load mpt
 # srun --mpi=pmi2 -n 2 -N 2 ./$EXECUTABLE >> ${OUTPUT}
  
 # To compile the hello_hybrid.c code with Intel compiler
-mpicc -qopenmp hello_hybrid.c -o hello_hybrid_intel
+mpicc -O2 -qopenmp hello_hybrid.c -o hello_hybrid_intel
 
 # This code also can be compiled with:
 # mpicc -openmp hello_hybrid.c -o hello_hybrid_zeus
