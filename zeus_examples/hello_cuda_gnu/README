@@ -16,6 +16,8 @@
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # Then, we change the partition to --partition==workq
 # We also specify to SLURM a single GPU node: # SBATCH --gres=gpu:1
+# To run the CUDA code without encountering any problems,
+# --export=NONE should be excluded from the SLURM.
 # To compile hello_cuda.cu correctly, we need to load
 # the necessary modules before module listing as shown below:
 module load cuda
