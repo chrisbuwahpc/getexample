@@ -1,7 +1,13 @@
 #!/bin/bash
 #DESCRIPTION Download user examples
 #LABEL Files
-location=../share/examples/
+hostid=`echo $HOST | cut -d "." -f 1`
+echo ${hostid}
+if [ ${hostid} == "magnus" ]; then 
+    location=/group/interns2016/getexample/magnus_examples
+elif [ ${hostid} == "zeus" ]; then
+    location=/group/interns2016/getexample/zeus_examples
+fi
 
 #TODO Make a list of users downloading examples?
 
