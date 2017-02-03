@@ -29,7 +29,7 @@ module load mpt
 # export OMP_NUM_THREADS=16
 # Therefore, to run the code we simply type:
 # omplace -nt $OMP_NUM_THREADS -tm open64 ./$EXECUTABLE >> ${OUTPUT}
-# It is importrant to note that -tm open64 should be included above in
+# It is important to note that -tm open64 should be included above in
 # the omplace command because when compiling with GNU, this command
 # will not be identified as the default thread model is intel.
 # -tm open64 tells that the compiler module is GNU.
