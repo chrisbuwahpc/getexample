@@ -15,7 +15,7 @@
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # To compile the code with the GNU environment, we change
 # the environment from Cray to GNU as shown below:
-# module swap PrgEnv-cray PrgEnv-gnu
+module swap PrgEnv-cray PrgEnv-gnu
 # To run the code, we simply type:
 # aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
@@ -35,3 +35,6 @@ echo "To change to your jobID directory, type:"
 echo "cd ${MYGROUP}/helloc_gnu_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat helloworld_gnu.log"
+
+# To swap from GNU environment to the default program environment
+module swap PrgEnv-gnu PrgEnv-cray
