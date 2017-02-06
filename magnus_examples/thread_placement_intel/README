@@ -18,7 +18,7 @@
 # Here we specify to SLURM we want 1 node (--node=1)
 # To compile the code on the Intel environment, we swap
 # from Cray to Intel as shown below:
-# module swap PrgEnv-cray PrgEnv-intel 
+module swap PrgEnv-cray PrgEnv-intel 
 # Then, we set the total number of threads to 2
 # export OMP_NUM_THREADS=2
 # To launch a job, we specify to aprun 24 MPI tasks (-n 24)
@@ -44,3 +44,7 @@ echo "To change to your jobID directory, type:"
 echo "cd ${MYGROUP}/thread_placement_intel_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat thread_placement_intel.log"
+
+
+# To swap from Intel environment to the default program environment:
+module swap PrgEnv-intel PrgEnv-cray
