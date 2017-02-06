@@ -44,5 +44,5 @@ echo "cd ${MYGROUP}/helloomp_f_intel_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_omp_intel.log"
 
-# To swap from the Intel environment to the default program environment
+# To swap from the Intel environment to the default program environment:
 module swap PrgEnv-intel PrgEnv-cray
