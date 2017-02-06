@@ -4,7 +4,7 @@
 #
 # Example OBjECTIVE: to demostrate hybrid_hello.f90 example
 # on Magnus with Intel compiler. This is a mixed-mode job
-#  which includes both MPI and OpenMP jobs.
+# which includes both MPI and OpenMP jobs.
 # To run this code, we need to specify the total number of MPI tasks,
 # the number of MPI tasks per node,
 # the number of MPI tasks per socket, and
@@ -17,7 +17,7 @@
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
 # To compile the code with Intel Environment,
 # we swap from Cray to Intel as shown below:
-# module swap PrgEnv-cray PrgEnv-intel
+module swap PrgEnv-cray PrgEnv-intel
 # Then, we set the total number of threads to 6
 # export OMP_NUM_THREADS=6
 # To launch a job, we specify to aprun 8 MPI tasks (-n 8)
@@ -43,3 +43,7 @@ echo "To change to your jobID directory, type:"
 echo "cd ${MYGROUP}/fortranhybrid_intel_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_hybrid_intel.log"
+
+
+# To swap from Intel environment to the default program environment:
+module swap PrgEnv-intel PrgEnv-cray
