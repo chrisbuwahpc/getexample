@@ -45,6 +45,5 @@ echo "cd ${MYGROUP}/thread_placement_intel_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat thread_placement_intel.log"
 
-
 # To swap from Intel environment to the default program environment:
 module swap PrgEnv-intel PrgEnv-cray
