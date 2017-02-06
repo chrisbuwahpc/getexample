@@ -60,4 +60,7 @@ rm -r $SCRATCH
 echo hostname job finished at  `date`
 
 
+# To swap from Intel environment to the default program environment:
+module swap PrgEnv-intel PrgEnv-cray
+
 
