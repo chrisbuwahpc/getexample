@@ -17,7 +17,7 @@
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
 # To compile the code with GNU Environment,
 # we swap from Cray to GNU as shown below:
-# module swap PrgEnv-cray PrgEnv-gnu
+module swap PrgEnv-cray PrgEnv-gnu
 # Then, we set the total number of threads to 6
 # export OMP_NUM_THREADS=6
 # To launch a job, we specify to aprun 8 MPI tasks (-n 8)
@@ -43,3 +43,7 @@ echo "To change to your jobID directory, type:"
 echo "cd ${MYGROUP}/fortranhybrid_gnu_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_hybrid_gnu.log"
+
+
+# To swap from GNU environment to the default program environment:
+module swap PrgEnv-gnu PrgEnv-cray
