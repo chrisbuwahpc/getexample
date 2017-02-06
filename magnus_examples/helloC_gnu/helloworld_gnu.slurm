@@ -60,4 +60,5 @@ rm -r $SCRATCH
 echo hostname job finished at  `date`
 
 
-
+# To swap from GNU Environment to the default program environment
+module swap PrgEnv-gnu PrgEnv-cray
