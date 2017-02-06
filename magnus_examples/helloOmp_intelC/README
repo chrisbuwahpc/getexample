@@ -17,7 +17,7 @@
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # To compile the code with Intel, we swap from Cray
 # environment to Intel as shown below:
-# module swap PrgEnv-cray PrgEnv-intel
+module swap PrgEnv-cray PrgEnv-intel
 # Then, we set the total number of threads to 24 as shown below:
 # export OMP_NUM_THREADS=24
 # To launch a job, we specify to aprun 1 OpenMP task (-n 1)
@@ -41,3 +41,7 @@ echo "To change to your jobID directory, type:"
 echo "cd ${MYGROUP}/helloomp_c_intel_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_omp_intel.log"
+
+
+# To swap from Intel environment to the default program environment:
+module swap PrgEnv-intel PrgEnv-cray
