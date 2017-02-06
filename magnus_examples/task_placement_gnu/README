@@ -19,7 +19,7 @@
 # Here we specify to SLURM we want 1 node (--nodes=1)
 # To compile the code with GNU environment, we swap from
 # Cray to GNU as shown below:
-# module swap PrgEnv-cray PrgEnv-gnu
+module swap PrgEnv-cray PrgEnv-gnu
 # To launch a job, we specify to aprun 48 MPI tasks (-n 48)
 # with 48 tasks required on the node (-N 48)
 # These tasks are accomodated using hyper-threading with
@@ -43,3 +43,6 @@ echo "To change to your jobID directory, type:"
 echo "cd ${MYGROUP}/task_placement_gnu_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat task_placement_gnu.log"
+
+# To swap from GNU environment to the default program environment:
+module swap PrgEnv-gnu PrgEnv-cray
