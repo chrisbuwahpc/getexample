@@ -1,6 +1,6 @@
 #!/bin/bash --login
 # This is the README file is an executable script.
-# To run type: ./README.cray
+# To run type: ./README
 #  
 # Example OBjECTIVE: to demostrate omp_hello.c example on Magnus
 # with Cray Environment where threads are restricted 
@@ -34,8 +34,8 @@ echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hello_numa_results/"
+echo "Your results are now located in ${MYGROUP}/hello_numa_cray_results/"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hello_numa_results/jobID/"
+echo "cd ${MYGROUP}/hello_numa_cray_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_numa_cray.log"
