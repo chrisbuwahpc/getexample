@@ -15,7 +15,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_numa_gnu
 SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_numa_results/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_numa_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -60,5 +60,6 @@ rm -r $SCRATCH
 
 echo hostname job finished at  `date`
 
-
+# To swap from GNU environment to the default program environment:
+module swap PrgEnv-gnu PrgEnv-cray
 
