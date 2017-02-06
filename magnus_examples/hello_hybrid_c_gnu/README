@@ -48,5 +48,5 @@ echo "To view the results, use the cat command and type:"
 echo "cat hello_hybrid_gnu.log"
 
 
-# To swap from GNU environment to default program environment:
+# To swap from GNU environment to the default program environment:
 module swap PrgEnv-gnu PrgEnv-cray
