@@ -41,7 +41,8 @@ cp $EXECUTABLE $SCRATCH
 cd $SCRATCH
 
 export OMP_NUM_THREADS=6
-echo "Number of threads is $OMP_NUM_THREADS"
+export KMP=AFFINITY=disabled
+
 aprun -n 8 -N 4 -S 2 -d 6 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
