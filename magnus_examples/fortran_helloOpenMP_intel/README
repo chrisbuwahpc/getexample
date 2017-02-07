@@ -11,8 +11,8 @@
 # and the number of threads.
 # We also need to swap from Cray to Intel environment to
 # compile the code with Intel.
-# This information is located under hello_omp_gnu.slurm
-# You can edit the SLURM as: emacs hello_omp_gnu.slurm &
+# This information is located under hello_omp_intel.slurm
+# You can edit the SLURM as: emacs hello_omp_intel.slurm &
 
 # SLURM directives
 # 
@@ -22,12 +22,16 @@
 module swap PrgEnv-cray PrgEnv-intel
 # Then, we set the total number of threads to 24:
 # export OMP_NUM_THREADS=24
+# To run multi-threads on Cray with the Intel environment, 
+# we need to disable AFFINITY as shown:
+# export KMP=AFFINITY=disabled 
+# If it is not disabled, the code runs on only one thread.
 # To launch a job, we specify to aprun 1 OpenMP task (-n 1)
 # with 24 threads (-d 24)
 # Therefore, the aprun command looks like: 
 # aprun -n 1 -d 24 ./$EXECUTABLE >> ${OUTPUT}
 
-# To compile the omp_hello.f code with intel
+# To compile the omp_hello.f code with Intel
 ftn -O2 -openmp omp_hello.f -o hello_omp_intel
 
 # To submit the job to Magnus
