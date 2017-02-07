@@ -44,6 +44,8 @@ cp $EXECUTABLE $SCRATCH
 cd $SCRATCH
 
 export OMP_NUM_THREADS=2
+export KMP=AFFINITY=disabled
+
 aprun -n 24 -N 24 -d 2 -j 2 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
