@@ -23,7 +23,7 @@
 module swap PrgEnv-cray PrgEnv-intel
 # Then, we set the total number of threads to 6:
 # export OMP_NUM_THREADS=6
-# To run multi-threads on Cray with the Intel environment, 
+# To run with multiple threads on Cray with the Intel environment, 
 # we need to disable AFFINITY as shown:
 # export KMP=AFFINITY=disabled 
 # If it is not disabled, the code runs on only one thread.
