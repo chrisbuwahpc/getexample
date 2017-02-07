@@ -19,6 +19,9 @@
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
 # Then, we set the total number of threads to 6
 # export OMP_NUM_THREADS=6
+# To run multi-threads on Cray, we need to disable AFFINITY as shown:
+# export KMP=AFFINITY=disabled 
+# If it is not disabled, the code runs on only one thread.
 # To launch a job, we specify to aprun 8 MPI tasks (-n 8)
 # with 4 MPI tasks per node (-N 4),
 # with 2 MPI tasks per socket or NUMA region (-S 2)
