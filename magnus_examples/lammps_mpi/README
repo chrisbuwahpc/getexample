@@ -20,8 +20,9 @@
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
 # To compile hello_mpi.c with GNU, we change the compiler
 # from Cray to GNU as shown below:
-# module swap PrgEnv-cray PrgEnv-gnu
-# Load lammps module 
+module swap PrgEnv-cray PrgEnv-gnu
+# We then load the lammps module as shown
+module load lammps 
 # To launch a job, we specify to aprun 48 MPI tasks (-n 48)
 # with 24 tasks per node (-N 24)
 # If the number of nodes changes, the N is 24 
@@ -29,7 +30,6 @@
 # Therefore, the aprun command looks like:
 # aprun -n 48 -N 24 $EXECUTABLE < epm2.lmp >> ${OUTPUT}
 
-#
 
 # To submit the job to Magnus
 sbatch lammps_mpi_gnu.slurm
@@ -44,3 +44,6 @@ echo "To change to your jobID directory, type:"
 echo "cd ${MYGROUP}/lmp_mpi_results/jobID/"
 echo "To view the results, use the cat command and type:"
 echo "cat lammps_mpi.log"
+
+# To swap from GNU environment back to the default program environment:
+module swap PrgEnv-gnu PrgEnv-cray
