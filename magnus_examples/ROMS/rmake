@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+# Figure out if there is a configuration directory, else use the current
+if [[ -z ${ROMS_CONFIGDIR} ]]; then
+  ROMS_CONFIGDIR=`pwd`
+fi
+
+# Figure out if there is a configuration file, else use the default
+if [[ -z ${ROMS_CONFIG} ]]; then
+  ROMS_CONFIG=${ROMS_CONFIGDIR}/roms_config.sh
+fi
+
+# If we don't have a defined application, kill it
+if [[ ! -f ${ROMS_CONFIG} ]]; then
+  echo "You must define ROMS_CONFIGDIR or ROMS_CONFIG"
+  exit -1
+fi
+
+# Load the configuration
+. ${ROMS_CONFIG}
+
+# Next, if they have defined a source directory, make sure we are there
+pd=`pwd`
+if [[ -n ${ROMS_SRC}  && "${pd}" != "${ROMS_SRC}" ]]; then
+  cd ${ROMS_SRC}
+else
+  pd=""  
+fi
+
+# Finally, what is in the build directory? If it is not identified as
+# this project, then clean it up first
+if [[ "$1" != "clean" ]]; then
+  clean=''
+  if [[ -f "${SCRATCH_DIR}/${ROMS_APPLICATION}" ]]; then
+    CUR_CONFIG=`cat ${SCRATCH_DIR}/${ROMS_APPLICATION}`
+    if [[ "${CUR_CONFIG}" != "${ROMS_CONFIG}" ]]; then
+      clean=1
+    fi
+  else
+    clean=1
+  fi  
+  if [[ -n "${clean}" ]]; then
+    echo "Clean previous scratch build"
+    make clean
+    mkdir ${SCRATCH_DIR}
+    echo "${ROMS_CONFIG}" > ${SCRATCH_DIR}/${ROMS_APPLICATION}
+  fi
+fi
+
+# If we have a branch, change to the new repository
+if [[ -d ./.git ]]; then
+  if [[ -n "${GIT_BRANCH}" ]]; then
+    curbranch=`git branch | grep "*" | sed 's/ *\* *//'`
+    if [[ "${curbranch}" != "${GIT_BRANCH}" ]]; then
+      git checkout ${GIT_BRANCH} || exit
+    fi
+  fi
+  git rev-list --max-count=1 HEAD >| ${SCRATCH_DIR}/git-hash
+fi
+
+# Do the build
+make $* && \
+  if [[ "$1" != "clean" ]]; then
+    cp ${ROMS_SRC}/ROMS/External/varinfo.dat ${BINDIR} 
+  fi
+
+# Clean up
+if [[ -n "${GIT_BRANCH}" ]]; then
+  git checkout ${curbranch}
+fi
+
+if [[ -n "${pd}" ]]; then
+  cd ${pd}
+fi
+
+
