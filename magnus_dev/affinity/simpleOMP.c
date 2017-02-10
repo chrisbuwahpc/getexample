@@ -41,7 +41,7 @@ int main()
 			{	
 				nested_start_time = times(&start_cpu);
 
-				while((end_time - nested_start_time) < 3000)
+				while((end_time - nested_start_time) < 1000)
 				{
 					end_time = times(&end_cpu);
 					rand_num = rand();	
