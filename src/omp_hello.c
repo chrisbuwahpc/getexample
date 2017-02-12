@@ -18,4 +18,5 @@ int main(int argc, char *argv[])
 		  printf("Number of threads = %d\n", nthreads);
 		}
 	}
+  return(0)
 }
