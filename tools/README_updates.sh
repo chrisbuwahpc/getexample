@@ -2,20 +2,23 @@
 
 echo `pwd`
 
-location=(/home/chris/interns2016/temp)
+location=(/home/chris/Intern_project/getexample/magnus_examples)
 
 test_list=`ls -l $location | grep '^d' | awk '{print $9}'`
 cd $location
 for test_dir in $test_list ; do 
-#   if [[ "${test_dir}" = "helloC_cray" || "${test_dir}" = "helloC_gnu" || "${test_dir}" = "helloC_intel" ]]; then
 
      echo "update $test_dir "
      cd $test_dir 
 
-     sed -i "s/hostname/${test_dir}/g" *.slurm
-     sed -i "s/debugq/workq/g" *.slurm 
+sed -i '/\# is an OpenMP/a \
+\# cp the omp_hello.f source code\
+cp \$GE_DIR/src/omp_hello.f .\
+\
+' README
+
 
      echo " "
      cd ..
-   fi 
+
 done

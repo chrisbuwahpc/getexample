@@ -4,7 +4,7 @@
 hostid=`echo $HOST | cut -d "-" -f 1`
 echo ${hostid}
 if [ ${hostid} == "magnus" ]; then 
-    location=/home/cbording/Intern_project/getexample/test_examples
+    location=/home/cbording/Intern_project/getexample/magnus_examples
 elif [ ${hostid} == "zeus" ]; then
     location=/group/interns2016/getexample/zeus_examples
 fi

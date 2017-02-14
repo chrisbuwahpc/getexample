@@ -2,7 +2,7 @@
 
 echo `pwd`
 
-location=(/home/chris/interns2016/temp)
+location=(/group/interns2016/getexample/magnus_examples)
 
 test_list=`ls -l $location | grep '^d' | awk '{print $9}'`
 cd $location
@@ -17,5 +17,4 @@ for test_dir in $test_list ; do
 
      echo " "
      cd ..
-   fi 
 done
