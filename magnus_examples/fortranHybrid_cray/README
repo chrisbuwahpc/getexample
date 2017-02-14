@@ -2,9 +2,9 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBjECTIVE: to demostrate hybrid_hello.f90 example
-# on Magnus on Cray Environment. This is a mixed-mode job
-#  which includes both MPI and OpenMP jobs.
+# Example OBJECTIVE: to demostrate hybrid_hello.f90 example
+# on Magnus in the Cray Environment. This is a mixed-mode job
+# which includes both MPI and OpenMP jobs.
 # To run this code, we need to specify the total number of MPI tasks,
 # the number of MPI tasks per node,
 # the number of MPI tasks per socket, and
