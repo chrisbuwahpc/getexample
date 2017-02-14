@@ -16,7 +16,7 @@
 
 # SLURM directives
 # 
-# Here we specify to SLURM that we want 1 node (--ntasks=1)
+# Here we specify to SLURM that we want 1 node (--nodes=1)
 # Then, we modify the partition to --partition==workq
 # To run this code correctly, we comment out: --export=NONE
 # If this is not commented out, the code does not run.

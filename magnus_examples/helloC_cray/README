@@ -13,8 +13,6 @@
 # SLURM directives
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1)
-# To compile the code on Cray, we load the Cray environment:
-# module load PrgEnv-cray
 # To run the code, we simply type:
 # aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 

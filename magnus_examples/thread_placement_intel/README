@@ -21,6 +21,10 @@
 module swap PrgEnv-cray PrgEnv-intel 
 # Then, we set the total number of threads to 2
 # export OMP_NUM_THREADS=2
+# To run with multiple threads on Cray with the Intel environment, 
+# we need to disable AFFINITY as shown:
+# export KMP=AFFINITY=disabled 
+# If it is not disabled, the code runs on only one thread.
 # To launch a job, we specify to aprun 24 MPI tasks (-n 24)
 # with 24 MPI tasks on each node (-N 24).
 # with 2 threads for each task (-d 2)

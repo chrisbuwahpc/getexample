@@ -12,6 +12,7 @@
 # This information is located under hello_hybrid_cray.slurm
 # You can edit the SLURM as: emacs hello_hybrid_cray.slurm &
 
+
 # SLURM directives
 # 
 # Here we specify to SLURM we want 2 nodes (--nodes=2)

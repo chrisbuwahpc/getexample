@@ -1,19 +1,21 @@
 #!/bin/bash
 #DESCRIPTION Download user examples
 #LABEL Files
-hostid=`echo $HOST | cut -d "." -f 1`
+hostid=`echo $HOST | cut -d "-" -f 1`
 echo ${hostid}
 if [ ${hostid} == "magnus" ]; then 
-    location=/group/interns2016/getexample/magnus_examples
+    location=/home/cbording/Intern_project/getexample/magnus_examples
 elif [ ${hostid} == "zeus" ]; then
     location=/group/interns2016/getexample/zeus_examples
 fi
 
+#  Define getexample dir
+GE_DIR=/group/interns2016/getexample/src 
+  
 #TODO Make a list of users downloading examples?
 
 #Display help message if no example is given
-if [ "$1" == "" ]
-then
+if [ "$1" == "" ]; then
 	echo "Download an HPC example:"
 	echo "usage:"
 	echo "   getexample <examplename>"
@@ -29,7 +31,16 @@ then
 	echo "Possible example names:"
 	ls $location 
 	exit 0
+else
+temp_project_id=`echo $MYGROUP | cut -d "/" -f 3`
+if [[ ! -f /home/cbording/Intern_project/ge.log ]]; then 
+   touch /home/cbording/Intern_project/ge.log
 fi
+# date +%d/%m/%y
+echo " $1 $USER "$temp_project_id" `date +%F`" >> /home/cbording/Intern_project/ge.log
+
+fi
+
 
 #TODO Check to see if folder already exists
 cp -r -v -u ${location}/$1 .
