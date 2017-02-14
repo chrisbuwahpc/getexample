@@ -20,37 +20,50 @@ for test_dir in $test_list ; do
 # search strings for sed update
 # fortran_helloOpenMP_*
 # "# is an OpenMP code " -> omp_hello.f 
+
 # fortran_helloworld_*
 # "# It prints " -> hello_world.f90
+
 # helloC_*
 # "# and runs on a single node." -> helloworld.c
+
 # fortranHybrid_*
-# "#  which includes both MPI and OpenMP " -> hybrid_hello.f90
+# "on Magnus" -> hybrid_hello.f90
+
 # fortranMPI_*
-# "# hello_mpi.f90 is" -> hello_mpi.f90
+# "# https:\/\/computing.llnl.edu" -> hello_mpi.f90
+
 # hello_hybrid_c_* 
 # "# http:www.slac.stanford.edu" -> hello_hybrid.c 
-# hello_mpi_c_*
-# "# https://www.dartmouth.edu" -> hello_mpi.c
-#  hello_NUMA_*
-# "# https://computing.llnl.edu" -> omp_hello.c 
-# helloOmp_*C
-# "# https://computing.llnl.edu" -> omp_hello.c
-# partially_occupied_nodes_*
-# "# https://people.sc.fsu.edu" -> hello_mpi.f90
-# task_placement_*
-# "# https://people.sc.fsu.edu" -> hello_mpi.f90
-# thread_placement_*
-# "# with thread placement" -> hybrid_hello.f90
 
-if [[ -f omp_hello.f ]]; then
-    echo "delete omp_hello.f"
-    rm omp_hello.f
+# hello_mpi_c_*
+# "# https:\/\/www.dartmouth.edu" -> hello_mpi.c
+
+#  hello_NUMA_*
+# "# https:\/\/computing.llnl.edu" -> omp_hello.c 
+
+# helloOmp_*C
+# "# https:\/\/computing.llnl.edu" -> omp_hello.c
+
+# partially_occupied_nodes_*
+# "# https:\/\/people.sc.fsu.edu" -> hello_mpi.f90
+
+# task_placement_*
+# "# https:\/\/people.sc.fsu.edu" -> hello_mpi.f90
+
+# thread_placement_*
+# "on Magnus" -> hybrid_hello.f90
+
+
+
+if [[ -f hybrid_hello.f90 ]]; then
+    echo "delete hybrid_hello.f90"
+    rm hybrid_hello.f90
  
 
-sed -i '/\# is an OpenMP code /a \
-\# cp the omp_hello.f source code\
-cp \$GE_DIR/omp_hello.f .\
+sed -i '/on Magnus/a \
+\# cp the hybrid_hello.f90 source code\
+cp \$GE_DIR/hybrid_hello.f90 .\
 \
 ' README
 

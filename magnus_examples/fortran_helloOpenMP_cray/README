@@ -27,14 +27,15 @@ ftn -O2 -h omp omp_hello.f -o hello_omp_cray
 
 # To submit the job to Magnus
 sbatch hello_omp_cray.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
 
 echo "The sbatch command returns what jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo "Your job is deleted from the scratch."
 echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/helloomp_f_cray_results/"
+echo "Your results are now located in ${MYGROUP}/helloomp_f_cray_results/${jobid}"
 echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/helloomp_f_cray_results/jobID/"
+echo "cd ${MYGROUP}/helloomp_f_cray_results/${jobid}/"
 echo "To view the results, use the cat command and type:"
 echo "cat hello_omp_cray.log"
