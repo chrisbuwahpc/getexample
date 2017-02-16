@@ -76,7 +76,8 @@ sed -i "s/Your job is deleted from the scratch/Your job will be run in \$MYSCRAT
 sed -i "s/It is now moved to your group./ /g" README
 
 sed -i '/echo \"cat /a \
-echo \"more infomation about Magnus can be found at:\"\
+echo \" \"\
+echo \"more information about Magnus can be found at:\"\
 echo \" https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide\"\
 echo \" \"\
 echo \"more information about SLURM and aprun can be found at:\"\
