@@ -1,6 +1,6 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
-#SBATCH --partition=debugq
+#SBATCH --job-name=GE-fortran_helloworld_cray
+#SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00   
 #SBATCH --export=NONE
@@ -11,7 +11,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_fortran_cray
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_fortran_helloworld_cray/$SLURM_JOBID
 RESULTS=$MYGROUP/hellofortran_cray_results/$SLURM_JOBID
 
 ###############################################
@@ -66,7 +66,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo fortran_helloworld_cray job finished at  `date`
 
 
 

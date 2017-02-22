@@ -2,9 +2,13 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBJECTIVE: to demostrate hybrid_hello.f90 example
-# on Magnus in the Cray Environment. This is a mixed-mode job
-# which includes both MPI and OpenMP jobs.
+# Example OBjECTIVE: to demostrate hybrid_hello.f90 example
+# on Magnus on Cray Environment. This is a mixed-mode job
+# cp the hybrid_hello.f90 source code
+cp $GE_DIR/hybrid_hello.f90 .
+
+
+#  which includes both MPI and OpenMP jobs.
 # To run this code, we need to specify the total number of MPI tasks,
 # the number of MPI tasks per node,
 # the number of MPI tasks per socket, and
@@ -30,14 +34,31 @@ ftn -O2 -h omp hybrid_hello.f90 -o hello_hybrid_cray
 
 # To submit the job to Magnus
 sbatch hello_hybrid_cray.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
 
-echo "The sbatch command returns what jobid is for this job."
+echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
-echo "Your job is deleted from the scratch."
-echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/fortranhybrid_cray_results/"
-echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/fortranhybrid_cray_results/jobID/"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_fortranHybrid_cray/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/fortranHybrid_cray_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/fortranHybrid_cray_results/${jobid}"
+echo " " 
 echo "To view the results, use the cat command and type:"
-echo "cat hello_hybrid_cray.log"
+echo "cat thread_placement_cray.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " "  
+echo "more information about Magnus can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "

@@ -1,6 +1,6 @@
 #!/bin/bash -l
-#SBATCH --job-name=hostname
-#SBATCH --partition=debugq
+#SBATCH --job-name=lammps_mpi
+#SBATCH --partition=workq
 #SBATCH --nodes=2
 #SBATCH --time=00:20:00
 #SBATCH --export=NONE
@@ -59,7 +59,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo lammps_mpi job finished at  `date`
 
 # To swap from GNU environment back to the default program environment:
 module swap PrgEnv-gnu PrgEnv-cray

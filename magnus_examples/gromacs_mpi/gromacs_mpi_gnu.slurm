@@ -1,6 +1,6 @@
 #!/bin/bash -l
-#SBATCH --job-name=hostname
-#SBATCH --partition=debugq
+#SBATCH --job-name=gromacs_mpi
+#SBATCH --partition=workq
 #SBATCH --nodes=2
 #SBATCH --time=00:40:00
 #SBATCH --export=NONE
@@ -89,7 +89,7 @@ cd $HOME
 
 #rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo gromacs_mpi job finished at  `date`
 
 
 

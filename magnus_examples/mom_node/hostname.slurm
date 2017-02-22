@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH --job-name=hostname
+#SBATCH --job-name=mom_node
 #SBATCH --partition=workq
 #SBATCH --nodes=2
 #SBATCH --time=00:05:00
@@ -12,8 +12,8 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 JOBID=$SLURM_JOBID
 # Define directory paths
-SCRATCH=$MYSCRATCH/run_hostname/${JOBID}
-RESULTS=$MYGROUP/hostname_results/${JOBID}
+SCRATCH=$MYSCRATCH/run_mom_node/${JOBID}
+RESULTS=$MYGROUP/mom_node_results/${JOBID}
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -31,7 +31,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hostname.log
+OUTPUT=mom_node.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -39,17 +39,17 @@ OUTPUT=hostname.log
 
 cd $SCRATCH
  
-echo "/bin/hostname"  
-/bin/hostname  
+echo "/bin/mom_node"  
+/bin/mom_node  
 
-echo "/bin/hostname" > ${OUTPUT}   
-/bin/hostname  >> ${OUTPUT}
+echo "/bin/mom_node" > ${OUTPUT}   
+/bin/mom_node  >> ${OUTPUT}
 
-echo "aprun -n -N 8 /bin/hostname"  
-aprun -n 16 -N 8 /bin/hostname
+echo "aprun -n -N 8 /bin/mom_node"  
+aprun -n 16 -N 8 /bin/mom_node
 
-echo "aprun -n -N 8 /bin/hostname"   >> ${OUTPUT}
-aprun -n 16 -N 8 /bin/hostname  >> ${OUTPUT}
+echo "aprun -n -N 8 /bin/mom_node"   >> ${OUTPUT}
+aprun -n 16 -N 8 /bin/mom_node  >> ${OUTPUT}
 
 
 #############################################
@@ -64,5 +64,5 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo mom_node job finished at  `date`
 

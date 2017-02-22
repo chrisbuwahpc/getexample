@@ -1,6 +1,6 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
-#SBATCH --partition=debugq
+#SBATCH --job-name=hello_NUMA_gnu
+#SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
@@ -14,7 +14,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_numa_gnu
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hello_NUMA_gnu/$SLURM_JOBID
 RESULTS=$MYGROUP/hello_numa_gnu_results/$SLURM_JOBID
 
 ###############################################
@@ -58,7 +58,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo hello_NUMA_gnu job finished at  `date`
 
 # To swap from GNU environment to the default program environment:
 module swap PrgEnv-gnu PrgEnv-cray

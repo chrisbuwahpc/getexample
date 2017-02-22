@@ -1,6 +1,6 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
-#SBATCH --partition=debugq
+#SBATCH --job-name=GE-hello_hybrid_c_gnu
+#SBATCH --partition=workq
 #SBATCH --nodes=2
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
@@ -14,7 +14,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_hybrid_gnu
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hello_hybrid_c_gnu/$SLURM_JOBID
 RESULTS=$MYGROUP/hellohybrid_c_gnu_results/$SLURM_JOBID
 
 ###############################################
@@ -59,7 +59,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo hello_hybrid_c_gnu job finished at  `date`
 
 
 # To swap from GNU environment to the default program environment:

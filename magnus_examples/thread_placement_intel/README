@@ -4,6 +4,10 @@
 #
 # Example OBjECTIVE: to demostrate hybrid_hello.f90 example
 # with thread placement on Magnus on the Intel environment. 
+# cp the hybrid_hello.f90 source code
+cp $GE_DIR/hybrid_hello.f90 .
+
+
 # This is a hybrid MPI/OpenMP job where we run 24 MPI tasks
 # with 2 OpenMP threads per MPI task.
 # To run this code, we need to specify the number of MPI tasks,
@@ -37,17 +41,31 @@ ftn -O2 -openmp hybrid_hello.f90 -o thread_placement_intel
 
 # To submit the job to Magnus
 sbatch thread_placement_intel.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
 
-echo "The sbatch command returns what jobid is for this job."
+echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
-echo "Your job is deleted from the scratch."
-echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/thread_placement_intel_results/"
-echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/thread_placement_intel_results/jobID/"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_thread_placement_intel/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/thread_placement_intel_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/thread_placement_intel_results/${jobid}"
+echo " " 
 echo "To view the results, use the cat command and type:"
-echo "cat thread_placement_intel.log"
-
-# To swap from Intel environment to the default program environment:
-module swap PrgEnv-intel PrgEnv-cray
+echo "cat thread_placement_cray.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " "  
+echo "more information about Magnus can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "

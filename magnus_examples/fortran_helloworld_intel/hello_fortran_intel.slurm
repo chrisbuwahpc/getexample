@@ -1,6 +1,6 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
-#SBATCH --partition=debugq
+#SBATCH --job-name=GE-fortran_helloworld_intel
+#SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
@@ -14,7 +14,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_fortran_intel
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_fortran_helloworld_intel/$SLURM_JOBID
 RESULTS=$MYGROUP/hellofortran_intel_results/$SLURM_JOBID
 
 ###############################################
@@ -69,7 +69,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo fortran_helloworld_intel job finished at  `date`
 
 
 # To swap from Intel environment to the default program environment:

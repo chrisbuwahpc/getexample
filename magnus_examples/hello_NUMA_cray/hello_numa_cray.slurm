@@ -1,6 +1,6 @@
 #!/bin/bash --login
-#SBATCH --job-name=hostname
-#SBATCH --partition=debugq
+#SBATCH --job-name=hello_NUMA_cray
+#SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
@@ -11,7 +11,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_numa_cray
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hello_NUMA_cray/$SLURM_JOBID
 RESULTS=$MYGROUP/hello_numa_cray_results/$SLURM_JOBID
 
 ###############################################
@@ -56,7 +56,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo hello_NUMA_cray job finished at  `date`
 
 
 

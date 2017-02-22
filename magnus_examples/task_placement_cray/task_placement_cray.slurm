@@ -1,6 +1,6 @@
 #!/bin/bash -l
-#SBATCH --job-name=GE-hostname
-#SBATCH --partition=debugq
+#SBATCH --job-name=GE-task_placement_cray
+#SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
@@ -11,7 +11,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=task_placement_cray
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_task_placement_cray/$SLURM_JOBID
 RESULTS=$MYGROUP/task_placement_cray_results/$SLURM_JOBID
 
 ###############################################
@@ -54,7 +54,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo task_placement_cray job finished at  `date`
 
 
 

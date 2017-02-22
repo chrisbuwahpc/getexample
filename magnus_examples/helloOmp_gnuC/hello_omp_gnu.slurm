@@ -1,6 +1,6 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
-#SBATCH --partition=debugq
+#SBATCH --job-name=GE-helloOmp_gnuC
+#SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
@@ -14,7 +14,7 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_omp_gnu
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_helloOmp_gnuC/$SLURM_JOBID
 RESULTS=$MYGROUP/helloomp_c_gnu_results/$SLURM_JOBID
 
 ###############################################
@@ -58,7 +58,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo helloOmp_gnuC job finished at  `date`
 
 
 # To swap from GNU environment to the default program environment:
