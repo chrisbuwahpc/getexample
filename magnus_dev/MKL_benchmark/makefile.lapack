@@ -1,0 +1,21 @@
+# To run this make file
+# make sure that BLAS AND LAPACk is loaded then type
+#  make -f makefile.lapack
+# 
+
+EXE=linear_solve
+
+FFLAGS =  
+LFLAGS =
+CFLAGS = -O2 -m64
+
+LIBS = -lmkl_intel_lp64 -lmkl_sequential -lmkl_core  -lm
+
+$(EXE): $(EXE).f
+	$(FC) $(LFLAGS) -o $(EXE) $(EXE).f  $(LIBS)
+
+.f.o:  
+	$(FC) $(FFLAGS) $< -o $(<:.f=.o)
+
+clean:
+	$(RM) $(EXE)
