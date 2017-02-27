@@ -1,0 +1,20 @@
+# This is a simple C file that multiplies two 6000x6000 matrices together
+
+# to compile using the MKL Libraries:
+echo "=== compiling/linking to MKL library ==="
+module purge
+module load GNU MKL
+make -f makefile.mkl clean
+make -f makefile.mkl
+
+
+# and the time single threaded
+echo "=== timing linear solve using MKL library ==="
+export MKL_NUM_THREADS=1
+time ./dgemm_ex.exe  
+
+# and the time multi-threaded
+echo "=== timing linear solve using MKL library ==="
+export MKL_NUM_THREADS=8
+time ./dgemm_ex.exe  
+
