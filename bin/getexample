@@ -6,10 +6,11 @@
 hostid=`echo ${PAWSEY_CLUSTER}`
 echo ${hostid}
 if [ ${hostid} == "magnus" ]; then 
-    location=${GE_DIR}/magnus_examples
+    declare -a location=("${GE_DIR}/magnus_examples")
 elif [ ${hostid} == "zeus" ]; then
-    location=${GE_DIR}/zeus_examples:${GE_DIR}/zythos_examples
+    declare -a location=("${GE_DIR}/zeus_examples" "${GE_DIR}/zythos_examples")
 fi
+N_dir=${#location[@]}
 
 #TODO Make a list of users downloading examples?
 
@@ -28,7 +29,12 @@ if [ "$1" == "" ]; then
 	echo "  getexample helloworld"
 	echo ""
 	echo "Possible example names:"
-	ls $location 
+	for (( i = 1; i<${N_dir}+1;i++ ));
+	do 
+	    ls -d ${location[$i-1]}
+	    ls ${location[$i-1]}
+	    echo " " 
+	done
 	exit 0
 else
 temp_project_id=`echo $MYGROUP | cut -d "/" -f 3`
@@ -40,5 +46,12 @@ echo " $1 $USER "$temp_project_id" `date +%F`" >> ${HOME}/.gehist
 
 fi
 
-# cp example to users current directory
-cp -r -v -u ${location}/$1 .
+
+for (( i = 1; i<${N_dir}+1;i++ ));
+do 
+   if [[ -d ${location[$i-1]}/$1 ]]; then
+      echo found directory
+#cp example to users current directory
+      cp -r -v -u ${location[$i-1]}/$1 .
+   fi
+done
