@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
+#SBATCH --job-name=GE-hello_hybrid_c_gnu
 #SBATCH --partition=workq
 #SBATCH --account=interns2016
 #SBATCH --nodes=2
@@ -18,8 +18,8 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_hybrid_gnu
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hellohybridc_gnu_results_zeus/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hello_hybrid_c_gnu/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_hybrid_c_gnu_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -37,7 +37,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_hybrid_gnu.log
+OUTPUT=hello_hybrid_c_gnu.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -63,4 +63,4 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo hello_hybrid_c_gnu job finished at  `date`

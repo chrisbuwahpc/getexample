@@ -7,8 +7,8 @@
 # which includes both MPI and OpenMP jobs.
 # hello_hybrid.c code is taken from
 # http://www.slac.stanford.edu/comp/unix/farm/mpi_and_openmp.html
-# To run this code, we need to edit the partition, 
-# load the necessary modules,
+ 
+# To run this code load the necessary modules.,
 # specify the total number of MPI tasks and
 # the number of OpenMP threads.
 # This information is located under hello_hybrid_intel.slurm
@@ -17,7 +17,7 @@
 # SLURM directives
 # 
 # Here specify to SLURM that we want 2 nodes (--node=2)
-# We the modify the partition to --partition==workq
+
 # To run this code correctly on Zeus, 
 # we need to remove --export=NONE
 # If it is still included in the SLURM, 
@@ -43,14 +43,33 @@ mpicc -O2 -qopenmp hello_hybrid.c -o hello_hybrid_intel
 
 # To submit the job to Zeus
 sbatch hello_hybrid_intel.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
 
-echo "The sbatch command returns what jobid is for this job."
+echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
-echo "Your job is deleted from the scratch."
-echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hellohybridc_intel_results_zeus/"
-echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hellohybridc_intel_results_zeus/jobID/"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_hello_hybrid_c_intel/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/hello_hybrid_c_intel_results_zeus/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/hello_hybrid_c_intel_results_zeus/${jobid}"
+echo " " 
 echo "To view the results, use the cat command and type:"
-echo "cat hello_hybrid_intel.log"
+echo "cat hello_hybrid_c_intel.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+echo " "  
+echo "more information about Zeus/Zython can be found at:"
+echo " https://support.pawsey.org.au/documentation/pages/viewpage.action?pageId=2162999"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "
+
