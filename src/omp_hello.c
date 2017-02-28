@@ -1,4 +1,5 @@
-\\ this example is taken from the website :https://computing.llnl.gov/tutorials\\\ openMP/samples/C/omp_hello.c
+/* this example is taken from the website  */
+/* https://computing.llnl.gov/tutorials/openMP/samples/C/omp_hello.c */
 
 #include <omp.h>
 #include <stdio.h>
@@ -18,5 +19,5 @@ int main(int argc, char *argv[])
 		  printf("Number of threads = %d\n", nthreads);
 		}
 	}
-  return(0)
+  return(0);
 }
