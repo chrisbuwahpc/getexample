@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
+#SBATCH --job-name=GE-helloC_intel
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00
@@ -17,8 +17,8 @@ module list
 #  These are generic variables
 
 EXECUTABLE=helloworld_intel
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/helloworld_intel_results/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_helloC_intel/$SLURM_JOBID
+RESULTS=$MYGROUP/helloC_intel_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -39,7 +39,7 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=helloworld_intel.log
+OUTPUT=helloC_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -64,7 +64,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo helloC_intel job finished at  `date`
 
 
 
