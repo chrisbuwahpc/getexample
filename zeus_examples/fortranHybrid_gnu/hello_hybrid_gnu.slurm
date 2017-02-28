@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
+#SBATCH --job-name=GE-fortranHybrid_gnu
 #SBATCH --partition=workq
 #SBATCH --account=interns2016
 #SBATCH --nodes=2
@@ -17,8 +17,8 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_hybrid_gnu
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hellohybrid_gnu_results_zeus/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_fortranHybrid_gnu/$SLURM_JOBID
+RESULTS=$MYGROUP/fortranHybrid_gnu_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -36,7 +36,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_hybrid_gnu.log
+OUTPUT=fortranHybrid_gnu.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -62,4 +62,4 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo fortranHybrid_gnu job finished at  `date`
