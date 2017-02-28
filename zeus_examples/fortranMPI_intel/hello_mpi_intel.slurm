@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
+#SBATCH --job-name=GE-fortranMPI_intel
 #SBATCH --partition=workq
 #SBATCH --account=interns2016
 #SBATCH --nodes=2
@@ -19,8 +19,8 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_mpi_intel
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hellompi_intel_results_zeus/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_fortranMPI_intel/$SLURM_JOBID
+RESULTS=$MYGROUP/fortranMPI_intel_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -38,7 +38,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_mpi_intel.log
+OUTPUT=fortranMPI_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -62,7 +62,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo fortranMPI_intel job finished at  `date`
 
 
 
