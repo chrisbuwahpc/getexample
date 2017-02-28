@@ -54,6 +54,8 @@ echo " "
 echo " PAWSEY user shortcuts! " 
 echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
 echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
 echo " "  
 echo "more information about Magnus can be found at:"
 echo " https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide"
