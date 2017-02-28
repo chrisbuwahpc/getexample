@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
+#SBATCH --job-name=GE-helloOmpC_pgi
 #SBATCH --partition=workq
 #SBATCH --nodes=1
 #SBATCH --time=00:10:00
@@ -20,8 +20,8 @@ module list
 #  These are generic variables
 
 EXECUTABLE=hello_omp_pgi
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/helloomp_pgi_results_zeus/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_helloOmpC_pgi/$SLURM_JOBID
+RESULTS=$MYGROUP/helloOmpC_pgi_results_zeus/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -39,7 +39,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_omp_pgi.log
+OUTPUT=helloOmpC_pgi.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -65,7 +65,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo helloOmpC_pgi job finished at  `date`
 
 
 

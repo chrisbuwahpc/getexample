@@ -4,12 +4,16 @@
 #
 # Example OBjECTIVE: to demostrate omp_hello.c example
 # on Zeus with PGI compiler.
-# omp_hello.f code is taken from
+# omp_hello.c code is taken from
 # https://computing.llnl.gov/tutorials/openMP/exercise.html
+# cp the omp_hello.c source code
+cp $GE_DIR/src/omp_hello.c .
+
+
 # This code is an OpenMP example that runs one 16-thread
 # OpenMP instance with one node.
-# To run this code, we need to edit the partition,
-# load the necessary modules
+
+# To run this code load the necessary modules.
 # and specify the total number of OpenMP threads.
 # This information is located under hello_omp_pgi.slurm
 # You can edit the SLURM as: emacs hello_omp_pgi.slurm &
@@ -38,14 +42,33 @@ pgcc -mp omp_hello.c -o hello_omp_pgi
 
 # To submit the job to Zeus
 sbatch hello_omp_pgi.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
 
-echo "The sbatch command returns what jobid is for this job."
+echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
-echo "Your job is deleted from the scratch."
-echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/helloomp_pgi_results_zeus/"
-echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/helloomp_pgi_results_zeus/jobID/"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_helloOmpC_pgi/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/helloOmpC_pgi_results_zeus/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/helloOmpC_pgi_results_zeus/${jobid}"
+echo " " 
 echo "To view the results, use the cat command and type:"
-echo "cat hello_omp_pgi.log"
+echo "cat helloOmpC_pgi.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+echo " "  
+echo "more information about Zeus/Zython can be found at:"
+echo " https://support.pawsey.org.au/documentation/pages/viewpage.action?pageId=2162999"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "
+
