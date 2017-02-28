@@ -6,6 +6,10 @@
 # with PGI compiler on Zeus.
 # hello_world.f90 is a simple FORTRAN code prints "Hello World!" 
 # and runs on a single node.
+# cp the hello_world.f90 source code
+cp $GE_DIR/src/hello_world.f90 .
+
+
 # To run this code, we need to specify the number of nodes used
 # and change from GNU compiler to PGI.
 # This information is located under hello_fortran_pgi.slurm
@@ -14,8 +18,8 @@
 # SLURM directives
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1)
-# We then change the partition to --partition=workq
-# To run this code correctl, we need to remove --export=NONE
+
+# To run this code correctly, we need to remove --export=NONE
 # If this is included in the SLURM, the code does not run properly.
 # To compile this code with PGI, we swap
 # from GNU to PGI as shown below:
@@ -29,14 +33,33 @@ pgf90 -O2 hello_world.f90 -o hello_fortran_pgi
 
 # To submit the job to Zeus
 sbatch hello_fortran_pgi.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
 
-echo "The sbatch command returns what jobid is for this job."
+echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
-echo "Your job is deleted from the scratch."
-echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hellofortran_pgi_results_zeus/"
-echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hellofortran_pgi_results_zeus/jobID/"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_fortran_helloworld_pgi/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/fortran_helloworld_pgi_results_zeus/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/fortran_helloworld_pgi_results_zeus/${jobid}"
+echo " " 
 echo "To view the results, use the cat command and type:"
-echo "cat hello_fortran_pgi.log"
+echo "cat fortran_helloworld_pgi.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+echo " "  
+echo "more information about Zeus/Zython can be found at:"
+echo " https://support.pawsey.org.au/documentation/pages/viewpage.action?pageId=2162999"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "
+
