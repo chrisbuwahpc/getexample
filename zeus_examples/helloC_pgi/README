@@ -4,8 +4,7 @@
 #
 # Example OBJECTIVE: to demostrate helloworld.c 
 # with PGI compiler on Zeus. 
-# To run this code, we need to edit the partition and 
-# load the necessary modules.
+# To run this code, load the necessary modules.
 # This information is located under hello_pgi_c.slurm
 # You can edit the SLURM as: emacs hello_pgi_c.slurm &
 
