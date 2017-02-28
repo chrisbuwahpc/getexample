@@ -30,7 +30,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hellompi_partial_cray.log
+OUTPUT=partially_occupied_nodes_cray.log
 
 #############################################
 #   Copy input files to $SCRATCH

@@ -33,7 +33,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=helloworld_intel.log
+OUTPUT=helloC_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH

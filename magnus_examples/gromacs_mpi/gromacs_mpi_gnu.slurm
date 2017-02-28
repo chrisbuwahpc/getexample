@@ -39,7 +39,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=gromacs.log
+OUTPUT=gromacs_mpi.log
 
 #############################################
 #   Copy input files to $SCRATCH

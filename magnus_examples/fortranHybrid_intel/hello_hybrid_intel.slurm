@@ -33,7 +33,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_hybrid_intel.log
+OUTPUT=fortranHybrid_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH

@@ -30,7 +30,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=mpifortran_cray.log
+OUTPUT=fortranMPI_cray.log
 
 #############################################
 #   Copy input files to $SCRATCH

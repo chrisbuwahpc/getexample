@@ -33,7 +33,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hellompi_partial_intel.log
+OUTPUT=partially_occupied_nodes_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH

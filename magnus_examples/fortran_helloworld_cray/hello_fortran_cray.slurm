@@ -30,7 +30,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_fortran_cray.log
+OUTPUT=fortran_helloworld_cray.log
 
 #############################################
 #   Copy input files to $SCRATCH

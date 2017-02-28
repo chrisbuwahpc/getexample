@@ -33,7 +33,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_mpi_gnu.log
+OUTPUT=hello_mpi_c_gnu.log
 
 #############################################
 #   Copy input files to $SCRATCH

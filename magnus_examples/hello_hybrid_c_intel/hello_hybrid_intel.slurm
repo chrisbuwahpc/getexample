@@ -33,7 +33,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_hybrid_intel.log
+OUTPUT=hello_hybrid_c_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH

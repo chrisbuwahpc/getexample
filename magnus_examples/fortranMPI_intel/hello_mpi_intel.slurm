@@ -33,7 +33,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=mpifortran_intel.log
+OUTPUT=fortranMPI_intel.log
 
 #############################################
 #   Copy input files to $SCRATCH

@@ -30,7 +30,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_omp_cray.log
+OUTPUT=helloOmp_crayC.log
 
 #############################################
 #   Copy input files to $SCRATCH

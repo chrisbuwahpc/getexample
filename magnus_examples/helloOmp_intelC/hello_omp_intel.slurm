@@ -33,7 +33,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_omp_intel.log
+OUTPUT=helloOmp_intelC.log
 
 #############################################
 #   Copy input files to $SCRATCH
