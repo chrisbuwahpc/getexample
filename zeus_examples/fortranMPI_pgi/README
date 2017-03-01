@@ -10,7 +10,8 @@
 # https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.html
 # cp the hello_mpi.f90 source code
 cp $GE_DIR/src/hello_mpi.f90 .
-
+# patch hello_mpi.f90
+sed -i "s/use mpi/include \"mpif.h\"/g" hello_mpi.f90
 
  
 # To run this code load the necessary modules.
