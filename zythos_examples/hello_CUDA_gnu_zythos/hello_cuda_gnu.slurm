@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
+#SBATCH --job-name=GE-hello_CUDA_gnu_zythos
 #SBATCH --partition=zythos
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=6
@@ -18,8 +18,8 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_cuda_gnu
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hello_cuda_zythos_results/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hello_CUDA_gnu_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_CUDA_gnu_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -37,7 +37,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_cuda_gnu.log
+OUTPUT=hello_CUDA_gnu_zythos.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -61,7 +61,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo hello_CUDA_gnu_zythos job finished at  `date`
 
 
 
