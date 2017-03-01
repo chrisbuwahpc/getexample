@@ -2,7 +2,7 @@
 # Request 24 cores [--ntasks=4 and --cpus-per-task=6]
 # Note that --ntasks is specified, not --nodes.
 
-#SBATCH --job-name=GE-hostname
+#SBATCH --job-name=GE-hello_mpi_c_pgi_zythos
 #SBATCH --partition=zythos
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=6
@@ -25,8 +25,8 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_mpi_pgi
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/hellompi_pgi_results_zythos/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_hello_mpi_c_pgi_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/hello_mpi_c_pgi_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -44,7 +44,7 @@ echo the results directory is $RESULTS
 
 ################################################
 # declare the name of the output file or log file
-OUTPUT=hello_mpi_pgi.log
+OUTPUT=hello_mpi_c_pgi_zythos.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -68,7 +68,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo hello_mpi_c_pgi_zythos job finished at  `date`
 
 
 

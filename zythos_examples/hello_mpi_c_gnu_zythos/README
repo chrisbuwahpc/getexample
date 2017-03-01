@@ -2,13 +2,17 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBjECTIVE: to demonstrate hello_mpi.c example
+# Example OBJECTIVE: to demonstrate hello_mpi.c example
 # on Zythos with GNU compiler. 
 # This code is an MPI example that requests 4 nodes with 6 cores each
 # giving 24 cores in total.
 # This example is taken from:
 # https://www.dartmouth.edu/~rc/classes/intro_mpi/hello_world_ex.html
-# To run this code, we need to edit the partition, the number of nodes
+# cp the hello_mpi.c source code
+cp $GE_DIR/src/hello_mpi.c .
+
+
+ the number of nodes
 # and cores and load the necessary modules.
 # This information is located under hello_mpi_gnu.slurm
 # You can edit the SLURM as: emacs hello_mpi_gnu.slurm &
@@ -36,15 +40,32 @@ mpicc -O2 hello_mpi.c -o hello_mpi_gnu
 
 # To submit the job to Zythos
 sbatch hello_mpi_gnu.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
 
-echo "The sbatch command returns what jobid is for this job."
+echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
-echo "Your job is deleted from the scratch."
-echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/hellompi_gnu_results_zythos/"
-echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/hellompi_gnu_results_zythos/jobID/"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_hello_mpi_c_gnu_zythos/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/hello_mpi_c_gnu_zythos_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/hello_mpi_c_gnu_zythos_results/${jobid}"
+echo " " 
 echo "To view the results, use the cat command and type:"
-echo "cat hello_mpi_gnu.log"
-
+echo "cat hello_mpi_c_gnu_zythos.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+echo " "  
+echo "more information about Zythos can be found at:"
+echo " https://support.pawsey.org.au/documentation/pages/viewpage.action?pageId=2162999"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "
