@@ -2,7 +2,7 @@
 # Request 24 cores [--ntasks=4 and --cpus-per-task=6]
 # Note that --ntasks is specified, not --nodes.
 
-#SBATCH --job-name=GE-hostname
+#SBATCH --job-name=GE-fortranMPI_gnu_zythos
 #SBATCH --partition=zythos
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=6
@@ -23,8 +23,8 @@ module list
 #  These are generic variables
 
 EXECUTABLE=hello_mpi_gnu
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/zythos_hellompi_gnu_results/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_fortranMPI_gnu_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/fortranMPI_gnu_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -43,7 +43,7 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=hello_mpi_gnu.log
+OUTPUT=fortranMPI_gnu_zythos.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -67,7 +67,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo fortranMPI_gnu_zythos job finished at  `date`
 
 
 
