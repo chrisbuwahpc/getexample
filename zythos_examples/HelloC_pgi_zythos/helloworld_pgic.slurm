@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-hostname
+#SBATCH --job-name=GE-HelloC_pgi_zythos
 #SBATCH --partition=zythos
 #SBATCH --ntasks=1
 #SBATCH --time=00:05:00
@@ -19,8 +19,8 @@ module list
 #  These are generic variables
 
 EXECUTABLE=helloworld_pgi
-SCRATCH=$MYSCRATCH/run_hostname/$SLURM_JOBID
-RESULTS=$MYGROUP/zythosC_pgi_results/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_HelloC_pgi_zythos/$SLURM_JOBID
+RESULTS=$MYGROUP/HelloC_pgi_zythos_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -41,7 +41,7 @@ echo the results directory is $RESULTS
 ################################################
 # declare the name of the output file or log file
 
-OUTPUT=helloworld_pgi.log
+OUTPUT=HelloC_pgi_zythos.log
 
 #############################################
 #   Copy input files to $SCRATCH
@@ -66,7 +66,7 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo hostname job finished at  `date`
+echo HelloC_pgi_zythos job finished at  `date`
 
 
 
