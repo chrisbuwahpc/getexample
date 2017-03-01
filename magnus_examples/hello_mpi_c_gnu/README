@@ -7,7 +7,7 @@
 # hello_mpi.c code is taken from
 # https://www.dartmouth.edu/~rc/classes/intro_mpi/hello_world_ex.html
 # cp the hello_mpi.c source code
-cp $GE_DIR/hello_mpi.c .
+cp $GE_DIR/src/hello_mpi.c .
 
 
 # hello_mpi.c is an MPI code that runs on 2 nodes 

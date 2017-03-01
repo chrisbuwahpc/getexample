@@ -5,7 +5,7 @@
 # Example OBjECTIVE: to demostrate hybrid_hello.f90 example
 # with thread placement on Magnus on the Cray environment. 
 # cp the hybrid_hello.f90 source code
-cp $GE_DIR/hybrid_hello.f90 .
+cp $GE_DIR/src/hybrid_hello.f90 .
 
 
 # This is a hybrid MPI/OpenMP job where we run 24 MPI tasks

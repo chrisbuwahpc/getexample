@@ -7,7 +7,7 @@
 # helloworld.c is a simple c code that prints "Hello World!" 
 # and runs on a single node.
 # cp the helloworld.c source code
-cp $GE_DIR/helloworld.c .
+cp $GE_DIR/src/helloworld.c .
 
 
 # To run this code, we need to specify the number of nodes used.

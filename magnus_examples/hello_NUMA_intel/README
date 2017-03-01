@@ -8,7 +8,7 @@
 # omp_hello.c is taken from 
 # https://computing.llnl.gov/tutorials/openMP/exercise.html
 # cp the omp_hello.c source code
-cp $GE_DIR/omp_hello.c .
+cp $GE_DIR/src/omp_hello.c .
 
 
 # To run this code,we need to specify the number of tasks

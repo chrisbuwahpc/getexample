@@ -7,7 +7,7 @@
 # hello_mpi.f90 code is taken from
 # https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.f90
 # cp the hello_mpi.f90 source code
-cp $GE_DIR/hello_mpi.f90 .
+cp $GE_DIR/src/hello_mpi.f90 .
 
 
 # hello_mpi.f90 is an MPI code that runs on 2 nodes 

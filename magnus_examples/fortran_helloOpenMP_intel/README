@@ -6,7 +6,7 @@
 # with Intel Environment where omp_hello.f
 # is an OpenMP code and restricted to a single node.
 # cp the omp_hello.f source code
-cp $GE_DIR/omp_hello.f .
+cp $GE_DIR/src/omp_hello.f .
 
 
 # omp_hello.f is taken from

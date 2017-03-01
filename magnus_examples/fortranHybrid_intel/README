@@ -5,7 +5,7 @@
 # Example OBjECTIVE: to demostrate hybrid_hello.f90 example
 # on Magnus with Intel compiler. This is a mixed-mode job
 # cp the hybrid_hello.f90 source code
-cp $GE_DIR/hybrid_hello.f90 .
+cp $GE_DIR/src/hybrid_hello.f90 .
 
 
 # which includes both MPI and OpenMP jobs.
