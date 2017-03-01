@@ -7,6 +7,8 @@
 # which includes both MPI and OpenMP jobs.
 # hello_hybrid.c code is taken from
 # http://www.slac.stanford.edu/comp/unix/farm/mpi_and_openmp.html
+# cp the hello_hybrid.c source code
+cp $GE_DIR/src/hello_hybrid.c .
  
 # To run this code load the necessary modules.,
 # specify the total number of MPI tasks and

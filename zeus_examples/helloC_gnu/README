@@ -6,6 +6,9 @@
 # with GNU compiler.
 # It is a simple code that prints out "Hello World!"
 # To run the code, we specify the number of nodes used.
+# cp the helloworld.c source code
+cp $GE_DIR/src/helloworld.c .
+
 # This information is located under hello_gnu_c.slurm
 # You can edit the SLURM as: emacs hello_gnu_c.slurm &
 
