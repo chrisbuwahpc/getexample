@@ -42,7 +42,7 @@ if [[ ! -f ${HOME}/.gehist ]]; then
    touch ${HOME}/.gehist 
 fi
 # date +%d/%m/%y
-echo " $1 $USER "$temp_project_id" `date +%F`" >> ${HOME}/.gehist 
+echo "${hostid}  $1  $USER  "$temp_project_id"  `date +%F`" >> ${HOME}/.gehist 
 
 fi
 
