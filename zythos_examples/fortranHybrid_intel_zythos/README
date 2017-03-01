@@ -2,11 +2,15 @@
 # This is the README file is an executable script.
 # To run type: ./README
 #
-# Example OBjECTIVE: to demonstrate hybrid_hello.f90 example
+# Example OBJECTIVE: to demonstrate hybrid_hello.f90 example
 # on Zythos with Intel Compiler. This is a mixed-mode job
-# which includes both MPI and OpenMP jobs.
-# To run this code, we need to edit the partition, 
-# load the necessary modules,
+# which includes both MPI and OpenMP parallelization.
+# cp the hybrid_hello.f90 source code
+cp $GE_DIR/src/hybrid_hello.f90 .
+
+
+ 
+# To run this code load the necessary modules.,
 # specify the total number of nodes, cores per node and
 # the number of OpenMP threads.
 # This information is located under hello_hybrid_intel.slurm
@@ -40,14 +44,32 @@ mpif90 -qopenmp hybrid_hello.f90 -o hello_hybrid_intel
 
 # To submit the job to Zythos
 sbatch hello_hybrid_intel.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
 
-echo "The sbatch command returns what jobid is for this job."
+echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
-echo "Your job is deleted from the scratch."
-echo "It is now moved to your group."
-echo "Your results are now located in ${MYGROUP}/zythoshybrid_intel_results/"
-echo "To change to your jobID directory, type:"
-echo "cd ${MYGROUP}/zythoshybrid_intel_results/jobID/"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_fortranHybrid_intel_zythos/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/fortranHybrid_intel_zythos_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/fortranHybrid_intel_zythos_results/${jobid}"
+echo " " 
 echo "To view the results, use the cat command and type:"
-echo "cat hello_hybrid_intel.log"
+echo "cat fortranHybrid_intel_zythos.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+echo " "  
+echo "more information about Zythos can be found at:"
+echo " https://support.pawsey.org.au/documentation/pages/viewpage.action?pageId=2162999"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "
