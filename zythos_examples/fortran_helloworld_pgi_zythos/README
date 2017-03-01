@@ -6,6 +6,10 @@
 # with PGI compiler on Zythos.
 # hello_world.f90 is a simple FORTRAN code prints "Hello World!" 
 # and runs on a single node.
+# cp the hello_world.f90 source code
+cp $GE_DIR/src/hello_world.f90 .
+
+
 # To run this code, we need to specify the number of nodes used
 # and change from GNU compiler to PGI.
 # This information is located under hello_fortran_pgi.slurm
