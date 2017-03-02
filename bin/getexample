@@ -23,7 +23,7 @@ if [ "$1" == "" ]; then
 	echo "Where <examplename> is the name of the example you want to "
 	echo "download.  This will create a directory named examplename which"
 	echo "you can cd into and hopefully read the README file (if one is"
-	echo "avaliable) or just submit the *.qsub file."
+	echo "avaliable) or just submit the *.slurm file."
 	echo ""
 	echo "For Example:"
 	echo "  getexample helloworld"
