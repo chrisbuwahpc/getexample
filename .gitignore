@@ -4,4 +4,5 @@ README~
 *.slm~
 *.f90~
 *.*~
+.nfs*
 test_examples
