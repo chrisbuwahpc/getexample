@@ -1,0 +1,48 @@
+#!/bin/bash
+# This is the README file that is an executable script 
+# To run type: ./README
+
+# This script aims to demostrate helloworld.c example on Panther.
+# with the GNU compiler.
+# It is a simple code that prints out "Hello World!"
+# To run the code, we specify the number of exclusive nodes used to one.
+# cp the helloworld.c source code
+cp $GE_DIR/src/helloworld.c .
+
+# This information is located under hello_gnu_c.lsf
+# You can edit the LSF directives using: emacs hello_gnu_c.lsf &
+
+# LSF directives
+# 
+# Here we specify to LSF we want 1 node (--nodes=1)
+# We then change the partiton to --partition=workq
+# To compile this code with GNU compiler, we load
+# the gcc module compiler as shown below:
+module load gcc7/7.1.0
+# To run the code in our lsf script, we simply type:
+# ./$EXECUTABLE >> ${OUTPUT}
+
+# To compile the helloworld.c with GNU
+gcc -O2 helloworld.c -o helloworld_gnu 
+
+# To submit the job to panther
+id=$(bjobs <  hello_gnu_c.lsf)
+jobid=`echo $jobid | awk '{print $2}' | sed 's/<//g' | sed 's/>//g'`
+
+echo "The lsf command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "bjobs -a -u $USER"
+echo " "
+echo "Your job will be run in /gpfs/panther/../run_helloC_gnu/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYCDS}/helloC_gnu_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYCDS}/helloC_gnu_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat helloC_gnu.log"
+echo " "
+echo " "
+
