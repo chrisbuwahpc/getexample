@@ -1,0 +1,58 @@
+#!/bin/bash --login
+#BSUB -J GE-cuda-gnu
+#BSUB -q panther
+#BSBU -n 1
+#BSUB -W 10:00
+#BSUB -e cuda-gnu-%J.e
+#BSUB -e cuda-gnu-%J.o
+
+# load the necessary modules
+module load gcc6/6.3.0 cuda/9.1
+
+# leave in, it lists the environment loaded by the modules
+module list
+
+#  Note: LSF_JOBID is a unique number for every job.
+#  These are generic variables
+
+#
+echo " my lsb_jobid is $LSB_JOBID "
+echo " my lsb_remote jobid is $LSB_REMOTEJID "
+
+EXECUTABLE=hello_cuda_gnu
+SCRATCH=${PT}/run_cuda_gnu/$LSB_REMOTEJID
+
+###############################################
+# Creates a unique directory in the SCRATCH directory for this job to run in.
+if [ ! -d $SCRATCH ]; then 
+    mkdir -p $SCRATCH 
+fi 
+echo SCRATCH is $SCRATCH
+
+################################################
+# declare the name of the output file or log file
+OUTPUT=hello_cuda_gnu.log
+
+#############################################
+#   Copy input files to $SCRATCH
+#   then change directory to $SCRATCH
+
+cp $PT/data_exe/$EXECUTABLE $SCRATCH
+
+cd $SCRATCH
+
+./$EXECUTABLE >> ${OUTPUT}
+
+#############################################
+# create a unique test file in the PT directory
+# this will signal the laucher script that the job as finished
+# so it it can copy the results back to CDS
+
+touch ${PT}/cpt$LSB_REMOTEJID
+
+echo hello_cuda_gnu job finished at  `date`
+
+
+
+
+
