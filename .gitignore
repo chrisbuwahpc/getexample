@@ -5,4 +5,8 @@ README~
 *.f90~
 *.*~
 .nfs*
+*.e
+*.o
+*.tgz
+*.tar.gz
 test_examples
