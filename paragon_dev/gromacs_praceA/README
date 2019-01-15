@@ -51,17 +51,17 @@ fi
 # has been modified from the original.
 
 # Download the *.mdp files needed.
-#wget http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/lysozyme/Files/ions.mdp
-#wget http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/lysozyme/Files/minim.mdp
-#wget http://www.bevanlab.biochem.vt.edu/Pages/Personal/justin/gmx-tutorials/lysozyme/Files/nvt.mdp
+if [ ! -f GROMACS_TestCaseA.tar.gz ]; then
+ wget http://www.prace-ri.eu/UEABS/GROMACS/1.2/GROMACS_TestCaseA.tar.gz 
+fi
 
-
+cp GROMACS_TestCaseA.tar.gz $PG/data_exe/.
 
 export SUBMIT_DIR=`pwd`
 
 # To submit the job to paragon
 
-jobid=$(bsub <  gromacs_ex1.lsf)
+jobid=$(bsub <  gromacs_praceA.lsf)
 jobid=`echo $jobid | awk '{print $2}' | sed 's/<//g' | sed 's/>//g'`
 
 echo " "
@@ -69,16 +69,16 @@ echo "The lsf command returns what the jobid is for this job."
 echo "To check the status of your job, use the lsf command:"
 echo "bjobs -a -u $USER"
 echo " "
-echo "Your job will be run in /gpfs/paragon/../run_gromacs_ex1/${jobid}."
+echo "Your job will be run in /gpfs/paragon/../run_gromacs_praceA/${jobid}."
 echo " "
-echo "Your results will be saved in ${MYCDS}/gromacs_ex1_results/${jobid}"
+echo "Your results will be saved in ${MYCDS}/gromacs_praceA_results/${jobid}"
 echo "and the scratch directory will then be deleted."
 echo " "
 echo "To check the results change to your jobid directory, type:"
-echo "cd ${MYCDS}/gromacs_ex1_results/${jobid}"
+echo "cd ${MYCDS}/gromacs_praceA_results/${jobid}"
 echo " " 
 echo "To view the results, use the cat command and type:"
-echo "cat ex1_gromacs.log"
+echo "cat praceA_gromacs.log"
 echo " "
 echo " "
 
@@ -88,7 +88,7 @@ while [[ ! -f $PG/cpt$jobid ]]; do
 done
 
 # Declare a unique directory to store results
-RESULTS=$HCCDS/gromacs_ex1_results
+RESULTS=$HCCDS/gromacs_praceA_results
 #####################################################
 #  Make the unique directory on CDS in the project directory for the results of this job
 if [ ! -d $RESULTS ]; then
@@ -97,12 +97,12 @@ fi
 echo the results directory is $RESULTS
 
 # move results from scratch back to CDS
-mv ${PG}/run_gromacs_ex1/$jobid $RESULTS
+mv ${PG}/run_gromacs_praceA/$jobid $RESULTS
 
 ####################################################
 # Clean up $SCRATCH directory on parallel file system on cluster
 
-#rm -rf ${PG}/run_gromacs_ex1/$jobid
+#rm -rf ${PG}/run_gromacs_praceA/$jobid
 #rm ${PG}/cpt${jobid}
 
 
