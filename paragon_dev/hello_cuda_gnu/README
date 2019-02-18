@@ -1,0 +1,86 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demostrate omp_hello.c example
+# on Panther with GNU compiler with the nvcc wrapper
+
+# https://www.pdc.kth.se/resources/computers/historical-computers/zorn/how-to/how-to-compile-and-run-a-simple-cuda-hello-world
+
+# LSF directives
+# 
+# Here we specify to LSF that we want 1 node (-n 1)
+# Then, we modify the partition to -q panther
+# To run this code correctly, we comment out: --export=NONE
+# If this is not commented out, the code does not run.
+# To compile the code with GNU,
+# we need to load the gcc and cuda modules as shown below: 
+module load use.paragon
+module load gcc6/6.4.0 cuda/9.2
+
+# To compile the omp_hello.c code with GNU
+
+nvcc hello_cuda.cu -o hello_cuda_gnu
+
+# Create a temp-storage directory and copy data and/or executables
+# Note! copying executables is not needed if modules are used.
+
+if [ ! -d $PG/data_exe ]; then
+    mkdir $PG/data_exe
+fi
+
+cp hello_cuda_gnu $PG/data_exe/.
+
+# sanity check that files are there
+ls -al $PG/data_exe
+
+# To submit the job to Panther and extract jobid
+id=$(bsub <  hello_cuda_gnu.lsf) 
+jobid=`echo $id | awk '{print $2}' | sed 's/<//g' | sed 's/>//g'`
+# 
+#  Need $jobid to help organize results.
+echo " job submission id is $jobid "
+echo " my lsb_remote jobid is $LSB_REMOTEJID "
+
+#echo "The LSF command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "bjobs -u $USER"
+echo " "
+echo "Your job will be run in ${PG}/run_cuda_gnu/${jobid}."
+echo " "
+echo "Your results will be saved in ${HCCDS}/hello_cuda_gnu_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${HCCDS}/hello_cuda_gnu_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat hello_cuda_gnu.log"
+echo " "
+echo " "
+#echo " "
+
+#  lets script run in background to until job finishes
+while [[ ! -f $PG/cpt$jobid ]]; do
+  sleep 2
+done
+
+#  Declare unique directory to store results
+RESULTS=$HCCDS/helloworld_gnu_results
+###############################################
+# Makes the unique directory in CDS directory for the results of this job
+if [ ! -d $RESULTS ]; then 
+    mkdir -p $RESULTS 
+fi
+echo the results directory is $RESULTS
+
+# move results from scratch back to CDS
+mv  ${PG}/run_cuda_gnu/$jobid  $RESULTS
+
+###########################
+# Clean up $SCRATCH 
+
+rm -rf ${PG}/run_cuda_gnu/$jobid
+rm ${PG}/cpt$jobid
+
+
