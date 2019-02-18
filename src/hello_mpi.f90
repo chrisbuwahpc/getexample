@@ -1,15 +1,18 @@
 program main
-  use mpi
+  include "mpif.h"
 
   integer(kind = 4) error
   integer(kind = 4) id
   integer(kind = 4) p
+  integer(kind = 4) len
+  
+  character*(MPI_MAX_PROCESSOR_NAME) name
   real(kind = 8) wtime
 
   call MPI_Init(error)
   call MPI_Comm_size(MPI_COMM_WORLD, p, error)
   call MPI_Comm_rank(MPI_COMM_WORLD, id, error)
-  
+  call MPI_GET_PROCESSOR_NAME(name, len, error)
   if (id == 0) then
      wtime = MPI_Wtime( )
      
@@ -24,8 +27,7 @@ program main
 
   end if
 
-  write( *, '(a)' ) ' '
-  write( *, '(a,i8,a)' ) ' Process ', id, ' says "Hello, world!" '
+  print *, ' Process ',id,' on host ',name,' says Hello, world!'
  
   if (id == 0) then
      
