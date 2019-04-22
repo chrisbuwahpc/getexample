@@ -1,0 +1,64 @@
+#!/bin/bash --login
+#BSUB -J GE-megahit
+#BSUB -q paragon
+#BSUB -n 16
+#BSUB -W 00:10
+#BSUB -x
+#BSUB -R "span[ptile=1]"
+#BSUB -a "p8aff(8,8,8,)"
+#BSUB -e gnu-ompHello-%J.e
+#BSUB -o gnu-ompHello-%J.o
+
+
+# Default loaded compiler module is gcc module
+# load the necessary modules to compile with GNU
+module load gcc/7.4.0 megahit/1.1.4
+
+# leave in, it lists the environment loaded by the modules
+module list
+
+#  Note: LSF_JOBID is a unique number for every job.
+#  These are generic variables
+
+SCRATCH=$PG/run_megahit/$LSB_REMOTEID
+
+#####################################
+##########
+# Creates a unique directory in the SCRATCH directory for this job to run in.
+if [ ! -d $SCRATCH ]; then 
+    mkdir -p $SCRATCH 
+fi 
+echo SCRATCH is $SCRATCH
+
+################################################
+# declare the name of the output file or log file
+
+OUTPUT=megahit_ex.log
+
+#############################################
+#   Copy input files to $SCRATCH
+#   then change directory to $SCRATCH
+
+cp $PG/data_exe/megahit-example/readsInterleaved1.fa.gz $SCRATCH
+cp $PG/data_exe/megahit-example/readsInterleaved2.fa.gz $SCRATCH
+cp $PG/data_exe/megahit-example/readsInterleavvd3.fa $SCRATCH
+cp $PG/data_exa/megahit-example/refExamples.fa $SCRATCH
+
+cd $SCRATCH
+
+export OMP_NUM_THREADS=16
+ppc64_cpu --info
+
+megahit -t 16 -1 readsInterleaved1.fa.gz -2 readsInterleaved2.fa.gz -o ${OUTPUT}
+
+##############################################
+# create a unique test file in the PG directory
+# this will signal the laucher script that the job as finished
+# so it it can copy the results back to CDS
+
+touch ${PG}/cpt$LSB_REMOTEJID
+
+echo megahit example job finished at  `date`
+
+
+
