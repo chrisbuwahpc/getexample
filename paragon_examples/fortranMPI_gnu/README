@@ -22,7 +22,7 @@ sed -i "s/use mpi/include \"mpif.h\"/g" hello_mpi.f90
 # 
 # To compile the code with GNU compiler, 
 # we need to load the gcc module as shown below:
-module load gcc/6.4.0 openmpi/3.1.3
+module load gcc/7.4.0 openmpi/3.1.3
 
 # We also specify to srun that 32 MPI tasks are required. (-n 32)
 # with 2 nodes (-N 2) given that 

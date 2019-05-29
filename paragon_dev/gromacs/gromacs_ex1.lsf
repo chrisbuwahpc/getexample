@@ -7,14 +7,13 @@
 #BSUB -x 
 #BSUB -W 00:10
 ## this is full path to the data file xhelloworld_gnu
-#BSUB -data /gpfs/cds/local/HCP004/pxs01/rrb67-pxs01/scripts/getexample/panther_examples/helloC_gnu/helloworld_gnu
+###BSUB -data /gpfs/cds/local/HCP004/pxs01/rrb67-pxs01/scripts/getexample/panther_examples/helloC_gnu/helloworld_gnu
 #######
 data_in=1aki.pdb
 # Default loaded compiler module is gcc module.
 # To compile with the GNU compiler, load the gcc module in case.
 module list 
-module swap use.panther use.paragon 
-module load gcc6/6.4.0 gromacs/2018.4 
+module load gcc/6.5.0 cuda/9.2 gromacs/2019.1
 
 # leave in, it lists the environment loaded by the modules
 module list
@@ -22,7 +21,7 @@ module list
 #  Note: LSF_JOBID is a unique number for every job.
 #  These are generic variables
 echo $PG
-EXECUTABLE=gmx
+EXECUTABLE=gmx_mpi_d  #gmx and mdrun_cuda
 WORKDIR=${PG}/run_gromacs
 SCRATCH=$WORKDIR/$LSB_REMOTEJID
 
@@ -47,7 +46,7 @@ OUTPUT=gromacs.log
 #############################################
 #   Copy input files to $SCRATCH
 #   then change directory to $SCRATCH
-#bstage in -src /gpfs/cds/local/HCP004/pxs01/rrb67-pxs01/scripts/getexample/panther_examples/helloC_gnu -dst /gpfs/panther/local/HCP004/pxs01/rrb67-pxs01/run_helloC_gnu 
+###bstage in -src /gpfs/cds/local/HCP004/pxs01/rrb67-pxs01/scripts/getexample/panther_examples/helloC_gnu -dst /gpfs/panther/local/HCP004/pxs01/rrb67-pxs01/run_helloC_gnu 
 
 #cp $WORKDIR/$EXECUTABLE $SCRATCH
 
