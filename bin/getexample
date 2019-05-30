@@ -3,12 +3,12 @@
 # Define getexample install directory 
 # export GE_DIR in module file
 #LABEL Files
-hostid=`echo ${PAWSEY_CLUSTER}`
+hostid=`echo ${HCCLUSTER}`
 echo ${hostid}
-if [ ${hostid} == "magnus" ]; then 
-    declare -a location=("${GE_DIR}/magnus_examples")
-elif [ ${hostid} == "zeus" ]; then
-    declare -a location=("${GE_DIR}/zeus_examples" "${GE_DIR}/zythos_examples")
+if [ ${hostid} == "panther" ]; then 
+    declare -a location=("${GE_DIR}/panther_examples")
+elif [ ${hostid} == "paragon" ]; then
+    declare -a location=("${GE_DIR}/paragon_examples" "${GE_DIR}/zythos_examples")
 fi
 N_dir=${#location[@]}
 
@@ -22,8 +22,8 @@ if [ "$1" == "" ]; then
 	echo ""
 	echo "Where <examplename> is the name of the example you want to "
 	echo "download.  This will create a directory named examplename which"
-	echo "you can cd into and hopefully read the README file (if one is"
-	echo "avaliable) or just submit the *.slurm file."
+	echo "you can cd into and hopefully read the README file "
+	echo " and the *.lsf file."
 	echo ""
 	echo "For Example:"
 	echo "  getexample helloworld"

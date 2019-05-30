@@ -1,0 +1,9 @@
+-t
+16
+-1
+readsInterleaved1.fa.gz
+-2
+readsInterleaved2.fa.bz2
+-o
+run_megahit.log
+MEGAHIT_TEMP_DIR: run_megahit.log/tmp/
