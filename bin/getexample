@@ -3,12 +3,10 @@
 # Define getexample install directory 
 # export GE_DIR in module file
 #LABEL Files
-hostid=`echo ${HCCLUSTER}`
+hostid=`echo ${UWA_CLUSTER}`
 echo ${hostid}
-if [ ${hostid} == "panther" ]; then 
-    declare -a location=("${GE_DIR}/panther_examples")
-elif [ ${hostid} == "paragon" ]; then
-    declare -a location=("${GE_DIR}/paragon_examples" "${GE_DIR}/zythos_examples")
+if [ ${hostid} == "kaya" ]; then 
+    declare -a location=("${GE_DIR}/${hostid}_examples")
 fi
 N_dir=${#location[@]}
 
