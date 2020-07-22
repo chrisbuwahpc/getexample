@@ -6,7 +6,7 @@
 #SBATCH --export=NONE
 
 # To swap from Cray Environment to GNU
-module load gcc opempi
+module load gcc openmpi
 
 # leave in, it lists the environment loaded by the modules
 module list
@@ -43,7 +43,7 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-srun -n 8 ./$EXECUTABLE >> ${OUTPUT}
+mpirun -np 8 ./$EXECUTABLE >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
