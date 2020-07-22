@@ -1,0 +1,76 @@
+# created by fftool
+
+units real
+
+# periodic boundaries in all 3 directions
+boundary p p p
+
+atom_style full
+bond_style harmonic
+angle_style harmonic
+
+# import atom coordinates
+read_data epm2data.lmp
+# read_restart restart.*.lmp
+
+special_bonds lj/coul 0.0 0.0 0.5
+
+pair_style hybrid lj/cut/coul/long 12.0 12.0
+pair_modify mix geometric tail yes
+kspace_style pppm 1.0e-4
+
+pair_coeff    1    1 lj/cut/coul/long     0.038237     3.033000  # O O
+pair_coeff    2    2 lj/cut/coul/long     0.013360     2.757000  # C C
+
+# try to minimise potentials then reset time counter to begin simulating
+minimize 1.0e-4 1.0e-6 1000 10000
+
+# nvt equilibration
+fix 1 all nvt temp 300.0 300.0 100.0 tchain 1
+run 100
+unfix 1
+reset_timestep 0
+
+# reset bond angles and lengths
+fix SHAKE all shake 0.0001 20 0 b 1
+
+# skin distance
+neighbor 2.0 bin
+
+# 1 fs between steps
+timestep 1.0
+
+# npt temperature and pressure
+variable TK equal 300.0
+variable PBAR equal 1.0
+
+# velocity distribution
+velocity all create ${TK} 12345
+
+fix TPSTAT all npt temp ${TK} ${TK} 100 iso ${PBAR} ${PBAR} 500
+
+variable nsteps equal 60000
+variable nprint equal 1000
+variable ndump equal 1000
+# variable nrestart equal ${nsteps}/10
+
+#dump			2 all image 1000 npt.*.jpg type type zoom 2.5 adiam 1.5 size 1280 720 #10000
+#dump_modify		2 pad 5
+
+#compute RDF all rdf 100 1 1
+#fix RDF all ave/time 20 100 1000 c_RDF file rdf.lammps mode vector
+
+
+#dump TRAJ all custom ${ndump} dump.lammpstrj id mol type element x y z ix iy iz
+#dump_modify TRAJ element O C
+
+# thermodynamic info output
+thermo_style custom step pe ke etotal temp press density
+thermo ${nprint}
+
+#restart ${nrestart} restart.*.lmp
+
+run ${nsteps}
+
+#write_restart restart.*.lmp
+write_data data.*.lmp

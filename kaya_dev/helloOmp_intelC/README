@@ -1,0 +1,70 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBjECTIVE: to demostrate omp_hello.c example on Magnus
+# on the Intel environment. omp_hello.c is an OpenMP code 
+# and restricted to a single node.
+# omp_hello.c is taken from 
+# https://computing.llnl.gov/tutorials/openMP/exercise.html
+# cp the omp_hello.c source code
+cp $GE_DIR/src/omp_hello.c .
+
+
+# To run this code, we need to specify the number of tasks
+# and the number of OpenMP threads.
+# This information is located under hello_omp_intel.slurm
+# You can edit the SLURM as: emacs hello_omp_intel.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# To compile the code with Intel, we swap from Cray
+# environment to Intel as shown below:
+module swap PrgEnv-cray PrgEnv-intel
+# Then, we set the total number of threads to 24 as shown below:
+# export OMP_NUM_THREADS=24
+# To run with multiple threads on Cray with the Intel environment, 
+# we need to disable AFFINITY as shown:
+# export KMP=AFFINITY=disabled 
+# If it is not disabled, the code runs on only one thread.
+# To launch a job, we specify to aprun 1 OpenMP task (-n 1)
+# with 24 threads (-d 24)
+# Therefore, the aprun command looks like: 
+# aprun -n 1 -d 24 ./$EXECUTABLE >> ${OUTPUT}
+
+# To compile the omp_hello.c code with Intel
+cc -O2 -openmp omp_hello.c -o hello_omp_intel
+
+# To submit the job to Magnus
+sbatch hello_omp_intel.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_helloOmp_intelC/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/helloOmp_intelC_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/helloOmp_intelC_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat helloOmp_intelC.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo "more information about Magnus can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "

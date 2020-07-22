@@ -1,0 +1,66 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBjECTIVE: to demostrate hybrid_hello.f90 example
+# on Magnus on Cray Environment. This is a mixed-mode job
+# cp the hybrid_hello.f90 source code
+cp $GE_DIR/src/hybrid_hello.f90 .
+
+
+#  which includes both MPI and OpenMP jobs.
+# To run this code, we need to specify the total number of MPI tasks,
+# the number of MPI tasks per node,
+# the number of MPI tasks per socket, and
+# the number of threads for each MPI task. 
+# This information is located under hello_hybrid_cray.slurm
+# You can edit the SLURM as: emacs hello_hybrid_cray.slurm &
+
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 2 nodes (--nodes=2)
+# Then, we set the total number of threads to 6
+# export OMP_NUM_THREADS=6
+# To launch a job, we specify to aprun 8 MPI tasks (-n 8)
+# with 4 MPI tasks per node (-N 4),
+# with 2 MPI tasks per socket or NUMA region (-S 2)
+# and each MPI tasks have 6 threads. (-d 6)
+# Therefore, the aprun command looks like:
+# aprun -n 8 -N 4 -S 2 -d 6 ./$EXECUTABLE >> ${OUTPUT}
+
+# To compile the hybrid_hello.f90 code on Cray
+ftn -O2 -h omp hybrid_hello.f90 -o hello_hybrid_cray
+
+# To submit the job to Magnus
+sbatch hello_hybrid_cray.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_fortranHybrid_cray/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/fortranHybrid_cray_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/fortranHybrid_cray_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat fortranHybrid_cray.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo "more information about Magnus can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "

@@ -1,0 +1,67 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBjECTIVE: to demostrate hello_mpi.f90 example on 
+# Magnus on GNU environment with two partially occupied nodes.
+# hello_mpi.f90 is an MPI code which runs on 2 nodes
+# with 12 MPI tasks on each node.
+# hello_mpi.f90 code is taken from
+# https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.f90
+# cp the hello_mpi.f90 source code
+cp $GE_DIR/src/hello_mpi.f90 .
+
+
+# To run this code, we need to specify the total number of MPI tasks,
+# the number of MPI tasks per node
+# and the number of MPI tasks per socket.
+# This information is located under hellompi_partial_gnu.slurm
+# You can edit the SLURM as: emacs hellompi_partial_gnu.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 2 node (--nodes=2)
+# To compile the code with GNU environment, we swap
+# from Cray environment to GNU as shown below:
+module swap PrgEnv-cray PrgEnv-gnu
+# To launch a job, we specify to aprun 24 MPI tasks (-n 24)
+# with 12 MPI tasks per node (-N 12)
+# and 6 MPI tasks per socket (-S 6)
+# Therefore, the aprun command looks like: 
+# aprun -n 24 -N 12 -S 6 ./$EXECUTABLE >> ${OUTPUT}
+
+# To compile the hello_mpi.f90 code on GNU
+ftn -O2 hello_mpi.f90 -o hellompi_partial_gnu
+
+# To submit the job to Magnus
+sbatch hellompi_partial_gnu.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_partially_occupied_nodes_gnu/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/partially_occupied_nodes_gnu_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/partially_occupied_nodes_gnu_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat partially_occupied_nodes_gnu.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo "more information about Magnus can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide"
+echo " "
+echo "more information about SLURM and aprun can be found at:"
+echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+echo " "
+echo " "
