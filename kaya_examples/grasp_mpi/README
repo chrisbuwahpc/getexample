@@ -1,0 +1,57 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate grasp case1_mpi example 
+# on kaya on GNU Environment.
+# cp the grasp testcase directory to user directory
+cp -r $GE_DIR/src/grasp .
+
+# The General Relativistic Atomic Structure Package (GRASP) is a set of 
+# Fortran 90 programs for performing fully relativistic electron structure
+# calculations of atoms.
+
+ 
+# with 34 MPI tasks on a node.
+# To run this code, we need to specify the total number of MPI tasks
+# and the number of MPI tasks per node.
+# This information is located under grasp_mpi.slurm
+# You can edit the SLURM as: nano grasp_mpi.slurm 
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1 or -N 1)
+# grasp is compiled with GNU, we change the compiler
+# from GNU as shown below:
+module load gcc/8.3.1 openmpi/4.0.0 lapack/3.9.0
+
+# To launch a job, we specify to srun 34 MPI tasks (-n 48)
+
+# Therefore, the aprun command looks like:
+# srun -n 34 -N 1 ./script_name >> ${OUTPUT}
+
+
+# To submit the job to Magnus
+sbatch grasp_mpi.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_grasp/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/grasp_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/grasp_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat case1_mpi.log"
+echo " "
+echo " kaya user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
