@@ -1,7 +1,8 @@
 #!/bin/bash -l
 #SBATCH --job-name=GE-fortranMPI_gnu
-#SBATCH --partition=POPHEALTH
-#SBATCH --nodes=1
+#SBATCH --partition=60
+#SBATCH --nodes=2
+#SBATCH --ntasks=20
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
