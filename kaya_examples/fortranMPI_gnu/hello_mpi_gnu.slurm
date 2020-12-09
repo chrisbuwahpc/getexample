@@ -1,9 +1,16 @@
 #!/bin/bash -l
 #SBATCH --job-name=GE-fortranMPI_gnu
-#SBATCH --partition=POPHEALTH
-#SBATCH --nodes=1
-#SBATCH --time=00:05:00
+#SBATCH --partition=test
+#SBATCH --nodes=2
+#SBATCH --ntasks=20
+#SBATCH --ntasks-per-node=10
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:01:00
 #SBATCH --export=NONE
+
+#SBATCH --account=ea007
+# to not share nodes with other running jobs use #SBATCH -exclusive
+
 
 # To swap from Cray Environment to GNU
 module load gcc openmpi
@@ -14,9 +21,10 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=hello_mpi_gnu
-SCRATCH=/scratch/$USER/run_fortranMPI_gnu/$SLURM_JOBID
-RESULTS=$HOME/mpifortran_gnu_results/$SLURM_JOBID
-
+SCRATCH=$MYSCRATCH/run_fortranMPI_gnu/$SLURM_JOBID
+RESULTS=$MYGROUP/mpifortran_gnu_results/$SLURM_JOBID
+#  for openMP codes
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
 if [ ! -d $SCRATCH ]; then 
@@ -38,12 +46,13 @@ OUTPUT=fortranMPI_gnu.log
 #############################################
 #   Copy input files to $SCRATCH
 #   then change directory to $SCRATCH
+cd ${SLURM_SUBMIT_DIR}
 
 cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-mpirun -np 8 ./$EXECUTABLE >> ${OUTPUT}
+srun --mpi=pmix_v3 ./${EXECUTABLE} >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir

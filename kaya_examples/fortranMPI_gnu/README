@@ -3,7 +3,7 @@
 # To run type: ./README
 #
 # Example OBJECTIVE: to demonstrate hello_mpi.f90 example 
-# on Magnus on GNU Environment.
+# on KAYA on GNU Environment.
 # hello_mpi.f90 code is taken from
 # https://people.sc.fsu.edu/~jburkardt/f_src/hello_mpi/hello_mpi.f90
 # cp the hello_mpi.f90 source code
@@ -11,7 +11,7 @@ cp $GE_DIR/src/hello_mpi.f90 .
 
 
 # hello_mpi.f90 is an MPI code that runs on 2 nodes 
-# with 24 MPI tasks on each node.
+# with 20 MPI tasks on each node.
 # To run this code, we need to specify the total number of MPI tasks
 # and the number of MPI tasks per node.
 # This information is located under hello_mpi_gnu.slurm
@@ -20,13 +20,13 @@ cp $GE_DIR/src/hello_mpi.f90 .
 # SLURM directives
 # 
 # Here we specify to SLURM we want 2 nodes (--nodes=2)
-# To compile hello_mpi.c with GNU, we change the compiler
-# from Cray to GNU as shown below:
+# To compile hello_mpi.c with GNU.  
+# This will load the "default" versions
 module load gcc openmpi
-# To launch a job, we specify to aprun 48 MPI tasks (-n 48)
-# with 24 tasks per node (-N 24)
+# To launch a job, we specify to srun 20 MPI tasks (-n 20)
+# with 10 tasks per node (-N 10)
 # Therefore, the aprun command looks like:
-# aprun -n 48 -N 24 ./$EXECUTABLE >> ${OUTPUT}
+# srun -N 2 -n 20 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the hello_mpi.f90 code with GNU compiler
 mpif90 -O2 hello_mpi.f90 -o hello_mpi_gnu
@@ -50,7 +50,7 @@ echo " "
 echo "To view the results, use the cat command and type:"
 echo "cat fortranMPI_gnu.log"
 echo " "
-echo " PAWSEY user shortcuts! " 
+echo " KAYA user shortcuts! " 
 echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
 echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
 echo " example:  cd \$MYGROUP "
