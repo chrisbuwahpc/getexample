@@ -1,0 +1,54 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate running lsdyna example 
+# on kaya.
+# Yaris static suspension system loading - this example shows the 
+# static loading of the TOYOTA Yaris suspension system.
+# https://www.dynaexamples.com/implicit/yaris-static-suspension-system-loading/zip-for-download.zip
+# 
+cp $GE_DIR/src/abaqus/boltpipeflange/boltpipeflange*.inp data2/.
+
+# module load abaqus
+# abaqus fetch job= 
+
+# To run this code, we need to specify the number of nodes used.
+# This information is located under helloworld_gnu.slurm
+# You can edit the SLURM as: emacs helloworld_gnu.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# To compile the code with the GNU environment, we change
+# the environment from Cray to GNU as shown below:
+module load abaqus gcc openmpi
+# To run the code, we simply type:
+# srun 
+
+# To submit the job to kaya
+sbatch abaqus.slurm
+jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_abaqus/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/abaqus_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/abaqus_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat "
+echo " "
+echo " kaya user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo " "
