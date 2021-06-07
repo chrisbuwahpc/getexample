@@ -21,12 +21,11 @@ cp $GE_DIR/src/molpro/h2.com .
 # Then, we set the total number of threads to 8 as shown below:
 # setenv OMP_NUM_THREADS 8
 # 
-# The molpro command in the slurm file looks like: 
-#molpro --no-xml-output -m -n ${SLURM_CPUS_PER_TASK} -d $MOL_SCRDIR -o ${INPUT}.out ${INPUT}.com >> ${OUTPUT}
-
+# a basic molpro command is used in the slurm file: 
+# molpro -n ${SLURM_CPUS_PER_TASK} -d $MOL_SCRDIR -o ${INPUT}.out ${INPUT}.com >> ${OUTPUT}
 
 # To submit the job to kaya
-jobid=$(sbatch --parsable mrcc.slurm)
+jobid=$(sbatch --parsable molpro.slurm)
 
 echo "The sbatch command returns with the --parsable arguement "
 echo " returns what the jobid is for this job."
