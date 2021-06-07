@@ -1,0 +1,57 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate simple MRCC example on KAYA.
+# 
+# This simple model file from the MRCC Test suite MINP_OH_cc-pVQZ_DF-UHF
+# and runs on a single node.
+# cp the input test file
+INPUT=MINP_OH_cc-pVQZ_DF-UHF
+cp $GE_DIR/src/mrcc/${INPUT} .
+
+# To run this code, we need to specify the number of cores used 
+# as this will only run on a single node.
+# This information is located under mrcc.slurm
+# You can edit the SLURM as: vi mrcc.slurm 
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# 
+# Load the mrcc/2020-02-22 environment module as shown below:
+module load mrcc 
+# The dmrcc model command:
+# dmrcc > ${OUTPUT}
+
+# To submit the job to Magnus
+jobid=$(sbatch --parsable mrcc.slurm)
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in /tmp/$USER/run_mrcc/${jobid} "
+echo "The MRCC_SCRDIR is /tmp/$USER/run_mrcc/${jobid}  "
+echo "Your results will be saved in ${MYGROUP}/mrcc_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/mrcc_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat mrcc_${INPUT}.log"
+echo " "
+echo " KAYA user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+#echo "more information about Kaya can be found at:"
+#echo " https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide"
+#echo " "
+#echo "more information about SLURM and aprun can be found at:"
+#echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+#echo " "
+echo " "

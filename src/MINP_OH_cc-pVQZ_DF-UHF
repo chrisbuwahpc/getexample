@@ -1,0 +1,16 @@
+# DF-UHF calculation for OH with cc-pVQZ basis
+basis=cc-pVQZ
+dfbasis_scf=cc-pVQZ-RI
+calc=DF-UHF
+mem=500MB
+occ=3,1,1,0/3,0,1,0
+
+test=-75.4166792087537203
+
+unit=bohr
+geom
+H
+O 1 R1
+
+R1=2.00000000000000
+
