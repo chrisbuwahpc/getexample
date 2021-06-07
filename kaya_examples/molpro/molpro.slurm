@@ -51,10 +51,6 @@ if ( ! -d $RESULTS ) then
 endif
 echo the results directory is $RESULTS
 
-################################################
-# declare the name of the output file or log file
-set OUTPUT = run_molpro.log
-
 #############################################
 #   Copy input files to $SCRATCH
 #   then change directory to $SCRATCH
@@ -63,20 +59,20 @@ cp ${INPUT}.com $SCRATCH
 
 cd $SCRATCH
 
-molpro -n ${SLURM_CPUS_PER_TASK} -d $MOL_SCRDIR -o ${INPUT}.out ${INPUT}.com >> ${OUTPUT}
+molpro -n ${SLURM_CPUS_PER_TASK} -d $MOL_SCRDIR -o ${INPUT}.out ${INPUT}.com 
 
 #############################################
 #    $OUTPUT file to the unique results dir
 # note this can be a copy or move  
 
-#mv  ${SCRATCH} ${RESULTS}
+mv  ${SCRATCH} ${RESULTS}
 
 cd $HOME
 
 ###########################
 # Clean up $SCRATCH 
-#if ( -d ${SCRATCH} ) then
- #   rm -r ${SCRATCH}
- #endif
+if ( -d ${SCRATCH} ) then
+   rm -r ${SCRATCH}
+endif
 
 echo Molpro job on kaya finished at  `date` 
