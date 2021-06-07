@@ -1,0 +1,59 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBjECTIVE: to demostrate how to run Molpro on Kaya
+# Molpro is an OpenMP code and restricted to a single node.
+# The Molpro example used is h2.com this taken from the 
+# ${MAALI_MOLPRO_HOME}/molpro-2015.1/examples directory on Kaya
+cp $GE_DIR/src/molpro/h2.com .
+
+
+# To run this code, the number of tasks is 1 as it is single node 
+# and the number of OpenMP threads.
+# This SBATCH directives are in the molpro_pgi.slurm file. 
+# You can edit the SLURM as: vi molpro_pgi.slurm 
+
+# SLURM directives
+# 
+# We want to define the number of cores -or in slurm terms
+# the number of SLURM_CPUS_PER_TASK using the SBATCH -c flag
+# Then, we set the total number of threads to 8 as shown below:
+# setenv OMP_NUM_THREADS 8
+# 
+# The molpro command in the slurm file looks like: 
+#molpro --no-xml-output -m -n ${SLURM_CPUS_PER_TASK} -d $MOL_SCRDIR -o ${INPUT}.out ${INPUT}.com >> ${OUTPUT}
+
+
+# To submit the job to kaya
+jobid=$(sbatch --parsable mrcc.slurm)
+
+echo "The sbatch command returns with the --parsable arguement "
+echo " returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_molpro/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/molpro_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/molpro_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat run_molpro.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+#echo "more information about Magnus can be found at:"
+#echo " https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide"
+#echo " "
+#echo "more information about SLURM and aprun can be found at:"
+#echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
+#echo " "
+echo " "
