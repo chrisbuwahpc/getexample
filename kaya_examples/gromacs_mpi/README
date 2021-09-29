@@ -1,0 +1,86 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate gromacs example on Kaya 
+# with the GNU Program Environment.
+# 
+# Gromacs is an MPI code that runs on 2 nodes or more
+# with X MPI tasks on each node.
+# To run this code, we need to specify the total number of MPI tasks
+# and the number of MPI tasks per node.
+# We also need to change the compiler from Cray to GNU
+# to be able to run this code with GNU Environment.
+# We need to load the module gromacs/2020.4
+#
+# This information is located under gromacs_mpi_gnu.slurm
+# You can edit the SLURM as: emacs gromacs_mpi_gnu.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 2 nodes (--nodes=1)
+# To run the example, we load the gnu compiler so that
+# correct tool-chain for gromacs is used as shown below:
+#   module gcc/9.4.0
+#
+# Load lammps module 
+#   module load gromacs/2020.4
+#
+# To launch a job, we specify to 36 threads tasks (-n 36)
+# with 36 tasks per node (-N 36)
+# If the number of nodes changes, the N is 36
+# multiplied by number of nodes given
+# Therefore, the command looks like:
+# gmx mdrun  .... ${OUTPUT}
+
+# there are many serial commands in gromacs that can be run but 
+# still require the aprun.  
+# gmx_d <command>  arg1 arg2 etc
+
+# Download data necessary for this gromacs example
+# wget https://files.rcsb.org/download/1AKI.pdb.gz
+# note the 1AKI.pdb file must be edited first by removing all the 
+# lines with HOH (water) in it. The one included in this getexample
+# has been modified from the original.
+
+# Download the *.mdp files needed.
+
+wget http://www.mdtutorials.com/gmx/lysozyme/Files/ions.mdp
+wget http://www.mdtutorials.com/gmx/lysozyme/Files/minim.mdp
+wget http://www.mdtutorials.com/gmx/lysozyme/Files/nvt.mdp
+wget http://www.mdtutorials.com/gmx/lysozyme/Files/npt.mdp
+wget http://www.mdtutorials.com/gmx/lysozyme/Files/md.mdp
+
+# To submit the job to kaya
+jobid=$(sbatch --parsable gromacs_mpi_gnu.slurm)
+echo " "
+echo "The command to submit your job is \"sbatch gromacs_mpi_gnu.slurm\" "
+echo " " 
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_gromacs/${jobid}."
+echo "The results are moved to your group directory."
+echo "Your results are moved located in ${MYGROUP}/gromacs_results/"
+echo "To change to your jobID directory, type:"
+echo "cd ${MYGROUP}/gromacs_mpi_results/jobID/"
+echo " "
+echo "To view the results, use the cat command and type:"
+echo "cat gromacs_mpi.log"
+echo " "
+echo " kaya user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo "more information about the Gromacs examples can be found at:"
+echo " http://www.mdtutorials.com/gmx/ "
+echo " these examples are done with the author's permission "
+echo " Justin A. Lemkul, Ph.D. "
+echo " Virginia Tech Department of Biochemistry "
+echo " "
+
+echo "NOTE: Your job is removed from the scratch when finished."
+
