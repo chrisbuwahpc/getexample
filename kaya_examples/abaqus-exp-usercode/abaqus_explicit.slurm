@@ -1,31 +1,30 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-abaqus
+#SBATCH --job-name=GE-abaqus-exp-user
 #SBATCH --partition=day
-#SBATCH --nodes=2
+#SBATCH --nodes=1
 # -N is equivalent to --nodes
 # -n is equivalent to --ntasks
-#SBATCH --ntasks=68
-#SBATCH --ntasks-per-node=34
-##SBATCH --core-spec=1
-##SBATCH --gres=gpu:2
+#SBTACH --ntasks=36
+#SBATCH --ntasks-per-node=36
+#SBATCH --mem-per-cpu=10g
 #SBATCH --time=00:30:00   
 #SBATCH --export=NONE
 
 # To compile with the GNU environment, swap from Cray to GNU
-module load abaqus/2020 gcc openmpi
+module load abaqus/2020 intel/2020.4
 # leave in, it lists the environment loaded by the modules
 module list
 
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
+cd ${SLURM_SUBMIT_DIR}
+INPUT=damagefailcomplate
+USER_ROUTINE=damagefailcomplate_cps4r_xpl
 
-#INPUT=boltpipeflange_axi_solidgask
-#INPUT=BCCDyn3
-#INPUT=tr_entire_truck_in_phase
-#INPUT=s6
-INPUT=Centrifuge_1mBoulder_2D_Jack
 SCRATCH=$MYSCRATCH/run_abaqus/$SLURM_JOBID
-RESULTS=$MYGROUP/abaqus_results/${SLURM_JOBID}
+#SCRATCH=/tmp/$USER/run_abaqus/${SLURM_JOBID}
+RESULTS=$MYGROUP/abaqus_results
+
 ### need to unset this
 unset SLURM_GTIDS
 
@@ -51,10 +50,7 @@ OUTPUT=abaqus_stdout.log
 env_file=abaqus_v6.env
 
 cat << EOF > ${env_file}
-verbose = 3
-#ask_delete = OFF
-mp_file_system = (SHARED, LOCAL)
-mpi_rsh_command='rsh -n -l %U %H %C'
+verbose = 1
 EOF
 
 node_list=$(scontrol show hostname ${SLURM_NODELIST} | sort -u)
@@ -76,26 +72,34 @@ export OMP_NUM_THREADS=1
 #   then change directory to $SCRATCH
 cd ${SLURM_SUBMIT_DIR} 
 echo "current directory is "`pwd`
-cp ${INPUT}.inp $SCRATCH/.
+
+cp ${INPUT}*.inp $SCRATCH/.
+cp ${USER_ROUTINE}.f $SCRATCH/.
 cd $SCRATCH 
 
-#abaqus job=tr_bed_gen.inp cpus=34 scratch=. interactive
+
+abaqus interactive job=${INPUT}_cps4r_xpl cpus=${SLURM_NTASKS} \
+	scratch=.  mp_mode=threads user=${USER_ROUTINE}
+
 #abaqus datacheck job=${INPUT} scratch=. interactive
-#abaqus job=${INPUT} scratch=. interactive > ${OUTPUT}
-abaqus job=${INPUT} cpus=${SLURM_NTASKS} standard_parallel=all scratch=. mp_mode=MPI interactive > ${OUTPUT}
 #abaqus job=support information=support
 
 #############################################
 #    $OUTPUT file to the unique results dir
 # note this can be a copy or move  
-cp -r ${INPUT} ${RESULTS}
+# mv ${SCRATCH} ${RESULTS} 
+cp -r ${SCRATCH} ${RESULTS}
 
 cd $HOME
 
 ###########################
 # Clean up $SCRATCH 
 
-#rm -r $SCRATCH
+rm -r $SCRATCH
 
-echo abaqus job finished at  `date`
+echo abaqus explicit user fortran job finished at  `date`
+
+
+
+
 

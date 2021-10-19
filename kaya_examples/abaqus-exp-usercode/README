@@ -1,0 +1,64 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate how an ABAQUS explicit with the
+# user job is run on kaya with the SLURM job scheduler.
+
+# 
+# To load ABAQUS to your environemtn the command is:
+module load abaqus intel/2020.4
+
+# this fetchs the explicit model input file 
+#  This example demomstrates how the nonlinear material behavior
+# of a composite laminate can be specified as a function of solution
+# dependent variables.  The user subroutine VUSDFLD in ABAQUS/Explicit
+# can be used to modifiy the standard linear elastic material behavior
+# or to change the behavior of the nonlinear material models in ABAQUS.
+
+abaqus fetch job=damagefailcomplate_cps4r_xpl
+abaqus fetch job=damagefailcomplate_cps4r_xpl.f
+abaqus fetch job=damagefailcomplate_node
+abaqus fetch job=damagefailcomplate_element 
+
+# To run this code, we need to specify the number of nodes used.
+# NOTE: Currently on kaya all jobs are limited to 1 node
+# This information is in the abaqus_explicit.slurm
+# You can edit the SLURM file using nano or vi
+
+# SLURM directives
+# Here we specify to SLURM what resources we need to run ABAQUS
+# #SBATCH --nodes=1   
+# #SBATCH --ntasks=36  --> this is the number of cores/threads
+# #SBATCH --mem-per-cpu=10G --> this is the amount of memory per core/thread (max is 21G) 
+# NOTE: If you do not specify this it defaults to 1G/per core
+
+# To submit the job to kaya we use `sbatch abaqus_explicit.slurm` 
+# the --parsable flag allows us to capture the jobid number
+# while not needed for this example is it important to know
+# how to do this for check-pointing larger jobs
+
+jobid=$(sbatch --parsable abaqus_explicit.slurm)
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_abaqus/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/abaqus_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/abaqus_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat *.sta"
+echo " "
+echo " kaya user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo " "
