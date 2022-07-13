@@ -12,7 +12,7 @@
 # to not share nodes with other running jobs use #SBATCH -exclusive
 
 
-# To swap from Cray Environment to GNU
+# To load the GNU toolchain
 module load gcc openmpi
 
 # leave in, it lists the environment loaded by the modules
