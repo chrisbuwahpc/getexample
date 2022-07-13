@@ -1,11 +1,11 @@
 #!/bin/bash --login
 #SBATCH --job-name=GE-helloC_gnu
-#SBATCH --partition=POPHEALTH
+#SBATCH --partition=test
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00   
 #SBATCH --export=NONE
 
-# To compile with the GNU environment, swap from Cray to GNU
+# To compile with the GNU toolchain
 module load gcc
 
 # leave in, it lists the environment loaded by the modules
@@ -14,8 +14,8 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 EXECUTABLE=helloworld_gnu
-SCRATCH=/scratch/$HOME/run_helloC_gnu/$SLURM_JOBID
-RESULTS=$HOME/helloc_gnu_results/$SLURM_JOBID
+SCRATCH=$MYSCRATCH/run_helloC_gnu/$SLURM_JOBID
+RESULTS=$MYGROUP/helloc_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
