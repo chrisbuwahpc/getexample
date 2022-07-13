@@ -1,0 +1,59 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate helloworld.c example 
+# in GNU environment on Magnus.
+# helloworld.c is a simple c code that prints "Hello World!" 
+# and runs on a single node.
+# cp the helloworld.c source code
+cp $GE_DIR/src/helloworld.c .
+
+
+# To run this code, we need to specify the number of nodes used.
+# This information is located under helloworld_gnu.slurm
+# You can edit the SLURM as: emacs helloworld_gnu.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# To compile the code with the GNU environment, we load 
+# the gcc environment module as shown below:
+module load gcc 
+# To run the code, we simply type:
+# srun -n 1 ./$EXECUTABLE >> ${OUTPUT}
+
+# To compile the helloworld.c code on GNU
+gcc -O2 helloworld.c -o helloworld_gnu
+
+# To submit the job to kaya
+jobid=$(sbatch --parsable helloworld_gnu.slurm)
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_helloC_gnu/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/helloC_gnu_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/helloC_gnu_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat helloC_gnu.log"
+echo " "
+echo " PAWSEY user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo "more information about UWA HPC and Kaya can be found at:"
+echo " https://uniwa.sharepoint.com/teams/EXT-UWA-HPC"
+echo " "
+echo "more information about SLURM and srun can be found at:"
+echo " https://docs.hpc.uwa.edu.au/docs/"
+echo " "
+echo " "
