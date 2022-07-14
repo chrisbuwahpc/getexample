@@ -1,11 +1,11 @@
 #!/bin/bash -l
 #SBATCH --job-name=GE-fortranMPI_gnu
-#SBATCH --partition=test
+#SBATCH --partition=training
 #SBATCH --nodes=2
 #SBATCH --ntasks=20
 #SBATCH --ntasks-per-node=10
 #SBATCH --cpus-per-task=1
-#SBATCH --time=00:01:00
+#SBATCH --time=00:02:00
 #SBATCH --export=NONE
 
 #SBATCH --account=ea007
