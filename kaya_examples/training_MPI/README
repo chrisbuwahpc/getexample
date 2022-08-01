@@ -31,8 +31,7 @@ module load gcc/9.4.0 openmpi
 mpif90 -O2 hello_mpi.f90 -o hello_mpi_gnu
 
 # To submit the job to Magnus
-sbatch hello_mpi_gnu.slurm
-jobid=`squeue -u $USER | grep $USER | awk '{print $1}'`
+jobid=$(sbatch --parsable  hello_mpi_gnu.slurm)
 
 echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"

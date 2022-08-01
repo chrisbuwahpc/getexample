@@ -13,7 +13,7 @@
 
 
 # To load the GNU toolchain
-module load gcc openmpi
+module load gcc/9.4.0 openmpi/4.1.3
 
 # leave in, it lists the environment loaded by the modules
 module list
@@ -22,7 +22,7 @@ module list
 #  These are generic variables
 EXECUTABLE=hello_mpi_gnu
 SCRATCH=$MYSCRATCH/run_fortranMPI_gnu/$SLURM_JOBID
-RESULTS=$MYGROUP/mpifortran_gnu_results/$SLURM_JOBID
+RESULTS=$MYGROUP/fortranMPI_gnu_results/$SLURM_JOBID
 #  for openMP codes
 export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 ###############################################
