@@ -6,7 +6,7 @@
 #SBATCH --export=NONE
 
 # To compile with the GNU toolchain
-module load gcc
+module load gcc/9.4.0
 
 # leave in, it lists the environment loaded by the modules
 module list
@@ -15,7 +15,7 @@ module list
 #  These are generic variables
 EXECUTABLE=helloworld_gnu
 SCRATCH=$MYSCRATCH/run_helloC_gnu/$SLURM_JOBID
-RESULTS=$MYGROUP/helloc_gnu_results/$SLURM_JOBID
+RESULTS=$MYGROUP/helloC_gnu_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
