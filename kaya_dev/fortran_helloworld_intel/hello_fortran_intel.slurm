@@ -1,12 +1,13 @@
 #!/bin/bash --login
 #SBATCH --job-name=GE-fortran_helloworld_intel
-#SBATCH --partition=workq
+#SBATCH --partition=test
 #SBATCH --nodes=1
+#SBATCH --mem=2G
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
-# To swap from Cray environment to Intel
-module swap PrgEnv-cray PrgEnv-intel
+# To load the Intel environment
+module load intel/2020.4
 
 # leave in, it lists the environment loaded by the modules
 module list
@@ -43,15 +44,15 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
+srun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
 if [ $? -ne 0 ]; then
     cd
-    OUTPUT2=magnus_results.log
+    OUTPUT2=kaya_results.log
     echo "$EXECUTABLE with jobID $SLURM_JOBID Failed" >> ${OUTPUT2}
 else
     cd
-    OUTPUT2=magnus_results.log
+    OUTPUT2=kaya_results.log
     echo "$EXECUTABLE with jobID $SLURM_JOBID Succeeded" >> ${OUTPUT2}
 fi
 
@@ -69,8 +70,5 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo fortran_helloworld_intel job finished at  `date`
+echo fortran_helloworld_intel job on kaya finished at  `date`
 
-
-# To swap from Intel environment to the default program environment:
-module swap PrgEnv-intel PrgEnv-cray
