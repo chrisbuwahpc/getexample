@@ -67,7 +67,7 @@ swashrun -input ${input} -omp $SLURM_NPROCS
 #    $OUTPUT file to the unique results dir
 # note this can be a copy or move  
 
-mv allstw01.* ${RESULTS}
+mv a11stw01.* ${RESULTS}
 
 cd $HOME
 
