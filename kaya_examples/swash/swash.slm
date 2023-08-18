@@ -17,11 +17,13 @@ module load swash/9.01
 # leave in, it lists the environment loaded by the modules
 module list
 
-#  Note: SLURM_JOBID is a unique number for every job.
-#  These are generic variables
-
 case_name=a11stwav
 input=a11stw01.sws
+
+#  Define the SCRATCH and RESULTS directory
+#  Note: SLURM_JOBID is a unique number for every job.
+#  These are generic variables
+# MYSCRATCH and MYGROUP are custom kaya system environment Variables
 SCRATCH=$MYSCRATCH/run_swash/$SLURM_JOBID
 RESULTS=$MYGROUP/swash_results_${case}
 

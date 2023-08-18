@@ -4,6 +4,8 @@
 #
 # Example OBJECTIVE: to demonstrate swash openmp example 
 # on kaya with the Intel compiler toolchain Environment.
+# cp the swash example input files 
+cp $GE_DIR/src/swash/a11* .
 
 # SWASH is a general-purpose numerical tool for simulating 
 # unsteady, non-hydrostatic, free-surface, rotational flow 
@@ -27,7 +29,7 @@
 # from GNU as shown below:
 module load intel/2020.4 swash/9.01
 
-# To launch a job, we specify the input file a13stw01.sws number of threads 20 (-n 20)
+# To launch a job, we specify the input file a11stw01.sws with 4 threads (--ntasks=4)
 
 # Therefore, the run command looks like:
 # swashrun -input a1101.sws -omp 20 >> ${OUTPUT}
