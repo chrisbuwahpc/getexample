@@ -3,9 +3,9 @@
 # Define getexample install directory 
 # export GE_DIR in module file
 #LABEL Files
-hostid=`echo ${UWA_CLUSTER}`
+hostid=kaya
 echo ${hostid}
-if [ ${hostid} == "kaya" ]; then 
+if [[ "${hostid}" == "kaya" ]]; then 
     declare -a location=("${GE_DIR}/${hostid}_examples")
 fi
 N_dir=${#location[@]}
@@ -21,7 +21,7 @@ if [ "$1" == "" ]; then
 	echo "Where <examplename> is the name of the example you want to "
 	echo "download.  This will create a directory named examplename which"
 	echo "you can cd into and hopefully read the README file "
-	echo " and the *.lsf file."
+	echo " and the *.slurm file."
 	echo ""
 	echo "For Example:"
 	echo "  getexample helloworld"
