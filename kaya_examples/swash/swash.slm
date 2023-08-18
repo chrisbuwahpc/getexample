@@ -1,0 +1,78 @@
+#!/bin/bash --login
+#SBATCH --job-name=GE-swash
+#SBATCH --partition=work
+#SBATCH --nodes=1
+# -N is equivalent to --nodes
+# -n is equivalent to --ntasks
+# -c is "number of cores"
+#SBATCH --ntasks=4
+#SBATCH --mem-per-cpu=10G
+#SBATCH --time=00:10:00   
+#SBATCH --export=NONE
+
+# load intel compiler and mpi
+module load intel/2020.4
+module load swash/9.01
+
+# leave in, it lists the environment loaded by the modules
+module list
+
+#  Note: SLURM_JOBID is a unique number for every job.
+#  These are generic variables
+
+case_name=a11stwav
+input=a11stw01.sws
+SCRATCH=$MYSCRATCH/run_swash/$SLURM_JOBID
+RESULTS=$MYGROUP/swash_results_${case}
+
+###############################################
+# Creates a unique directory in the SCRATCH directory for this job to run in.
+if [ ! -d $SCRATCH ]; then 
+    mkdir -p $SCRATCH 
+fi 
+echo SCRATCH is $SCRATCH
+
+###############################################
+# Creates a unique directory in your GROUP directory for the results of this job
+if [ ! -d $RESULTS ]; then 
+    mkdir -p $RESULTS 
+fi
+echo the results directory is $RESULTS
+
+################################################
+# declare the name of the output file or log file
+OUTPUT=swash_stdout.log
+
+export OMP_NUM_THREADS=$SLURM_NPROCS
+
+#############################################
+#   Copy input files to $SCRATCH
+#   then change directory to $SCRATCH
+cd ${SLURM_SUBMIT_DIR} 
+
+echo "current directory is "`pwd`
+#cp ~/bin/swash.exe $SCRATCH/.
+cp ${case_name} $SCRATCH
+cp ${input} $SCRATCH
+
+cd $SCRATCH
+
+ls -al
+
+swashrun -input ${input} -omp $SLURM_NPROCS
+
+#############################################
+#    $OUTPUT file to the unique results dir
+# note this can be a copy or move  
+
+mv allstw01.* ${RESULTS}
+
+cd $HOME
+
+###########################
+# Clean up $SCRATCH 
+
+rm -r $SCRATCH
+
+echo swash job finished at  `date`
+
