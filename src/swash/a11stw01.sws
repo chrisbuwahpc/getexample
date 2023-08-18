@@ -1,0 +1,41 @@
+$*************HEADING***********************************
+$
+PROJ 'A11stw01' 'A11'
+$
+$  Standing short wave in closed basin (kh = 0.55pi)
+$
+$ --|--------------------------------------------------------------|--
+$   | This SWASH input file is part of the bench mark tests for    |
+$   | SWASH. More information about this test can be found in      |
+$   | an accompanied document.                                     |
+$ --|--------------------------------------------------------------|--
+$
+$***********MODEL INPUT*********************************
+$
+MODE DYN ONED
+$
+CGRID 0. 0. 0. 20. 0. 20 0
+$
+VERT 1
+$
+INPGRID BOTTOM 0. 0. 0. 1 0 20. 1.
+READINP BOTTOM 5.5 'a11stwav.bot' 1 0 FREE
+$
+INPGRID WLEV 0. 0. 0. 20 0 1. 1.
+READINP WLEV 1. 'a11stwav.wlv' 1 0 FREE
+$
+FRIC CONST 0.
+VISC 0.
+NONHYDrostatic
+$
+DISCRET UPW NONE
+DISCRET CORRDEP NONE
+$
+$************ OUTPUT REQUESTS *************************
+$
+GROUP 'GAUGE' 18 18 1 1
+TABLE 'GAUGE' NOHEAD 'a11stw01.tbl' TSEC WATL OUTPUT 000000.000 0.01 SEC
+$
+TEST 1,0
+COMPUTE 000000.000 0.01 SEC 000030.000
+STOP
