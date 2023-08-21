@@ -1,12 +1,17 @@
 #!/bin/bash --login
-#SBATCH --job-name=GE-lsdyan
-#SBATCH --partition=pophealth
+#SBATCH --job-name=GE-lsdyna
+#SBATCH --partition=work
 #SBATCH --nodes=1
+# -N is equivalent to --nodes
+# -n is equivalent to --ntasks
+# -c is "number of cores"
+#SBATCH --ntasks=12
+#SBATCH --mem-per-cpu=3G
 #SBATCH --time=06:00:00   
 #SBATCH --export=NONE
 
-# To compile with the GNU environment, swap from Cray to GNU
-module load ansys
+# To compile with the ansys - lsdyna environment
+module load ansys/v195
 
 # leave in, it lists the environment loaded by the modules
 module list
@@ -14,9 +19,9 @@ module list
 #  Note: SLURM_JOBID is a unique number for every job.
 #  These are generic variables
 
-SOURCE=foam/foam.k
-SCRATCH=/scratch/$HOME/run_lsdyna_ystatic/$SLURM_JOBID
-RESULTS=$HOME/lsdyna_ystatic_results/$SLURM_JOBID
+INPUT=foam.k
+SCRATCH=${MYSCRATCH}/run_lsdyna_foam/$SLURM_JOBID
+RESULTS=${MYGROUP}/lsdyna_foam_results/$SLURM_JOBID
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
@@ -40,15 +45,12 @@ OUTPUT=dyna_foam.log
 #   Copy input files to $SCRATCH
 #   then change directory to $SCRATCH
 
-cp $SOURCE $SCRATCH
+cp $INPUT $SCRATCH
 
 cd $SCRATCH
-unzip $SOURCE 
-ls -al
 
-INPUT=foam.k
-
-lsdyna i=$INPUT ncpu=4 memory=1000000000  > ${OUTPUT}
+# run the lsdyna simulation 
+lsdyna i=$INPUT ncpu=${SLURM_NPROCS}   > ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir
@@ -62,6 +64,6 @@ cd $HOME
 
 rm -r $SCRATCH
 
-echo helloC_gnu job finished at  `date`
+echo LSDYNA example job finished at `date`
 
 
