@@ -11,20 +11,22 @@ cp $GE_DIR/src/hello_world.f90 .
 
 
 # To run this code, we need to specify the number of nodes used
-# and load the Intel environment .
+# and load the Intel OneAPI compiler environment .
 # This information is located under hello_fortran_intel.slurm
-# You can edit the SLURM as: emacs hello_fortran_intel.slurm &
+# You can edit the SLURM script using: nano hello_fortran_intel.slurm 
 
 # SLURM directives
 # 
 # Here we specify to SLURM we want 1 node (--nodes=1 or -N 1)
-# To compile this code in Intel Environment, we load:
-module load intel
+# To compile this code in Intel Oneapi Environment, we load:
+module use /uwahpc/centos8/modulefiles/oneapi-2023.0
+module load compiler
+
 # To run the code, we simply type:
 # srun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
 # To compile the hello_world.f90 code
-ifort -O2 hello_world.f90 -o hello_fortran_intel
+ifx -O2 hello_world.f90 -o hello_fortran_intel
 
 # To submit the job to Kaya
 jobid=$(sbatch --parsable hello_fortran_intel.slurm)

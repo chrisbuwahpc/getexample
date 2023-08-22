@@ -1,13 +1,17 @@
 #!/bin/bash --login
 #SBATCH --job-name=GE-fortran_helloworld_intel
-#SBATCH --partition=test
+#SBATCH --partition=work
 #SBATCH --nodes=1
+# -N is equivalent to --nodes
+# -n is equivalent to --ntasks
+# -c is "number of cores"
 #SBATCH --mem=2G
 #SBATCH --time=00:05:00
 #SBATCH --export=NONE
 
 # To load the Intel environment
-module load intel/2020.4
+module use /uwahpc/centos8/modulefiles/oneapi-2023.0
+module load compiler
 
 # leave in, it lists the environment loaded by the modules
 module list
