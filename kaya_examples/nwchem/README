@@ -1,0 +1,68 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate nwchem example on Kaya
+# with the Intel OneAPI.
+# n2.nw input file is taken from
+# https://nwchemgit.github.io/Getting-Started.html#input-file-structure
+# cp the n2.nw input file to users directory.
+cp $GE_DIR/src/nwchem/n2.nw .
+
+# NWChem is an MPI code that can run accross multiple nodes 
+# this is a very simple example and only needs 2 cores (MPI tasks)
+
+# To run this code, we need just need to specify the total number of MPI tasks
+
+# We also need to load the Intel OneAPI modulefiles and modules
+# to be able to run NWChem
+
+# This information is can be found in the run_nwchem.slurm
+# You can edit the SLURM with nano:  nano run_nwchem.slurm 
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 nodes (--nodes=1)
+# To use the INTEL OneAPI tools you need add it your MODULEPATH 
+# with module use command
+module use /uwahpc/centos8/modulefiles/oneapi-2023.0
+# load the intel compiler and mpi modules
+module load compiler/2023.0.0 mpi/2021.8.0
+
+# To launch a job, we specify 2 MPI tasks (-n 2)
+# with 2 tasks per node (-N 2)
+# Therefore, the mpirun command looks like:
+# mpirun -n 2 -N 2 nwchem n2.nw >> ${OUTPUT}
+
+
+# To submit the job to Magnus
+jobid=$(sbatch --parsible run_nwchem.slurm)
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_nwchem/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/nwchem_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/nwchem_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat nwchem_n2.log"
+echo " "
+echo " Kaya user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo "more information about Kaya can be found at:"
+echo " https://docs.hpc.uwa.edu.au/docs"
+echo " "
+echo "more information about SLURM and srun can be found at:"
+echo " https://docs.hpc.uwa.edu.au/docs/slurm"
+echo " "
+echo " "
