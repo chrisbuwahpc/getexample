@@ -15,7 +15,7 @@
 # to load the INTEL OneAPI modules and nwchem
 module use /uwahpc/centos8/modulefiles/oneapi-2023.0
 module load compiler/2023.0.0 mpi/2021.8.0
-module use /group/hpc001/cbording/software/centos8/modulefiles/apps
+
 module load nwchem/7.2.0
 
 # leave in, it lists the environment loaded by the modules
