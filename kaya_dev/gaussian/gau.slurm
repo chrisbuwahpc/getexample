@@ -1,4 +1,4 @@
-#!/usr/bin/tcsh 
+#!/bin/bash -l
 #SBATCH --job-name=GE-gaussian
 #SBATCH --partition=work
 #SBATCH --nodes=1
@@ -30,16 +30,16 @@ set RESULTS = $MYGROUP/gaussian_results
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
-if ( ! -d $SCRATCH ) then 
+if [ ! -d $SCRATCH ]; then 
     mkdir -p $SCRATCH 
-endif 
+fi 
 echo SCRATCH is $SCRATCH
 echo GAUSS_SCRDIR is "${SCRATCH}"
 ###############################################
 # Creates a unique directory in your GROUP directory for the results of this job
-if ( ! -d $RESULTS ) then 
+if [ ! -d $RESULTS ]; then 
     mkdir -p $RESULTS 
-endif 
+fi
 echo the results directory is $RESULTS
 
 ################################################
