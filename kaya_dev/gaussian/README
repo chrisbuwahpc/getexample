@@ -24,7 +24,7 @@ module load pgi/16.10 gaussian
 # To run the code, we simply type:
 # aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
-# To submit the job to Magnus
+# To submit the job to Kaya
 jobid=$(sbatch --parsable gau.slurm)
 
 echo "The sbatch command returns what the jobid is for this job."
