@@ -61,15 +61,15 @@ ${MAALI_ORCA_HOME}/orca  ${INPUT}.inp > ${OUTPUT}
 #############################################
 # $OUTPUT file to the unique results dir
 # note this can be a copy or move  
-#mv  ${SCRATCH} ${RESULTS}
+mv  ${SCRATCH} ${RESULTS}
 
 cd $HOME
 
 ###########################
 # Clean up $SCRATCH 
-#if [ -d $SCRATCH ]; then
-#    rm -r $SCRATCH
-#fi 
+if [ -d $SCRATCH ]; then
+    rm -r $SCRATCH
+fi 
 
 echo orca job on kaya finished at  `date`
 
