@@ -26,10 +26,10 @@ cp $GE_DIR/src/orca/water.inp .
 # load the gnu compiler and mpi modules
 module load orca/5.0.2
 
-# To launch a job, we specify 16 MPI tasks (-n 16)
+# To launch a job, we specify 16 MPI tasks (-n 16) in the SLURM script
 
-# To submit the job to Magnus
-jobid=$(sbatch --parsible run_nwchem.slurm)
+# To submit the job to kaya
+jobid=$(sbatch --parsable run_nwchem.slurm)
 
 echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"

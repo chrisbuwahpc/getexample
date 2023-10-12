@@ -11,7 +11,7 @@
 #SBATCH --export=NONE
 
 # 
-module load orca/5.0.4-dyn
+module load orca/5.0.2
 
 # leave in, it lists the environment loaded by the modules
 module list
