@@ -24,34 +24,34 @@ module load pgi/16.10 gaussian
 # To run the code, we simply type:
 # aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
 
-# To submit the job to Magnus
+# To submit the job to Kaya
 jobid=$(sbatch --parsable gau.slurm)
 
 echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
 echo "squeue -u $USER"
 echo " "
-echo "Your job will be run in /tmp/$USER/run_gaussian/${jobid} "
-echo "The GAUSS_SCRDIR is /tmp/$USER/run_gaussian/${jobid}  "
-echo "Your results will be saved in ${HOME}/gaussian_results/${jobid}"
+echo "Your job will be run in $MYSCRATCH/run_gaussian/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/gaussian_results/${jobid}"
 echo "and the scratch directory will then be deleted."
 echo " "
 echo "To check the results change to your jobid directory, type:"
 echo "cd ${MYGROUP}/gaussian_results/${jobid}"
 echo " " 
 echo "To view the results, use the cat command and type:"
-echo "cat gau_${INPUT}.log"
+echo "cat test0194.com"
 echo " "
-echo " KAYA user shortcuts! " 
+echo " Kaya user shortcuts! " 
 echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
 echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
 echo " example:  cd \$MYGROUP "
 
 echo " "  
-#echo "more information about Kaya can be found at:"
-#echo " https://support.pawsey.org.au/documentation/display/US/Magnus+User+Guide"
-#echo " "
-#echo "more information about SLURM and aprun can be found at:"
-#echo " https://support.pawsey.org.au/documentation/display/US/Scheduling+and+Running+Jobs"
-#echo " "
+echo "more information about Kaya can be found at:"
+echo " https://docs.hpc.uwa.edu.au/docs"
+echo " "
+echo "more information about SLURM and srun can be found at:"
+echo " https://docs.hpc.uwa.edu.au/docs/slurm"
+echo " "
 echo " "

@@ -1,10 +1,16 @@
-#!/usr/bin/tcsh 
+#!/bin/bash -l
 #SBATCH --job-name=GE-gaussian
-#SBATCH --partition=short
+#SBATCH --partition=work
 #SBATCH --nodes=1
-#SBATCH --ntasks=34
-# max ntasks = 34
+#SBATCH --ntasks=2
+# -N is equivalent to --nodes
+# -n is equivalent to --ntasks
+# max ntasks = 1
 # note ntasks has to match %proc in your gaussian input file
+#SBATCH --mem-per-cpu=4GB
+# the default is 1G per cpu(core)
+# HINT!
+# --mem=0 is a special case and grants the job access to all the memory on each node!
 #SBATCH --time=01:00:00   
 #SBATCH --export=NONE
 
@@ -18,22 +24,22 @@ module list
 #  These are generic variables
 
 set INPUT = test0194
-set SCRATCH = /tmp/$USER/run_gaussian/$SLURM_JOBID
+set SCRATCH = $MYSCRATCH/run_gaussian/$SLURM_JOBID
 setenv GAUSS_SCRDIR "$SCRATCH"
-set RESULTS = $HOME/gaussian_results
+set RESULTS = $MYGROUP/gaussian_results
 
 ###############################################
 # Creates a unique directory in the SCRATCH directory for this job to run in.
-if ( ! -d $SCRATCH ) then 
+if [ ! -d $SCRATCH ]; then 
     mkdir -p $SCRATCH 
-endif 
+fi 
 echo SCRATCH is $SCRATCH
 echo GAUSS_SCRDIR is "${SCRATCH}"
 ###############################################
 # Creates a unique directory in your GROUP directory for the results of this job
-if ( ! -d $RESULTS ) then 
+if [ ! -d $RESULTS ]; then 
     mkdir -p $RESULTS 
-endif 
+fi
 echo the results directory is $RESULTS
 
 ################################################
