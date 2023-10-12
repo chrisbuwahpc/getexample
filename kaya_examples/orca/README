@@ -1,0 +1,61 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate orca example on Kaya
+# 
+# The input file used is water.inp is taken from
+# https://www.orcasoftware.de/tutorials_orca/first_steps/first_calc.html
+# cp the input file water.inp to users directory.
+cp $GE_DIR/src/orca/water.inp .
+
+# Orca is an MPI code that can run accross multiple nodes 
+# this is a very simple example and only needs 16 cores (MPI tasks)
+
+# To run this code, we need just need to specify the total number of MPI tasks
+
+# Orca use a specific MPI library that changes with each release.
+# The Orca module loads the correct modules
+
+# This information is can be found in the orca.slurm
+# You can edit the SLURM with nano:  nano orca.slurm 
+
+# SLURM directives
+# 
+# Here we specify in the SLURM script that we want 1 nodes (--nodes=1)
+# load the gnu compiler and mpi modules
+module load orca/5.0.2
+
+# To launch a job, we specify 16 MPI tasks (-n 16)
+
+# To submit the job to Magnus
+jobid=$(sbatch --parsible run_nwchem.slurm)
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_orca/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/orca_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/orca_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat orca_water.log"
+echo " "
+echo " Kaya user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo "more information about Kaya can be found at:"
+echo " https://docs.hpc.uwa.edu.au/docs"
+echo " "
+echo "more information about SLURM and srun can be found at:"
+echo " https://docs.hpc.uwa.edu.au/docs/slurm"
+echo " "
+echo " "
