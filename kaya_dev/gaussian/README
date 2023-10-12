@@ -1,0 +1,57 @@
+#!/bin/bash --login
+# This is the README file is an executable script.
+# To run type: ./README
+#
+# Example OBJECTIVE: to demonstrate helloworld.c example 
+# in GNU environment on Magnus.
+# helloworld.c is a simple c code that prints "Hello World!" 
+# and runs on a single node.
+# cp the input test file
+INPUT=test0194
+cp $GE_DIR/src/gaussian/${INPUT}.com .
+
+
+# To run this code, we need to specify the number of nodes used.
+# This information is located under helloworld_gnu.slurm
+# You can edit the SLURM as: emacs helloworld_gnu.slurm &
+
+# SLURM directives
+# 
+# Here we specify to SLURM we want 1 node (--nodes=1)
+# To compile the code with the GNU environment, we change
+# the environment from Cray to GNU as shown below:
+module load pgi/16.10 gaussian 
+# To run the code, we simply type:
+# aprun -n 1 ./$EXECUTABLE >> ${OUTPUT}
+
+# To submit the job to Kaya
+jobid=$(sbatch --parsable gau.slurm)
+
+echo "The sbatch command returns what the jobid is for this job."
+echo "To check the status of your job, use the slurm command:"
+echo "squeue -u $USER"
+echo " "
+echo "Your job will be run in $MYSCRATCH/run_gaussian/${jobid}."
+echo " "
+echo "Your results will be saved in ${MYGROUP}/gaussian_results/${jobid}"
+echo "and the scratch directory will then be deleted."
+echo " "
+echo "To check the results change to your jobid directory, type:"
+echo "cd ${MYGROUP}/gaussian_results/${jobid}"
+echo " " 
+echo "To view the results, use the cat command and type:"
+echo "cat test0194.com"
+echo " "
+echo " Kaya user shortcuts! " 
+echo  '$MYSCRATCH' "is an environment variable it is set to $MYSCRATCH"
+echo  '$MYGROUP' "is an environment variable it is set to $MYGROUP"
+echo " example:  cd \$MYGROUP "
+
+echo " "  
+echo "more information about Kaya can be found at:"
+echo " https://docs.hpc.uwa.edu.au/docs"
+echo " "
+echo "more information about SLURM and srun can be found at:"
+echo " https://docs.hpc.uwa.edu.au/docs/slurm"
+echo " "
+echo " "
