@@ -29,7 +29,7 @@ module load orca/5.0.2
 # To launch a job, we specify 16 MPI tasks (-n 16) in the SLURM script
 
 # To submit the job to kaya
-jobid=$(sbatch --parsable run_nwchem.slurm)
+jobid=$(sbatch --parsable run_orca.slurm)
 
 echo "The sbatch command returns what the jobid is for this job."
 echo "To check the status of your job, use the slurm command:"
