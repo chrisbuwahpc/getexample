@@ -8,7 +8,7 @@
 #SBATCH --time=00:02:00
 #SBATCH --export=NONE
 
-#SBATCH --account=ea007
+#SBATCH --account=training
 # to not share nodes with other running jobs use #SBATCH -exclusive
 
 
@@ -52,7 +52,8 @@ cp $EXECUTABLE $SCRATCH
 
 cd $SCRATCH
 
-srun --mpi=pmix_v3 ./${EXECUTABLE} >> ${OUTPUT}
+#srun --mpi=pmix_v3 ./${EXECUTABLE} >> ${OUTPUT}
+mpirun -np 20 ./${EXECUTABLE} >> ${OUTPUT}
 
 #############################################
 #    $OUTPUT file to the unique results dir

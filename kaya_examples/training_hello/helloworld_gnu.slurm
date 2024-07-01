@@ -1,6 +1,6 @@
 #!/bin/bash --login
 #SBATCH --job-name=GE-helloC_gnu
-#SBATCH --partition=test
+#SBATCH --partition=training
 #SBATCH --nodes=1
 #SBATCH --time=00:05:00   
 #SBATCH --export=NONE
